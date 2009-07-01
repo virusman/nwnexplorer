@@ -1,0 +1,738 @@
+2004-05-15 15:09  sumpfork
+
+	* nwnnsscomp/nwnnsscomp.cpp:
+
+	compiler now exits with value 1 on error (not consistent on windows)
+	
+2004-05-15 14:44  sumpfork
+
+	* _NscLib/NscParserRoutines.cpp:
+
+	removing two extraneous pOut->SetType calls after NscPushAssignment already made that call (bug #834442)
+	
+2004-05-10 21:06  sumpfork
+
+	* _NscLib/Nsc.h, _NscLib/NscCompiler.cpp, _NscLib/NscContext.cpp,
+	_NscLib/NscContext.h, _NwnLib/NwnStdLoader.cpp,
+	nwnnsscomp/python/compiler.cpp:
+
+	adding ability to print compiler errors to out stream for better integration into applications
+	adding error catching to python interface
+	
+2004-05-09 13:42  sumpfork
+
+	* nwnnsscomp/python/__init__.py:
+
+	adding __init__.py to make this a package
+	
+2004-05-09 13:34  sumpfork
+
+	* configure.ac:
+
+	produce error when msta not found
+	
+2004-05-09 13:15  sumpfork
+
+	* nwnnsscomp/python/: compiler.cpp, setup.py:
+
+	getting rid of dbg stream, crashed on linux
+	
+2004-05-05 15:52  sumpfork
+
+	* nwnnsscomp/python/setup.py:
+
+	moving into nwntools package
+	version to 1.1 (it supports HotU, after all)
+	
+2004-05-05 15:35  sumpfork
+
+	* Makefile.am:
+
+	removing wxnwntreature as it doesn't compile and is not maintained
+	
+2004-05-05 15:23  sumpfork
+
+	* nwnnsscomp/python/setup.py:
+
+	removing mac os x link args for linux
+	
+2004-05-04 23:39  sumpfork
+
+	* _NwnLib/NwnStdLoader.cpp:
+
+	adding xp2 files to compiler
+	
+2004-05-04 23:37  sumpfork
+
+	* nwnnsscomp/python/: compiler.cpp, setup.py:
+
+	adding python interface to compiler
+	
+2004-04-04 14:22  eyrdan
+
+	* _NwnLib/: NwnStdLoader.cpp, NwnStdLoader.h:
+
+	Updated to include xp2.key and xp2patch.key from Hordes of the
+	Underdark.
+	
+2003-12-14 16:48  sumpfork
+
+	* nwnnsscomp/nwnnsscomp.cpp:
+
+	fixing a bug that surfaces on Mac OS X, but affects linux and possibly
+	windows: it's wrong to assume that basename
+	returns a pointer within the same string that's passed in. It's even wrong
+	to assume it doesn't modify the string passed in. I didn't fix all
+	occurrences of this, and it seems to be 'dirname' would be a better choice,
+	anyway.
+	
+2003-10-15 21:03  sumpfork
+
+	* wxnwntreasure/: Makefile.am, wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	adding missing file to Makefile.am
+	adding horizontal flag to toolbar so it displays on Mac
+	fixing crash to to property object data not set in table
+	changing all wxTreeItemIdValue to wxTreeItemId as they should be
+	
+2003-10-13 01:47  malakh
+
+	* wxnwntreasure/: EncItemTblData.h, ItemTblData.h:
+
+	Data structure headers. - malakh
+	
+2003-10-13 01:46  malakh
+
+	* wxnwntreasure/: EncItemPropDlg.cpp, EncItemPropDlg.h,
+	ItemPropDlg.cpp, ItemPropDlg.h, wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	More TblData and start of ItmeTblData structures. - malakh
+	
+2003-10-10 16:35  malakh
+
+	* wxnwntreasure/: TablePropDlg.cpp, TablePropDlg.h, TblData.h,
+	wxNwnTreasure.cpp:
+
+	Finished adding in Table Data class and functionality. - malakh
+	
+2003-10-09 23:19  malakh
+
+	* wxnwntreasure/: EncItemPropDlg.cpp, ItemPropDlg.cpp,
+	PlcItemPropDlg.cpp, TablePropDlg.cpp, TablePropDlg.h,
+	wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	Added wxTreeItemData class structure for table data. - malakh
+	
+2003-10-09 12:49  malakh
+
+	* wxnwntreasure/: ProItemPropDlg.cpp, wxNwnTreasure.cpp,
+	wxNwnTreasure.h:
+
+	Added Up and Down functionality. - malakh
+	
+2003-10-08 19:09  malakh
+
+	* wxnwntreasure/: ProItemPropDlg.cpp, ProItemPropDlg.h,
+	wxNwnTreasure.cpp:
+
+	Added Profile Proporties dialog, more treectrl dialog interactions. - malakh
+	
+2003-10-07 01:44  malakh
+
+	* wxnwntreasure/wxNwnTreasure.cpp:
+
+	Added toolbar/treectrl interaction. - malakh
+	
+2003-10-06 21:58  malakh
+
+	* wxnwntreasure/: EncItemPropDlg.cpp, EncItemPropDlg.h,
+	ItemPropDlg.cpp, ItemPropDlg.h, PlcItemPropDlg.cpp,
+	PlcItemPropDlg.h, TablePropDlg.cpp, TablePropDlg.h,
+	wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	More TreeCtrl and Dialog interaction.  Added Delete funcionality. - malakh
+	
+2003-10-03 02:30  malakh
+
+	* wxnwntreasure/: EncItemPropDlg.cpp, EncItemPropDlg.h,
+	ItemPropDlg.cpp, ItemPropDlg.h, PlcItemPropDlg.cpp,
+	PlcItemPropDlg.h, TablePropDlg.cpp, wxNwnTreasure.cpp:
+
+	More TreeCtrl and Dialog interaction. - malakh
+	
+2003-10-03 01:24  malakh
+
+	* wxnwntreasure/: PlcItemPropDlg.cpp, TablePropDlg.cpp,
+	TablePropDlg.h, wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	TablePropDlg now adds treectrl sub-branch for new Tables. - Malakh
+	
+2003-09-14 08:19  eyrdan
+
+	* wxnwntreasure/Makefile.am:
+
+	Fixed missing '\' in SOURCES.
+	
+2003-09-12 00:25  malakh
+
+	* wxnwntreasure/Makefile.am:
+
+	Updated Makefile.am. - malakh
+	
+2003-09-10 01:35  malakh
+
+	* wxnwntreasure/: EncItemPropDlg.cpp, EncItemPropDlg.h,
+	ItemPropDlg.cpp, PlcItemPropDlg.cpp, PlcItemPropDlg.h,
+	TablePropDlg.cpp, encounter.xpm, global.xpm, item.xpm, none.xpm,
+	noref.xpm, nwntreasure.xpm, placeable.xpm, profile.xpm,
+	wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	Added more icons and Item Proporty Dialogs. - malakh
+	
+2003-09-08 23:42  sumpfork
+
+	* Makefile.am, wxnwntreasure/Info.plist.in,
+	wxnwntreasure/Makefile.am, wxnwntreasure/wxnwntreasure.icns,
+	wxnwntreasure/wxnwntreasure.r, wxnwntreasure/wxnwntreasure.rsrc:
+
+	added Mac OS X bundle/dmg building targets to wxnwntreasure
+	
+2003-09-02 15:59  malakh
+
+	* wxnwntreasure/: ItemPropDlg.cpp, ItemPropDlg.h, TablePropDlg.cpp,
+	wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	Added completed ItemProporties Dialog. - malakh
+	
+2003-08-25 09:39  eyrdan
+
+	* wxnwntreasure/: Makefile.am, wxNwnTreasure.cpp:
+
+	Added item prop dialog to build process, and fixed up reference to
+	new.xpm in wxNwnTreasure.cpp.
+	
+2003-08-25 02:30  malakh
+
+	* wxnwntreasure/: ItemPropDlg.cpp, ItemPropDlg.h, TablePropDlg.cpp,
+	TablePropDlg.h, wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	Added preliminary work on Item Proporties dialog. - malakh
+	
+2003-08-24 09:01  eyrdan
+
+	* wxnwntreasure/Makefile.am:
+
+	Added prop.xpm to EXTRA_DIST.
+	
+2003-08-21 23:20  malakh
+
+	* wxnwntreasure/wxNwnTreasure.h:
+
+	Added ID_About = wxID_ABOUT for better mac compatability. - malakh
+	
+2003-08-19 02:39  malakh
+
+	* wxnwntreasure/: prop.xpm, tableprop.xpm, wxNwnTreasure.cpp:
+
+	Added remake of Proporties icon. - malakh
+	
+2003-08-18 21:47  malakh
+
+	* wxnwntreasure/TablePropDlg.h:
+
+	Fixed OnGlblCheck. - malakh
+	
+2003-08-18 21:41  malakh
+
+	* wxnwntreasure/: TablePropDlg.cpp, wxNwnTreasure.cpp:
+
+	Added OnGlblCheck. -malakh
+	
+2003-08-17 23:26  eyrdan
+
+	* wxnwntreasure/Makefile.am:
+
+	Updated Makefile.am to match latest file structure.
+	
+2003-08-17 18:07  malakh
+
+	* wxnwntreasure/: TablePropDlg.cpp, TablePropDlg.h,
+	wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	Source files for TblPropDialog. - malakh
+	
+2003-08-17 18:02  malakh
+
+	* wxnwntreasure/: prefs.xpm, remove.xpm, save_as.xpm, saveas.xpm,
+	table.xpm, tableprop.xpm:
+
+	Added eventtable for TblPropDialog. - malakh
+	
+2003-08-15 20:04  malakh
+
+	* wxnwntreasure/wxNwnTreasure.cpp:
+
+	Added Table Proporties Dialog. - malakh
+	
+2003-08-15 01:00  eyrdan
+
+	* wxnwntreasure/fileopen.xpm:
+
+	Fixed fileopen to be fileopen_xpm .
+	
+2003-08-15 00:26  malakh
+
+	* wxnwntreasure/Makefile.am:
+
+	Added after.xpm to Makefile.am. - malakh
+	
+2003-08-15 00:23  malakh
+
+	* wxnwntreasure/: after.xpm, fileopen.xpm, wxNwnTreasure.cpp,
+	wxNwnTreasure.h:
+
+	Added items to the tree control, minor inhancment of fileopen .xpm and remake of the after toolbar icon. - malakh
+	
+2003-08-14 19:55  malakh
+
+	* wxnwntreasure/: wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	Added placeholder events for all toolbar items and began work on code for the wxTreeCtrl items. - malakh
+	
+2003-08-14 16:22  eyrdan
+
+	* wxnwntreasure/: down.xpm, encounter.xpm, exit.xpm, fileopen.xpm,
+	gold.xpm, helpicon.xpm, new.xpm, none.xpm, save.xpm, table.xpm,
+	tableprop.xpm, up.xpm:
+
+	Should be ok now...
+	
+2003-08-14 16:21  eyrdan
+
+	* wxnwntreasure/: down.xpm, encounter.xpm, exit.xpm, fileopen.xpm,
+	gold.xpm, helpicon.xpm, new.xpm, none.xpm, save.xpm, table.xpm,
+	tableprop.xpm, up.xpm:
+
+	Another error... removing -kb files, shouldn't be -kb since xpm are
+	ASCII picture files.
+	
+2003-08-14 10:13  eyrdan
+
+	* wxnwntreasure/Makefile.am:
+
+	Fixed WX_CXXFLAGS getting reused during linking.
+	
+2003-08-14 10:10  eyrdan
+
+	* wxnwntreasure/Makefile.am:
+
+	Added new bitmaps.
+	
+2003-08-14 10:08  eyrdan
+
+	* configure.ac, wxnwntreasure/.cvsignore,
+	wxnwntreasure/Makefile.am:
+
+	Added support for wxnwntreasure.
+	
+2003-08-14 09:58  malakh
+
+	* wxnwntreasure/: wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	Added some event placeholders. - malakh
+	
+2003-08-14 03:14  malakh
+
+	* wxnwntreasure/wxNwnTreasure.cpp:
+
+	Corrected defualt window size. - malakh
+	
+2003-08-14 03:08  malakh
+
+	* wxnwntreasure/tableprop.xpm:
+
+	Added missing tableprop.xpm. - malakh
+	
+2003-08-14 02:59  malakh
+
+	* wxnwntreasure/: encounter.xpm, fileopen.xpm, helpicon.xpm:
+
+	Adding .xpm's as binaries. - malakh
+	
+2003-08-14 02:57  malakh
+
+	* wxnwntreasure/: encounter.xpm, fileopen.xpm, helpicon.xpm:
+
+	Removing ascii .xpm's. - malakh
+	
+2003-08-14 02:49  malakh
+
+	* wxnwntreasure/: down.xpm, exit.xpm, gold.xpm, new.xpm, none.xpm,
+	save.xpm, table.xpm, up.xpm, wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	Expanded toolbar and more ported icons. - malakh
+	
+2003-08-13 21:03  malakh
+
+	* wxnwntreasure/: wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	The correct version of the wx GUI for nwntreasure with linux compatible toolbar.
+	 - malakh
+	
+2003-08-13 20:55  malakh
+
+	* wxnwntreasure/: encounter.xpm, fileopen.xpm, helpicon.xpm:
+
+	Some .ICO's converted to .xpm from nwntreasure. - malakh
+	
+2003-08-13 17:40  malakh
+
+	* wxnwntreasure/: wxNwnTreasure.cpp, wxNwnTreasure.h:
+
+	The begining of a wxWindows GUI for nwntreasure. - malakh
+	
+2003-07-07 17:57  eyrdan
+
+	* .cvsignore, Makefile.am:
+
+	Added config.sub and config.guess.
+	
+2003-07-07 17:55  eyrdan
+
+	* AUTHORS:
+
+	Fixed a typo.
+	
+2003-07-07 17:23  eyrdan
+
+	* Makefile.am, configure.ac, nwntools.ebuild, nwntools.spec.in:
+
+	Added stuff to build SRPM/RPM packages, as well as a Portage overlay
+	ebuild.
+	
+2003-07-07 16:47  eyrdan
+
+	* .cvsignore, COPYING, Makefile.am, NEWS, README, autogen.sh,
+	configure.ac, AUTHORS, ChangeLog, NWNTools.sln, NWNTools.suo,
+	README-1.2.html, THANKS, win32_config.h, _ExpatLib/COPYING.txt,
+	_ExpatLib/_ExpatLib.vcproj, _ExpatLib/ascii.h,
+	_ExpatLib/asciitab.h, _ExpatLib/expat.h, _ExpatLib/iasciitab.h,
+	_ExpatLib/latin1tab.h, _ExpatLib/nametab.h, _ExpatLib/utf8tab.h,
+	_ExpatLib/winconfig.h, _ExpatLib/xmlparse.c, _ExpatLib/xmlrole.c,
+	_ExpatLib/xmlrole.h, _ExpatLib/xmltok.c, _ExpatLib/xmltok.h,
+	_ExpatLib/xmltok_impl.c, _ExpatLib/xmltok_impl.h,
+	_ExpatLib/xmltok_ns.c, _MathLib/Constants.h, _MathLib/Frustum.cpp,
+	_MathLib/Frustum.h, _MathLib/Makefile.am, _MathLib/_MathLib.vcproj,
+	_MathLib/.cvsignore, _MathLib/Matrix.cpp, _MathLib/Matrix.h,
+	_MathLib/Matrix.inl, _MathLib/Quaternion.cpp,
+	_MathLib/Quaternion.h, _MathLib/Vector2.cpp, _MathLib/Vector2.h,
+	_MathLib/Vector3.cpp, _MathLib/Vector3.h, _MathLib/Vector4.cpp,
+	_MathLib/Vector4.h, _NmcLib/Makefile.am, _NmcLib/Nmc.h,
+	_NmcLib/NmcContext.cpp, _NmcLib/_NmcLib.vcproj, _NmcLib/.cvsignore,
+	_NmcLib/NmcAttribute.cpp, _NmcLib/NmcCache.cpp, _NmcLib/NmcCache.h,
+	_NmcLib/NmcContext.h, _NmcLib/NmcController.cpp,
+	_NmcLib/NmcCoreParsers.cpp, _NmcLib/NmcCoreParsers.h,
+	_NmcLib/NmcGeometry.cpp, _NmcLib/NmcListParser.h,
+	_NmcLib/NmcMesh.cpp, _NmcLib/NmcMesh.h, _NscLib/Makefile.am,
+	_NscLib/Nsc.h, _NscLib/NscCodeGenerator.cpp,
+	_NscLib/_NscLib.vcproj, _NscLib/NscCodeGenerator.h,
+	_NscLib/NscCompiler.cpp, _NscLib/NscParserRoutines.cpp,
+	_NscLib/.cvsignore, _NscLib/NscContext.cpp, _NscLib/NscContext.h,
+	_NscLib/NscDecompiler.cpp, _NscLib/NscPStackEntry.cpp,
+	_NscLib/NscPStackEntry.h, _NscLib/NscParser.y,
+	_NscLib/NscSymbolTable.h, _NwnLib/Makefile.am,
+	_NwnLib/_NwnLib.vcproj, _NwnLib/NwnArray.h, _NwnLib/NwnBifFile.cpp,
+	_NwnLib/NwnBifFile.h, _NwnLib/NwnDefines.cpp, _NwnLib/NwnDefines.h,
+	_NwnLib/NwnDialogTlkFile.cpp, _NwnLib/NwnDialogTlkFile.h,
+	_NwnLib/NwnDoubleLinkList.h, _NwnLib/NwnHierarchy.h,
+	_NwnLib/NwnKeyFile.cpp, _NwnLib/NwnKeyFile.h,
+	_NwnLib/NwnLoader.cpp, _NwnLib/NwnLoader.h,
+	_NwnLib/NwnStdLoader.cpp, _NwnLib/NwnMdlDecomp.cpp,
+	_NwnLib/NwnMdlGeometry.cpp, _NwnLib/NwnMdlGeometry.h,
+	_NwnLib/NwnMdlNodes.cpp, _NwnLib/NwnMdlNodes.h, _NwnLib/.cvsignore,
+	_NwnLib/NwnMdlR2A.cpp, _NwnLib/NwnMdlSerialize.cpp,
+	_NwnLib/NwnMemoryFile.h, _NwnLib/NwnModel.h,
+	_NwnLib/NwnModuleFile.cpp, _NwnLib/NwnModuleFile.h,
+	_NwnLib/NwnSoundSet.h, _NwnLib/NwnStdLoader.h,
+	_NwnLib/NwnStreamStack.h, _NwnLib/NwnStreams.h,
+	_NwnLib/NwnTexturePlt.h, nwnexplorer/AtlRollOutCtrl.h,
+	nwnexplorer/BlankWnd.h, nwnexplorer/CommonView.cpp,
+	nwnexplorer/CommonView.h, nwnexplorer/ContainerView.cpp,
+	nwnexplorer/ContainerView.h, nwnexplorer/ContentWnd.cpp,
+	nwnexplorer/ContentWnd.h, nwnexplorer/CustomTabCtrl.h,
+	nwnexplorer/Data.h, nwnexplorer/DataCache.cpp,
+	nwnexplorer/DataCache.h, nwnexplorer/DataKey.h,
+	nwnexplorer/DataRef.h, nwnexplorer/DataSource.cpp,
+	nwnexplorer/DataSource.h, nwnexplorer/DataSourceBif.cpp,
+	nwnexplorer/DataSourceBif.h, nwnexplorer/DataSourceDir.cpp,
+	nwnexplorer/DataSourceDir.h, nwnexplorer/DataSourceKey.cpp,
+	nwnexplorer/DataSourceKey.h, nwnexplorer/DataSourceMod.cpp,
+	nwnexplorer/DataSourceMod.h, nwnexplorer/DotNetTabCtrl.h,
+	nwnexplorer/HexView.cpp, nwnexplorer/HexView.h,
+	nwnexplorer/HierarchyRawView.cpp, nwnexplorer/HierarchyRawView.h,
+	nwnexplorer/HierarchyView.cpp, nwnexplorer/HierarchyView.h,
+	nwnexplorer/ITPView.cpp, nwnexplorer/ITPView.h,
+	nwnexplorer/ImageWnd.cpp, nwnexplorer/ImageWnd.h,
+	nwnexplorer/MainWnd.cpp, nwnexplorer/MainWnd.h,
+	nwnexplorer/MdlRtNode.cpp, nwnexplorer/MdlRtNode.h,
+	nwnexplorer/ModelColorDlg.cpp, nwnexplorer/ModelColorDlg.h,
+	nwnexplorer/ModelPosDlg.cpp, nwnexplorer/ModelPosDlg.h,
+	nwnexplorer/ModelWnd.cpp, nwnexplorer/ModelRawFormatter.cpp,
+	nwnexplorer/ModelRawFormatter.h, nwnexplorer/ModelRawHierView.cpp,
+	nwnexplorer/ModelRawHierView.h, nwnexplorer/ModelRawHierWnd.cpp,
+	nwnexplorer/ModelRawHierWnd.h, nwnexplorer/ModelRawView.cpp,
+	nwnexplorer/ModelRawView.h, nwnexplorer/ModelView.cpp,
+	nwnexplorer/ModelView.h, nwnexplorer/ModelWnd.h,
+	nwnexplorer/TextView.cpp, nwnexplorer/nwnexplorer.cpp,
+	nwnexplorer/nwnexplorer.h, nwnexplorer/nwnexplorer.rc,
+	nwnexplorer/NwnOptionsPage.cpp, nwnexplorer/NwnOptionsPage.h,
+	nwnexplorer/PaletteColorButton.cpp,
+	nwnexplorer/PaletteColorButton.h, nwnexplorer/ScriptRawView.cpp,
+	nwnexplorer/ScriptRawView.h, nwnexplorer/SoundSetView.cpp,
+	nwnexplorer/SoundSetView.h, nwnexplorer/SoundView.cpp,
+	nwnexplorer/nwnexplorer.vcproj, nwnexplorer/resource.h,
+	nwnexplorer/SoundView.h, nwnexplorer/TBCustomizeDlg.cpp,
+	nwnexplorer/TBCustomizeDlg.h, nwnexplorer/TextView.h,
+	nwnexplorer/TextViewImpl.cpp, nwnexplorer/TextViewImpl.h,
+	nwnexplorer/TextWnd.cpp, nwnexplorer/TextWnd.h,
+	nwnexplorer/stdafx.cpp, nwnexplorer/stdafx.h,
+	nwnexplorer/res/idr_in.ico, nwnexplorer/res/move_down.ico,
+	nwnexplorer/res/move_left.ico, nwnexplorer/res/move_right.ico,
+	nwnexplorer/res/move_up.ico, nwnexplorer/res/mvpal_armor.bmp,
+	nwnexplorer/res/mvpal_cloth.bmp, nwnexplorer/res/mvpal_hair.bmp,
+	nwnexplorer/res/mvpal_leather.bmp, nwnexplorer/res/mvpal_skin.bmp,
+	nwnexplorer/res/mvpal_tattoo.bmp, nwnexplorer/res/nwnexplorer.ico,
+	nwnexplorer/res/nwnexplorer.manifest,
+	nwnexplorer/res/pal_armor01.tga, nwnexplorer/res/pal_armor02.tga,
+	nwnexplorer/res/pal_cloth01.tga, nwnexplorer/res/pal_hair01.tga,
+	nwnexplorer/res/pal_leath01.tga, nwnexplorer/res/pal_skin01.tga,
+	nwnexplorer/res/pal_tattoo01.tga,
+	nwnexplorer/res/pitch_backward.ico,
+	nwnexplorer/res/pitch_forward.ico, nwnexplorer/res/roll_left.ico,
+	nwnexplorer/res/roll_right.ico,
+	nwnexplorer/res/toolbar_16_16color.bmp,
+	nwnexplorer/res/toolbar_16_256color.bmp,
+	nwnexplorer/res/toolbar_24_16color.bmp,
+	nwnexplorer/res/toolbar_24_256color.bmp,
+	nwnexplorer/res/yaw_left.ico, nwnexplorer/res/yaw_right.ico,
+	nwnexplorer/res/zoom_out.ico, nwnmdlcomp/.cvsignore,
+	nwnmdlcomp/Makefile.am, nwnmdlcomp/nwnmdlcomp.cpp,
+	nwnmdlcomp/nwnmdlcomp.vcproj, nwnnsscomp/Makefile.am,
+	nwnnsscomp/.cvsignore, nwnnsscomp/nwnnsscomp.cpp,
+	nwnnsscomp/nwnnsscomp.vcproj, nwntreasure/DataParser.h,
+	nwntreasure/EncounterDlg.cpp, nwntreasure/EncounterDlg.h,
+	nwntreasure/EncounterObject.cpp, nwntreasure/EncounterObject.h,
+	nwntreasure/ExpatImpl.h, nwntreasure/ExportDlg.cpp,
+	nwntreasure/ExportDlg.h, nwntreasure/GoldDlg.cpp,
+	nwntreasure/GoldDlg.h, nwntreasure/GoldObject.cpp,
+	nwntreasure/GoldObject.h, nwntreasure/ItemBrowserDlg.cpp,
+	nwntreasure/ItemBrowserDlg.h, nwntreasure/ItemDlg.cpp,
+	nwntreasure/ItemDlg.h, nwntreasure/ItemObject.cpp,
+	nwntreasure/ItemObject.h, nwntreasure/MainWnd.cpp,
+	nwntreasure/MainWnd.h, nwntreasure/NoneObject.cpp,
+	nwntreasure/NoneObject.h, nwntreasure/nwn_default.xml,
+	nwntreasure/nwntreasure.cpp, nwntreasure/nwntreasure.h,
+	nwntreasure/nwntreasure.ini, nwntreasure/Object.cpp,
+	nwntreasure/Object.h, nwntreasure/PlaceableDlg.cpp,
+	nwntreasure/PlaceableDlg.h, nwntreasure/PlaceableObject.cpp,
+	nwntreasure/PlaceableObject.h, nwntreasure/ProfileDlg.cpp,
+	nwntreasure/ProfileDlg.h, nwntreasure/ProfileObject.cpp,
+	nwntreasure/ProfileObject.h, nwntreasure/nwntreasure.rc,
+	nwntreasure/nwntreasure.vcproj, nwntreasure/resource.h,
+	nwntreasure/RootObject.cpp, nwntreasure/RootObject.h,
+	nwntreasure/TableDlg.cpp, nwntreasure/TableDlg.h,
+	nwntreasure/TableItemDlg.cpp, nwntreasure/TableItemDlg.h,
+	nwntreasure/TableItemObject.cpp, nwntreasure/TableItemObject.h,
+	nwntreasure/script_bioware_routines.nss,
+	nwntreasure/script_sw_respawn_routines.nss,
+	nwntreasure/script_sw_respawn_start.nss,
+	nwntreasure/script_template_start.nss, nwntreasure/stdafx.cpp,
+	nwntreasure/stdafx.h, nwntreasure/TBCustomizeDlg.cpp,
+	nwntreasure/TBCustomizeDlg.h, nwntreasure/TableObject.cpp,
+	nwntreasure/TableObject.h, nwntreasure/TableRefDlg.cpp,
+	nwntreasure/TableRefDlg.h, nwntreasure/TableRefObject.cpp,
+	nwntreasure/TableRefObject.h, nwntreasure/Graphics/toolbar_16.bmp,
+	nwntreasure/Graphics/toolbar_16_16color.bmp,
+	nwntreasure/Graphics/toolbar_16_256color.bmp,
+	nwntreasure/Graphics/toolbar_24.bmp,
+	nwntreasure/Graphics/toolbar_24_16color.bmp,
+	nwntreasure/Graphics/toolbar_24_256color.bmp,
+	nwntreasure/res/encounter.ico, nwntreasure/res/gold.ico,
+	nwntreasure/res/item.ico, nwntreasure/res/none.ico,
+	nwntreasure/res/nwntreasure.ico, nwntreasure/res/placeable.ico,
+	nwntreasure/res/profile.ico, nwntreasure/res/table.ico,
+	nwntreasure/res/table_global.ico, nwntreasure/res/table_noref.ico,
+	nwntreasure/res/toolbar_16_16color.bmp,
+	nwntreasure/res/toolbar_16_256color.bmp,
+	nwntreasure/res/toolbar_24_16color.bmp,
+	nwntreasure/res/toolbar_24_256color.bmp,
+	Save/nwntreasure/Dist/nwn_default.xml,
+	Save/nwntreasure/Dist/readme.html,
+	Save/nwntreasure/Dist/respawn_demo.mod,
+	Save/nwntreasure/Dist/respawn_demo.xml:
+
+	Initial revision
+	
+2003-07-07 16:47  eyrdan
+
+	* .cvsignore, COPYING, Makefile.am, NEWS, README, autogen.sh,
+	configure.ac, AUTHORS, ChangeLog, NWNTools.sln, NWNTools.suo,
+	README-1.2.html, THANKS, win32_config.h, _ExpatLib/COPYING.txt,
+	_ExpatLib/_ExpatLib.vcproj, _ExpatLib/ascii.h,
+	_ExpatLib/asciitab.h, _ExpatLib/expat.h, _ExpatLib/iasciitab.h,
+	_ExpatLib/latin1tab.h, _ExpatLib/nametab.h, _ExpatLib/utf8tab.h,
+	_ExpatLib/winconfig.h, _ExpatLib/xmlparse.c, _ExpatLib/xmlrole.c,
+	_ExpatLib/xmlrole.h, _ExpatLib/xmltok.c, _ExpatLib/xmltok.h,
+	_ExpatLib/xmltok_impl.c, _ExpatLib/xmltok_impl.h,
+	_ExpatLib/xmltok_ns.c, _MathLib/Constants.h, _MathLib/Frustum.cpp,
+	_MathLib/Frustum.h, _MathLib/Makefile.am, _MathLib/_MathLib.vcproj,
+	_MathLib/.cvsignore, _MathLib/Matrix.cpp, _MathLib/Matrix.h,
+	_MathLib/Matrix.inl, _MathLib/Quaternion.cpp,
+	_MathLib/Quaternion.h, _MathLib/Vector2.cpp, _MathLib/Vector2.h,
+	_MathLib/Vector3.cpp, _MathLib/Vector3.h, _MathLib/Vector4.cpp,
+	_MathLib/Vector4.h, _NmcLib/Makefile.am, _NmcLib/Nmc.h,
+	_NmcLib/NmcContext.cpp, _NmcLib/_NmcLib.vcproj, _NmcLib/.cvsignore,
+	_NmcLib/NmcAttribute.cpp, _NmcLib/NmcCache.cpp, _NmcLib/NmcCache.h,
+	_NmcLib/NmcContext.h, _NmcLib/NmcController.cpp,
+	_NmcLib/NmcCoreParsers.cpp, _NmcLib/NmcCoreParsers.h,
+	_NmcLib/NmcGeometry.cpp, _NmcLib/NmcListParser.h,
+	_NmcLib/NmcMesh.cpp, _NmcLib/NmcMesh.h, _NscLib/Makefile.am,
+	_NscLib/Nsc.h, _NscLib/NscCodeGenerator.cpp,
+	_NscLib/_NscLib.vcproj, _NscLib/NscCodeGenerator.h,
+	_NscLib/NscCompiler.cpp, _NscLib/NscParserRoutines.cpp,
+	_NscLib/.cvsignore, _NscLib/NscContext.cpp, _NscLib/NscContext.h,
+	_NscLib/NscDecompiler.cpp, _NscLib/NscPStackEntry.cpp,
+	_NscLib/NscPStackEntry.h, _NscLib/NscParser.y,
+	_NscLib/NscSymbolTable.h, _NwnLib/Makefile.am,
+	_NwnLib/_NwnLib.vcproj, _NwnLib/NwnArray.h, _NwnLib/NwnBifFile.cpp,
+	_NwnLib/NwnBifFile.h, _NwnLib/NwnDefines.cpp, _NwnLib/NwnDefines.h,
+	_NwnLib/NwnDialogTlkFile.cpp, _NwnLib/NwnDialogTlkFile.h,
+	_NwnLib/NwnDoubleLinkList.h, _NwnLib/NwnHierarchy.h,
+	_NwnLib/NwnKeyFile.cpp, _NwnLib/NwnKeyFile.h,
+	_NwnLib/NwnLoader.cpp, _NwnLib/NwnLoader.h,
+	_NwnLib/NwnStdLoader.cpp, _NwnLib/NwnMdlDecomp.cpp,
+	_NwnLib/NwnMdlGeometry.cpp, _NwnLib/NwnMdlGeometry.h,
+	_NwnLib/NwnMdlNodes.cpp, _NwnLib/NwnMdlNodes.h, _NwnLib/.cvsignore,
+	_NwnLib/NwnMdlR2A.cpp, _NwnLib/NwnMdlSerialize.cpp,
+	_NwnLib/NwnMemoryFile.h, _NwnLib/NwnModel.h,
+	_NwnLib/NwnModuleFile.cpp, _NwnLib/NwnModuleFile.h,
+	_NwnLib/NwnSoundSet.h, _NwnLib/NwnStdLoader.h,
+	_NwnLib/NwnStreamStack.h, _NwnLib/NwnStreams.h,
+	_NwnLib/NwnTexturePlt.h, nwnexplorer/AtlRollOutCtrl.h,
+	nwnexplorer/BlankWnd.h, nwnexplorer/CommonView.cpp,
+	nwnexplorer/CommonView.h, nwnexplorer/ContainerView.cpp,
+	nwnexplorer/ContainerView.h, nwnexplorer/ContentWnd.cpp,
+	nwnexplorer/ContentWnd.h, nwnexplorer/CustomTabCtrl.h,
+	nwnexplorer/Data.h, nwnexplorer/DataCache.cpp,
+	nwnexplorer/DataCache.h, nwnexplorer/DataKey.h,
+	nwnexplorer/DataRef.h, nwnexplorer/DataSource.cpp,
+	nwnexplorer/DataSource.h, nwnexplorer/DataSourceBif.cpp,
+	nwnexplorer/DataSourceBif.h, nwnexplorer/DataSourceDir.cpp,
+	nwnexplorer/DataSourceDir.h, nwnexplorer/DataSourceKey.cpp,
+	nwnexplorer/DataSourceKey.h, nwnexplorer/DataSourceMod.cpp,
+	nwnexplorer/DataSourceMod.h, nwnexplorer/DotNetTabCtrl.h,
+	nwnexplorer/HexView.cpp, nwnexplorer/HexView.h,
+	nwnexplorer/HierarchyRawView.cpp, nwnexplorer/HierarchyRawView.h,
+	nwnexplorer/HierarchyView.cpp, nwnexplorer/HierarchyView.h,
+	nwnexplorer/ITPView.cpp, nwnexplorer/ITPView.h,
+	nwnexplorer/ImageWnd.cpp, nwnexplorer/ImageWnd.h,
+	nwnexplorer/MainWnd.cpp, nwnexplorer/MainWnd.h,
+	nwnexplorer/MdlRtNode.cpp, nwnexplorer/MdlRtNode.h,
+	nwnexplorer/ModelColorDlg.cpp, nwnexplorer/ModelColorDlg.h,
+	nwnexplorer/ModelPosDlg.cpp, nwnexplorer/ModelPosDlg.h,
+	nwnexplorer/ModelWnd.cpp, nwnexplorer/ModelRawFormatter.cpp,
+	nwnexplorer/ModelRawFormatter.h, nwnexplorer/ModelRawHierView.cpp,
+	nwnexplorer/ModelRawHierView.h, nwnexplorer/ModelRawHierWnd.cpp,
+	nwnexplorer/ModelRawHierWnd.h, nwnexplorer/ModelRawView.cpp,
+	nwnexplorer/ModelRawView.h, nwnexplorer/ModelView.cpp,
+	nwnexplorer/ModelView.h, nwnexplorer/ModelWnd.h,
+	nwnexplorer/TextView.cpp, nwnexplorer/nwnexplorer.cpp,
+	nwnexplorer/nwnexplorer.h, nwnexplorer/nwnexplorer.rc,
+	nwnexplorer/NwnOptionsPage.cpp, nwnexplorer/NwnOptionsPage.h,
+	nwnexplorer/PaletteColorButton.cpp,
+	nwnexplorer/PaletteColorButton.h, nwnexplorer/ScriptRawView.cpp,
+	nwnexplorer/ScriptRawView.h, nwnexplorer/SoundSetView.cpp,
+	nwnexplorer/SoundSetView.h, nwnexplorer/SoundView.cpp,
+	nwnexplorer/nwnexplorer.vcproj, nwnexplorer/resource.h,
+	nwnexplorer/SoundView.h, nwnexplorer/TBCustomizeDlg.cpp,
+	nwnexplorer/TBCustomizeDlg.h, nwnexplorer/TextView.h,
+	nwnexplorer/TextViewImpl.cpp, nwnexplorer/TextViewImpl.h,
+	nwnexplorer/TextWnd.cpp, nwnexplorer/TextWnd.h,
+	nwnexplorer/stdafx.cpp, nwnexplorer/stdafx.h,
+	nwnexplorer/res/idr_in.ico, nwnexplorer/res/move_down.ico,
+	nwnexplorer/res/move_left.ico, nwnexplorer/res/move_right.ico,
+	nwnexplorer/res/move_up.ico, nwnexplorer/res/mvpal_armor.bmp,
+	nwnexplorer/res/mvpal_cloth.bmp, nwnexplorer/res/mvpal_hair.bmp,
+	nwnexplorer/res/mvpal_leather.bmp, nwnexplorer/res/mvpal_skin.bmp,
+	nwnexplorer/res/mvpal_tattoo.bmp, nwnexplorer/res/nwnexplorer.ico,
+	nwnexplorer/res/nwnexplorer.manifest,
+	nwnexplorer/res/pal_armor01.tga, nwnexplorer/res/pal_armor02.tga,
+	nwnexplorer/res/pal_cloth01.tga, nwnexplorer/res/pal_hair01.tga,
+	nwnexplorer/res/pal_leath01.tga, nwnexplorer/res/pal_skin01.tga,
+	nwnexplorer/res/pal_tattoo01.tga,
+	nwnexplorer/res/pitch_backward.ico,
+	nwnexplorer/res/pitch_forward.ico, nwnexplorer/res/roll_left.ico,
+	nwnexplorer/res/roll_right.ico,
+	nwnexplorer/res/toolbar_16_16color.bmp,
+	nwnexplorer/res/toolbar_16_256color.bmp,
+	nwnexplorer/res/toolbar_24_16color.bmp,
+	nwnexplorer/res/toolbar_24_256color.bmp,
+	nwnexplorer/res/yaw_left.ico, nwnexplorer/res/yaw_right.ico,
+	nwnexplorer/res/zoom_out.ico, nwnmdlcomp/.cvsignore,
+	nwnmdlcomp/Makefile.am, nwnmdlcomp/nwnmdlcomp.cpp,
+	nwnmdlcomp/nwnmdlcomp.vcproj, nwnnsscomp/Makefile.am,
+	nwnnsscomp/.cvsignore, nwnnsscomp/nwnnsscomp.cpp,
+	nwnnsscomp/nwnnsscomp.vcproj, nwntreasure/DataParser.h,
+	nwntreasure/EncounterDlg.cpp, nwntreasure/EncounterDlg.h,
+	nwntreasure/EncounterObject.cpp, nwntreasure/EncounterObject.h,
+	nwntreasure/ExpatImpl.h, nwntreasure/ExportDlg.cpp,
+	nwntreasure/ExportDlg.h, nwntreasure/GoldDlg.cpp,
+	nwntreasure/GoldDlg.h, nwntreasure/GoldObject.cpp,
+	nwntreasure/GoldObject.h, nwntreasure/ItemBrowserDlg.cpp,
+	nwntreasure/ItemBrowserDlg.h, nwntreasure/ItemDlg.cpp,
+	nwntreasure/ItemDlg.h, nwntreasure/ItemObject.cpp,
+	nwntreasure/ItemObject.h, nwntreasure/MainWnd.cpp,
+	nwntreasure/MainWnd.h, nwntreasure/NoneObject.cpp,
+	nwntreasure/NoneObject.h, nwntreasure/nwn_default.xml,
+	nwntreasure/nwntreasure.cpp, nwntreasure/nwntreasure.h,
+	nwntreasure/nwntreasure.ini, nwntreasure/Object.cpp,
+	nwntreasure/Object.h, nwntreasure/PlaceableDlg.cpp,
+	nwntreasure/PlaceableDlg.h, nwntreasure/PlaceableObject.cpp,
+	nwntreasure/PlaceableObject.h, nwntreasure/ProfileDlg.cpp,
+	nwntreasure/ProfileDlg.h, nwntreasure/ProfileObject.cpp,
+	nwntreasure/ProfileObject.h, nwntreasure/nwntreasure.rc,
+	nwntreasure/nwntreasure.vcproj, nwntreasure/resource.h,
+	nwntreasure/RootObject.cpp, nwntreasure/RootObject.h,
+	nwntreasure/TableDlg.cpp, nwntreasure/TableDlg.h,
+	nwntreasure/TableItemDlg.cpp, nwntreasure/TableItemDlg.h,
+	nwntreasure/TableItemObject.cpp, nwntreasure/TableItemObject.h,
+	nwntreasure/script_bioware_routines.nss,
+	nwntreasure/script_sw_respawn_routines.nss,
+	nwntreasure/script_sw_respawn_start.nss,
+	nwntreasure/script_template_start.nss, nwntreasure/stdafx.cpp,
+	nwntreasure/stdafx.h, nwntreasure/TBCustomizeDlg.cpp,
+	nwntreasure/TBCustomizeDlg.h, nwntreasure/TableObject.cpp,
+	nwntreasure/TableObject.h, nwntreasure/TableRefDlg.cpp,
+	nwntreasure/TableRefDlg.h, nwntreasure/TableRefObject.cpp,
+	nwntreasure/TableRefObject.h, nwntreasure/Graphics/toolbar_16.bmp,
+	nwntreasure/Graphics/toolbar_16_16color.bmp,
+	nwntreasure/Graphics/toolbar_16_256color.bmp,
+	nwntreasure/Graphics/toolbar_24.bmp,
+	nwntreasure/Graphics/toolbar_24_16color.bmp,
+	nwntreasure/Graphics/toolbar_24_256color.bmp,
+	nwntreasure/res/encounter.ico, nwntreasure/res/gold.ico,
+	nwntreasure/res/item.ico, nwntreasure/res/none.ico,
+	nwntreasure/res/nwntreasure.ico, nwntreasure/res/placeable.ico,
+	nwntreasure/res/profile.ico, nwntreasure/res/table.ico,
+	nwntreasure/res/table_global.ico, nwntreasure/res/table_noref.ico,
+	nwntreasure/res/toolbar_16_16color.bmp,
+	nwntreasure/res/toolbar_16_256color.bmp,
+	nwntreasure/res/toolbar_24_16color.bmp,
+	nwntreasure/res/toolbar_24_256color.bmp,
+	Save/nwntreasure/Dist/nwn_default.xml,
+	Save/nwntreasure/Dist/readme.html,
+	Save/nwntreasure/Dist/respawn_demo.mod,
+	Save/nwntreasure/Dist/respawn_demo.xml (utags: import):
+
+	Initial import into the Open Knights CVS.
+	

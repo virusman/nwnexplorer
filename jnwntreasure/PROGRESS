@@ -1,0 +1,16 @@
+	So far, the Java port of Neverwinter Nights Treasure Editor doesn't do much.  The more I do porting this program, the more I find I have to do.
+
+To this point, a user can do the following :
+
+	For Placeables:
+
+		Add a Placeable Table
+		Delete a Placeable Table
+		Bring up the Placeable Item dialog
+		Switch between Placeable Item Panels
+		Start the script tree over again.
+		
+
+The next major hurdle :
+
+	Adding a placeable item apparently requires parsing NWN data files for object blueprints.  This parsing is the next hurdle I hope to clear.  I don't know how long this is going to take.  However, I did notice a C union in the data structures that need to be parsed.  I barely know what a union does in C, so emulating it in Java may be a neat trick.

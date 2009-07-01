@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: Jason Mazzotta
+Sealed: false
+Main-Class: jnwntreasure.JNWNTreasure

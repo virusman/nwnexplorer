@@ -1,0 +1,8 @@
+.deps
+Makefile
+Makefile.in
+NscParser.cpp
+NscParser.h
+NscParser.output
+*.a
+*.o

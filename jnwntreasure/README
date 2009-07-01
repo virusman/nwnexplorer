@@ -1,0 +1,66 @@
+	This is a Java port of the NWN Treasure Editor created by Torlack, 
+www.torlack.com.  The process of compiling and running this application
+has been automated with Ant, (found at ant.apache.org), for reasons of symmetry 
+and ease of development.  A  Makefile is also included, and it actually does 
+things a bit faster.  The Makefile has the same capabilities as the Ant build
+file.
+	To use Ant: 
+
+		Unpackage the Ant tar ball :
+
+			cd /where/you/want/to/put/Ant
+			tar xvzf apache-ant-1.6.1-bin.tar.gz
+
+		Define two environmental variables :
+
+			JAVA_HOME, the location of your JDK.  To figure out 
+			what the value of this variable should be, type :
+			'which javac' at a command prompt.  For Mac OS X,
+			this should produce /usr/bin/javac.  So the value
+			of JAVA_HOME would be /usr.
+
+			ANT_HOME, where ever you put Ant.  In this case
+			you would put the full path (e.g. 
+			/usr/local/apache-ant-1.6.1).
+
+		Put Ant in your path
+			For sh/bash:
+				export PATH=$PATH:$ANT_HOME/bin
+			For csh/tcsh
+				set path=($path $ANT_HOME/bin)	
+			
+
+	To run jnwntreasure with Ant, in the jnwntreasure directory (where this
+README is found), simply type :
+
+	ant
+
+	If you want to run jnwntreasure directly with java, the easiest way is 
+via the jar file.  To do this, in the jnwntreasure directory (where this README 
+is found), type :
+
+	java -jar jar/jnwntreasure.jar
+
+	The JAR file knows how to find the starting class.	
+
+	For those that have used Ant before, the build.xml file contains the 
+following targets:
+
+		init - cleans up all .class files
+		compile - compiles the application
+		make_jar - creates a JAR file for the application
+		run - runs the application from the JAR file
+		docs - creates documentation for the code via javadoc
+
+	A Makefile has also been created.  To run jnwntreasure from the 
+Makefile, in the jnwntreasure directory (where this README is found), type :
+		
+		make run
+
+	The Makefile has the following targets :
+
+		compile - compiles the code
+		jar - creates a jar file from the compiled code
+		javadoc - creates documentation for the code via javadoc
+		run - runs the program via the jar file	
+

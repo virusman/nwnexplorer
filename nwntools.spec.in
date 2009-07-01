@@ -1,0 +1,31 @@
+Summary: NWN Tools
+Name: @PACKAGE@
+Version: @VERSION@
+Release: @RELEASE@
+Copyright: OpenKnights
+Group: Amusements/Games
+Source: mirror://sourceforge/openknights/%{name}-%{version}.tar.bz2
+BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
+
+%description
+
+
+%prep
+%setup
+
+%build
+%configure --disable-dependency-tracking
+%__make
+
+%install
+%__rm -rf $RPM_BUILD_ROOT
+%makeinstall
+
+%clean
+%__rm -rf $RPM_BUILD_ROOT
+
+%files
+%doc AUTHORS COPYING ChangeLog INSTALL NEWS README* THANKS
+/usr/bin/nwnmdlcomp
+/usr/bin/nwnnsscomp
+

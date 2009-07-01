@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<project name="jnwntreasure" default="run">
+
+	<target name="init">
+		<delete dir="build/classes" />
+		<mkdir dir="build/classes" />
+		<delete dir="docs" />
+		<mkdir dir="docs" />
+		<delete dir="jar" />
+		<mkdir dir="jar" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" 
+		       destdir="build/classes" />
+		<echo>Compilation complete</echo>
+	</target>
+
+	<target name="run" depends="make_jar">
+		<echo>Running program</echo>
+		<java jar="jar/jnwntreasure.jar"
+		      fork="true">
+		</java>	
+	</target>
+
+	<target name="make_jar" depends="compile">
+		<echo>Creating jar file</echo>
+		<jar destfile="jar/jnwntreasure.jar"
+			manifest="META-INF/MANIFEST.MF">
+			<fileset dir="build/classes">
+				<include name="**/*.class" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="docs" depends="compile">
+		<javadoc destdir="docs">
+			<fileset dir="src">
+				<include name="**/*.java" />
+			</fileset>
+		</javadoc>
+	</target>
+
+</project>

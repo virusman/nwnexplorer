@@ -1,0 +1,63 @@
+NWN Tools 2.1.0
+===============
+
+* The compiler has been updated to support Hordes of the Underdark.
+* Constructs involving '|=', '&=', etc now compile correctly.
+* The compiler now returns an exit flag of 1 if there are any errors during
+  compile.
+* There is now a python wrapper for the compiler in nwnnsscompiler/python.
+  This is used for integration into neveredit.
+
+NWN Tools 2.0.0
+===============
+
+This is the first release of NWN Tools under the Open Knights Consortium flag.
+We hope to be able to maintain the quality of work of the original author and
+live up to the expectations of the users.
+
+NWN Tools 1.2 and earlier versions
+==================================
+
+These versions were developped by Edward T. Smith (a.k.a. Torlack) and were
+distributed on his website at:  http://www.torlack.com/
+
+March 12th, 2003:
+
+ * Blank statements after an if or else statement will now generate a warning.
+ * The compiler will automatically ignore requests to include the same include
+   file multiple times in a script compilation.
+ * With the non-Windows versions, if the path specified for the NWN directory
+   doesn't end in a "/", one will be automatically added.
+ * All the libraries and the model converter have been converted to build with
+   GCC.
+ * Corrected a problem with the script decompiler regarding the TALENT type.
+
+April 23rd, 2003:
+
+ * On GCC systems, the script compiler optimizer might throw an assert. The
+   code has been modified to prevent the assert which was non-fatal in nature.
+ * On some GCC systems, the basename routine is declared as having a "char *"
+   argument. The only place where this caused a problem has been modified to
+   force the type to "char *". A future version will have a better fix for this
+   problem.
+ * If a function declaration has more arguments than the prototype, the
+   compiler would fail to generate an error. This would result in a compiled
+   script that runs the risk of generating "STACK UNDERFLOW" errors.
+ * Corrected a bug in the script compiler that would fail to generate an error
+   when a function was called without enough parameters.
+
+July 1st, 2003:
+
+ * Added the new -v command line argument to the script compiler. This allows
+   for the compiler to compile files using older compiler rules.
+ * The script compiler now generates the new script debug file (NDB).
+ * A '.' (dot) in the input path which is not part of the extension will no
+   longer confuse the model and script compiler.
+ * The default directory for including script includes will be the same
+   directory as the input script.
+ * The script decompiler now supports the new NOP opcode.
+ * Corrected a script compiler crash caused by some types of syntax errors.
+ * Increased the maximum size of a compiled script to 512k to match BioWare
+   maximum script size.
+ * Added support for SoU key files.
+

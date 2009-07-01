@@ -1,0 +1,727 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "atlres.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_TOOLBAR_16_256COLOR BITMAP                  "res\\toolbar_16_256color.bmp"
+IDB_TOOLBAR_24_256COLOR BITMAP                  "res\\toolbar_24_256color.bmp"
+IDB_TOOLBAR_16_16COLOR  BITMAP                  "res\\toolbar_16_16color.bmp"
+IDB_TOOLBAR_24_16COLOR  BITMAP                  "res\\toolbar_24_16color.bmp"
+IDB_COLOR_ARMOR         BITMAP                  "res\\mvpal_armor.bmp"
+IDB_COLOR_LEATHER       BITMAP                  "res\\mvpal_leather.bmp"
+IDB_COLOR_CLOTH         BITMAP                  "res\\mvpal_cloth.bmp"
+IDB_COLOR_HAIR          BITMAP                  "res\\mvpal_hair.bmp"
+IDB_COLOR_SKIN          BITMAP                  "res\\mvpal_skin.bmp"
+IDB_COLOR_TATTOO        BITMAP                  "res\\mvpal_tattoo.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_NWNEXPLORER         ICON                    "res\\nwnexplorer.ico"
+IDI_PITCH_FORWARD       ICON                    "res\\pitch_forward.ico"
+IDI_PITCH_BACKWARD      ICON                    "res\\pitch_backward.ico"
+IDI_YAW_RIGHT           ICON                    "res\\yaw_right.ico"
+IDI_YAW_LEFT            ICON                    "res\\yaw_left.ico"
+IDI_ROLL_RIGHT          ICON                    "res\\roll_right.ico"
+IDI_ROLL_LEFT           ICON                    "res\\roll_left.ico"
+IDI_ZOOM_OUT            ICON                    "res\\zoom_out.ico"
+IDI_ZOOM_IN             ICON                    "res\\idr_in.ico"
+IDI_MOVE_LEFT           ICON                    "res\\move_left.ico"
+IDI_MOVE_RIGHT          ICON                    "res\\move_right.ico"
+IDI_MOVE_UP             ICON                    "res\\move_up.ico"
+IDI_MOVE_DOWN           ICON                    "res\\move_down.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TGA_INCLUDE
+//
+
+IDR_PAL_TATTOO01        TGA_INCLUDE             "res\\pal_tattoo01.tga"
+IDR_PAL_ARMOR01         TGA_INCLUDE             "res\\pal_armor01.tga"
+IDR_PAL_ARMOR02         TGA_INCLUDE             "res\\pal_armor02.tga"
+IDR_PAL_CLOTH01         TGA_INCLUDE             "res\\pal_cloth01.tga"
+IDR_PAL_HAIR01          TGA_INCLUDE             "res\\pal_hair01.tga"
+IDR_PAL_LEATHER01       TGA_INCLUDE             "res\\pal_leath01.tga"
+IDR_PAL_SKIN01          TGA_INCLUDE             "res\\pal_skin01.tga"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_NWNEXPLORER MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "Open Neverwinter Nights\tCtrl+Alt+N", ID_FILE_OPENNWN
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "Open Binary...\tCtrl+Alt+O",  ID_FILE_OPEN_BINARY
+        MENUITEM SEPARATOR
+        MENUITEM "Options...",                  ID_FILE_OPTIONS
+        MENUITEM SEPARATOR
+        MENUITEM "Reload\tCtrl+R",              ID_FILE_RELOAD
+        POPUP "Recent &Files"
+        BEGIN
+            MENUITEM "(empty)",                     ID_FILE_MRU_FILE1
+            , GRAYED
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Resources"
+    BEGIN
+        MENUITEM "View\tEnter",                 ID_RESOURCES_VIEW
+        MENUITEM "View In New Tab\tCtrl+T",     ID_RESOURCES_VIEWINNEWWINDOW
+        MENUITEM SEPARATOR
+        MENUITEM "&Close View\tCtrl+W",         ID_RESOURCES_CLOSEVIEW
+        MENUITEM "Close All Views\tCtrl+Alt+W", ID_RESOURCES_CLOSEALLVIEWS
+        MENUITEM SEPARATOR
+        MENUITEM "&Export\tCtrl+E",             ID_RESOURCES_EXPORT
+        MENUITEM "Export &Text",                ID_RESOURCES_EXPORTTEXT
+        MENUITEM SEPARATOR
+        MENUITEM "&Search...\tCtrl+S",          ID_RESOURCES_SEARCH
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About ...",                  ID_APP_ABOUT
+    END
+END
+
+IDR_TOOLBAR_POPUP MENU 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Customize...",                ID_POPUP_CUSTOMIZE_TOOLBAR
+    END
+END
+
+IDR_POPUPS MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "View\tEnter",                 ID_RESOURCES_VIEW
+        MENUITEM "View In New Tab\tCtrl+T",     ID_RESOURCES_VIEWINNEWWINDOW
+        MENUITEM SEPARATOR
+        MENUITEM "&Export",                     ID_RESOURCES_EXPORT
+        MENUITEM "Export T&GA",                 ID_RESOURCES_EXPORTTGA
+    END
+    POPUP "Resources"
+    BEGIN
+        MENUITEM "&Close View",                 ID_RESOURCES_CLOSEVIEW
+        MENUITEM "Close All Views",             ID_RESOURCES_CLOSEALLVIEWS
+        MENUITEM "Close All Views Except This", ID_RESOURCES_CLOSEALLVIEWSEXCEPT
+        MENUITEM SEPARATOR
+        MENUITEM "Export &Text",                ID_RESOURCES_EXPORTTEXT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_NWNEXPLORER ACCELERATORS 
+BEGIN
+    "/",            ID_APP_ABOUT,           ASCII,  ALT, NOINVERT
+    "?",            ID_APP_ABOUT,           ASCII,  ALT, NOINVERT
+    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_OPENNWN,        VIRTKEY, CONTROL, ALT, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN_BINARY,    VIRTKEY, CONTROL, ALT, NOINVERT
+    "R",            ID_FILE_RELOAD,         VIRTKEY, CONTROL, NOINVERT
+    VK_F5,          ID_FILE_RELOAD,         VIRTKEY, CONTROL, NOINVERT
+    "W",            ID_RESOURCES_CLOSEALLVIEWSEXCEPT, VIRTKEY, CONTROL, SHIFT, NOINVERT
+    "W",            ID_RESOURCES_CLOSEALLVIEWS, VIRTKEY, CONTROL, ALT, NOINVERT
+    "W",            ID_RESOURCES_CLOSEVIEW, VIRTKEY, CONTROL, NOINVERT
+    "E",            ID_RESOURCES_EXPORT,    VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_RESOURCES_SEARCH,    VIRTKEY, CONTROL, NOINVERT
+    VK_RETURN,      ID_RESOURCES_VIEW,      VIRTKEY, NOINVERT
+    "T",            ID_RESOURCES_VIEWINNEWWINDOW, VIRTKEY, CONTROL, NOINVERT
+    VK_LEFT,        ID_RESOURCES_MOVELEFT,  VIRTKEY, CONTROL, NOINVERT
+    VK_RIGHT,       ID_RESOURCES_MOVERIGHT, VIRTKEY, CONTROL, NOINVERT
+    VK_UP,          ID_RESOURCES_MOVEUP,    VIRTKEY, CONTROL, NOINVERT
+    VK_DOWN,        ID_RESOURCES_MOVEDOWN,  VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 22, 17, 230, 143
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "NWN Explorer Version 1.6.1",IDC_STATIC,7,6,216,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002-2009, Edward T. Smith and Doug Swarin",IDC_STATIC,7,17,
+                    216,8
+    DEFPUSHBUTTON   "OK",IDOK,86,125,50,14
+    LTEXT           "Some images Copyright (C) 2002, Bioware",IDC_STATIC,7,
+                    40,216,8
+    LTEXT           "TGA support Copyright (C) 1996-2002 Ulrich von Zadow ",
+                    IDC_STATIC,7,50,182,8
+    LTEXT           "DDS support based on code by Alexandre Jasmin ",
+                    IDC_STATIC,7,60,182,8
+    LTEXT           "1.5 support for DDS textures and NWN 1.69 sponsored by:",
+                    IDC_STATIC,7,75,191,8
+    LTEXT           "  - Higher Ground (http://highergroundpoa.proboards3.com)",
+                    IDC_STATIC,7,85,194,8
+    LTEXT           "  - Community Expansion Pack (http://cepteam.dyndns.org)",
+                    IDC_STATIC,7,95,192,8
+END
+
+IDD_TBCUSTOMIZE DIALOGEX 0, 0, 357, 33
+STYLE DS_SETFONT | DS_3DLOOK | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | 
+    WS_VISIBLE | WS_CAPTION
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Te&xt options:",-1,4,2,48,15
+    COMBOBOX        IDC_TBCUSTOMIZE_TEXT_OPTIONS,52,0,123,57,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Ico&n options:",-1,4,18,48,15
+    COMBOBOX        IDC_TBCUSTOMIZE_ICON_OPTIONS,52,18,123,57,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_SOUND DIALOGEX 0, 0, 64, 30
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Play",IDC_PLAY,7,7,50,16
+END
+
+IDD_OPTIONS_NWN DIALOGEX 0, 0, 360, 320
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Look for NWN in the following directory:",
+                    IDC_LOAD_NWN_FROM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,7,340,10
+    EDITTEXT        IDC_NWN_DIRECTORY,7,17,314,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_NWN_DIRECTORY_BROWSE,330,17,18,14
+    LTEXT           "Texture search path (requires restart):",IDC_STATIC,7,
+                    37,340,10
+    EDITTEXT        IDC_USER_HAK_MASK,7,47,314,14,ES_AUTOHSCROLL
+    CONTROL         "Open resources in a new tab by default",
+                    IDC_RESOURCE_OPEN_NEW_TAB,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,65,165,10
+    CONTROL         "Open resources from tree view when selected",
+                    IDC_RESOURCE_OPEN_SELECTED,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,75,165,10
+    GROUPBOX        "Model Lighting and Background",IDC_STATIC,7,90,166,40
+    CONTROL         "View models in full white ambient light",
+                    IDC_VIEW_MODELS_FULL_AMBIENT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,100,135,10
+    LTEXT           "Model background RGB:",IDC_STATIC,10,115,77,8
+    EDITTEXT        IDC_VIEW_MODELS_BACKGROUND_R,90,113,25,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_VIEW_MODELS_BACKGROUND_G,116,113,25,14,
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_VIEW_MODELS_BACKGROUND_B,142,113,25,14,
+                    ES_AUTOHSCROLL
+    GROUPBOX        "Model Nodes",IDC_STATIC,7,135,166,62
+    CONTROL         "Show root node while viewing models",
+                    IDC_VIEW_MODELS_SHOW_ROOT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,145,135,10
+    CONTROL         "Show dummy nodes while viewing models",
+                    IDC_VIEW_MODELS_SHOW_DUMMY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,155,147,10
+    CONTROL         "Show light nodes while viewing models",
+                    IDC_VIEW_MODELS_SHOW_LIGHT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,165,138,10
+    CONTROL         "Show emitter nodes while viewing models",
+                    IDC_VIEW_MODELS_SHOW_EMIT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,175,147,10
+    CONTROL         "Run emitters while viewing models",
+                    IDC_VIEW_MODELS_RUN_EMIT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,185,125,10
+    GROUPBOX        "Model Projection",IDC_STATIC,7,200,166,100
+    LTEXT           "Fixed viewport size XY (px):",IDC_STATIC,10,210,90,8
+    EDITTEXT        IDC_VIEW_MODELS_VIEWPORT_X,105,207,30,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_VIEW_MODELS_VIEWPORT_Y,136,207,30,14,ES_AUTOHSCROLL
+    LTEXT           "Initial viewing distance (m):",IDC_STATIC,10,225,88,8
+    EDITTEXT        IDC_VIEW_MODELS_VIEW_DISTANCE,115,222,30,14,
+                    ES_AUTOHSCROLL
+    LTEXT           "Far clipping plane distance (m):",IDC_STATIC,10,240,100,
+                    8
+    EDITTEXT        IDC_VIEW_MODELS_CLIP_DISTANCE,115,237,30,14,
+                    ES_AUTOHSCROLL
+    LTEXT           "Initial viewing angle YPR:",IDC_STATIC,10,255,81,8
+    EDITTEXT        IDC_VIEW_MODELS_ANGLE_Y,95,252,24,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_VIEW_MODELS_ANGLE_P,119,252,25,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_VIEW_MODELS_ANGLE_R,145,252,25,14,ES_AUTOHSCROLL
+    CONTROL         "View models in orthographic projection",
+                    IDC_VIEW_MODELS_ORTHOGRAPHIC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,270,139,10
+    LTEXT           "Orthographic view size (m):",IDC_STATIC,10,285,89,8
+    EDITTEXT        IDC_VIEW_MODELS_ORTHOGRAPHIC_V,105,283,30,14,
+                    ES_AUTOHSCROLL
+    GROUPBOX        "Model Textures",IDC_STATIC,182,90,166,72
+    CONTROL         "Prefer DDS over TGA textures on models",
+                    IDC_VIEW_MODELS_PREFER_DDS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,185,100,147,10
+    CONTROL         "Do not view DDS textures on models",
+                    IDC_VIEW_MODELS_PREVENT_DDS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,185,110,133,10
+    CONTROL         "Do not view TGA textures on models",
+                    IDC_VIEW_MODELS_PREVENT_TGA,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,185,120,133,10
+    CONTROL         "Override texture names with model name",
+                    IDC_VIEW_MODELS_MODEL_NAME_TEX,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,185,130,148,10
+    LTEXT           "Alpha:",IDC_STATIC,185,150,22,8
+    CONTROL         "Normal",IDC_VIEW_MODELS_ALPHA_NORMAL,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,210,150,38,10
+    CONTROL         "One-bit",IDC_VIEW_MODELS_ALPHA_ONEBIT,"Button",
+                    BS_AUTORADIOBUTTON,250,150,40,10
+    CONTROL         "Ignore",IDC_VIEW_MODELS_ALPHA_IGNORE,"Button",
+                    BS_AUTORADIOBUTTON,290,150,37,10
+    GROUPBOX        "Model Meshes",IDC_STATIC,182,165,166,72
+    CONTROL         "Perform backface culling",IDC_VIEW_MODELS_BACKFACE_CULL,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,184,175,161,10
+    CONTROL         "Show AABB meshes",IDC_VIEW_MODELS_SHOW_AABB,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,184,185,79,10
+    CONTROL         "Outline polygons in model meshes",
+                    IDC_VIEW_MODELS_OUTLINE_POLYS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,184,195,123,10
+    LTEXT           "Hide tilefade meshes:",IDC_STATIC,185,225,70,8
+    CONTROL         "1",IDC_VIEW_MODELS_HIDE_FADE1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,260,225,20,10
+    CONTROL         "2",IDC_VIEW_MODELS_HIDE_FADE2,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,285,225,20,10
+    CONTROL         "4",IDC_VIEW_MODELS_HIDE_FADE4,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,310,225,20,10
+    GROUPBOX        "Image Viewer",IDC_STATIC,182,240,166,60
+    CONTROL         "Export PLT textures as single colored TGA",
+                    IDC_VIEW_IMAGES_EXPORT_COL_PLT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,185,250,150,10
+    LTEXT           "Image alpha:",IDC_STATIC,185,270,44,8
+    CONTROL         "None",IDC_VIEW_IMAGES_ALPHA_NONE,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,235,270,33,10
+    CONTROL         "Tint",IDC_VIEW_IMAGES_ALPHA_TINT,"Button",
+                    BS_AUTORADIOBUTTON,270,270,28,10
+    CONTROL         "Override",IDC_VIEW_IMAGES_ALPHA_OVERRIDE,"Button",
+                    BS_AUTORADIOBUTTON,300,270,44,10
+    LTEXT           "Alpha tint RGB:",IDC_STATIC,185,285,50,8
+    EDITTEXT        IDC_VIEW_IMAGES_ALPHA_R,240,283,25,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_VIEW_IMAGES_ALPHA_G,266,283,25,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_VIEW_IMAGES_ALPHA_B,292,283,25,14,ES_AUTOHSCROLL
+END
+
+IDD_MODEL_COLOR DIALOGEX 0, 0, 80, 154
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Armor 1",IDC_MODEL_ARMOR1,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,7,66,14
+    CONTROL         "Armor 2",IDC_MODEL_ARMOR2,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,21,66,14
+    CONTROL         "Cloth 1",IDC_MODEL_CLOTH1,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,35,66,14
+    CONTROL         "Cloth 2",IDC_MODEL_CLOTH2,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,49,66,14
+    CONTROL         "Leather 1",IDC_MODEL_LEATHER1,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,63,66,14
+    CONTROL         "Leather 2",IDC_MODEL_LEATHER2,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,77,66,14
+    CONTROL         "Hair",IDC_MODEL_HAIR,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    7,91,66,14
+    CONTROL         "Skin",IDC_MODEL_SKIN,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    7,105,66,14
+    CONTROL         "Tattoo 1",IDC_MODEL_TATTOO1,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,119,66,14
+    CONTROL         "Tattoo 2",IDC_MODEL_TATTOO2,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,133,66,14
+END
+
+IDD_MODEL_POS DIALOGEX 0, 0, 80, 206
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "PB",IDC_MODEL_PITCH_BACKWARD,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,7,30,30
+    CONTROL         "PF",IDC_MODEL_PITCH_FORWARD,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,43,7,30,30
+    CONTROL         "YL",IDC_MODEL_YAW_LEFT,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,40,30,30
+    CONTROL         "YR",IDC_MODEL_YAW_RIGHT,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,43,40,30,30
+    CONTROL         "YL",IDC_MODEL_ROLL_LEFT,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,73,30,30
+    CONTROL         "YR",IDC_MODEL_ROLL_RIGHT,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,43,73,30,30
+    CONTROL         "YL",IDC_MODEL_ZOOM_IN,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,106,30,30
+    CONTROL         "YR",IDC_MODEL_ZOOM_OUT,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,43,106,30,30
+    CONTROL         "YL",IDC_MODEL_MOVE_LEFT,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,139,30,30
+    CONTROL         "YR",IDC_MODEL_MOVE_RIGHT,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,43,139,30,30
+    CONTROL         "YL",IDC_MODEL_MOVE_UP,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,7,172,30,30
+    CONTROL         "YR",IDC_MODEL_MOVE_DOWN,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,43,172,30,30
+END
+
+IDD_MODEL_NODE DIALOGEX 0, 0, 80, 20
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_MODEL_ANIM DIALOGEX 0, 0, 80, 20
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""atlres.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 139
+    END
+
+    IDD_SOUND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 57
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 23
+    END
+
+    IDD_OPTIONS_NWN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 348
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 300
+    END
+
+    IDD_MODEL_COLOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 73
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 147
+    END
+
+    IDD_MODEL_POS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 73
+        TOPMARGIN, 7
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "res\\nwnexplorer.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_NWNEXPLORER         "NWN Explorer"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TBCUSTOMIZE_SMALL_ICONS "Small icons"
+    IDS_TBCUSTOMIZE_LARGE_ICONS "Large icons"
+    IDS_TBCUSTOMIZE_BOTTOM_LABELS "Show text labels"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TBCUSTOMIZE_NO_LABELS "No text labels"
+    IDS_TBCUSTOMIZE_RIGHT_LABELS "Selective text on right"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ATL_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_RESOURCES_VIEW       "Open the selected resource for viewing.\nView Resource"
+    ID_RESOURCES_VIEWINNEWWINDOW 
+                            "Open the selected resource for viewing in a new tab.\nView In New Tab"
+    ID_RESOURCES_CLOSEVIEW  "Close the currently selected view.\nClose View"
+    ID_RESOURCES_CLOSEALLVIEWS "Close all resource views.\nClose All Views"
+    ID_RESOURCES_CLOSEALLVIEWSEXCEPT "Close all resource views except the current one.\nClose All Views Except This"
+    ID_FILE_OPENNWN         "Open the Neverwinter Nights data files.\nOpen NWN"
+    ID_FILE_OPEN_BINARY     "Open an existing document as binary\nOpen Binary\nOpen"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_RELOAD          "Reload the current file.\nReload"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ERR_MAIN_WINDOW     "Unable to create the main program window."
+    IDS_ERR_IMAGE_LOAD      "Error loading image"
+    IDS_ERR_NOWAVE          "Error loading wave from resource."
+    IDS_ERR_NO_FMOD         "FMOD.DLL is missing from your system.\r\nIt should have been includeded in the download for NWN Explorer.\r\n\r\nFMOD can be downloaded from http://www.fmod.org."
+    IDS_ERR_FMOD_STREAM     "Error creating play stream for sound."
+    IDS_ERR_RESOURCE_OPEN   "Error opening the resource."
+    IDS_ERR_NWN_OPEN        "Unable to open the NeverwinterNights data files."
+    IDS_ERR_OPEN            "Unable to open the file."
+    IDS_ERR_UNK_FILE        "The file specified is of an unknown type."
+    IDS_ERR_NO_DIRECTORY    "You must specify a directory."
+    IDS_ERR_INV_DIRECTORY   "The specified directory doesn't contain the required DIALOG.TLK file."
+    IDS_ERR_NO_DIALOGTLK    "Unable to locate the DIALOG.TLK or CHITIN.KEY file in the expected location.\r\nPlease select File|Options and set the location of the NWN game."
+    IDS_ERR_EXPORT          "Error exporting file"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_BINARY              "Binary"
+    IDS_TEXT                "Text"
+    IDS_IMAGE               "Image"
+    IDS_AUDIO               "Audio"
+    IDS_SOUND_SET           "Sound Set"
+    IDS_SOUND_SET_SOUND     "%2d    %-16s    %08X %s"
+    IDS_SOUND_SET_SOUND_HEADER 
+                            "Sounds: \r\n\r\nIndex Sound               Text Message\r\n"
+    IDS_SOUND_SET_SOUND_OTHER 
+                            "\r\nOther Header Fields: %08X %08X %08X %08X %08X %08X\r\n"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_HIERARCHY           "Hierarchy"
+    IDS_HIERARCHY_RAW       "Raw Hierarchy"
+    IDS_MODEL_RAW           "Raw Model"
+    IDS_MODEL               "Model"
+    IDS_MODEL_RAW_HIER      "Raw Model Hierarchy"
+    IDS_MODEL_ASCII         "ASCII Model"
+    IDS_MODEL_ASCII_HIER    "ASCII Model Hierarchy"
+    IDS_SCRIPT_RAW          "Script Byte Code"
+    IDS_USER_MODULES        "NWN User Modules"
+    IDS_GAME_MODULES        "NWN Game Modules"
+    IDS_HAK                 "NWN HAK Files"
+    IDS_TEXTURE_PACKS       "NWN Texture Packs"
+    IDS_OVERRIDE            "NWN Overrides"
+    IDS_AMBIENT             "NWN Ambient Sounds"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_DM_VAULT            "NWN DM Vault"
+    IDS_LOCAL_VAULT         "NWN Local Vault"
+    IDS_SERVER_VAULT        "NWN Server Vault"
+    IDS_MUSIC               "NWN Music"
+    IDS_ITP                 "NWN ITP Palette"
+    IDS_ERF                 "NWN ERF Files"
+    IDS_USER_HAKS           "NWN User HAK Files"
+    IDS_MODEL_COMP_HIER     "Compiled Model Hierarchy"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MAIN_KEY            "NWN Main Data"
+    IDS_PATCH_KEY           "NWN Patch Data"
+    IDS_XP1_KEY             "NWN:SoU Main Data"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_XP1_PATCH_KEY       "NWN:SoU Patch Data"
+    IDS_XP2_KEY             "NWN:HotU Main Data"
+    IDS_XP2_PATCH_KEY       "NWN:HotU Patch Data"
+    IDS_XP3_KEY             "NWN:1.69 Patch Data"
+    IDS_XP3_PATCH_KEY       "NWN:1.69 Patch Data (UNUSED)"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_RESCLASS_MISC       "Miscellaneous Resources"
+    IDS_RESCLASS_SOUND      "Audio"
+    IDS_RESCLASS_TEXTURE    "Textures, TGA"
+    IDS_RESCLASS_GAMEDATA   "Game Data"
+    IDS_RESCLASS_TEXTURE_INFO "Texture Information"
+    IDS_RESCLASS_INI        "Information Files"
+    IDS_RESCLASS_IMAGE      "Textures, BMP"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_RESCLASS_MODEL      "Models"
+    IDS_RESCLASS_UI         "Game User Interface"
+    IDS_RESCLASS_SCRIPT     "Scripts"
+    IDS_RESCLASS_CSCRIPT    "Scripts, Compiled"
+    IDS_RESCLASS_DIALOG     "Dialogs"
+    IDS_RESCLASS_BLUEPRINT_PALETTE "Blueprint Palettes"
+    IDS_RESCLASS_BP_WAYPOINT "Blueprint, Waypoints"
+    IDS_RESCLASS_BP_TRIGGER "Blueprint, Triggers"
+    IDS_RESCLASS_BP_SOUND   "Blueprint, Sounds"
+    IDS_RESCLASS_BP_PLACEABLE "Blueprint, Placeables"
+    IDS_RESCLASS_BP_ITEM    "Blueprint, Items"
+    IDS_RESCLASS_BP_ENCOUNTER "Blueprint, Encounters"
+    IDS_RESCLASS_BP_DOOR    "Blueprint, Doors"
+    IDS_RESCLASS_BP_CREATURE "Blueprint, Creatures"
+    IDS_RESCLASS_BP_MERCHANT "Blueprint, Merchants"
+    IDS_RESCLASS_SOUND_SET  "Sound Sets"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_RESCLASS_GRAPHICAL_PALETTE "Textures, PLT"
+    IDS_RESCLASS_MODEL_WALK_DOOR "Models, Walkmesh, Door"
+    IDS_RESCLASS_MODEL_WALK_PLACE "Models, Walkmesh. Placeable"
+    IDS_RESCLASS_MODEL_WALK_TILE "Models, Walkmesh. Tile"
+    IDS_RESCLASS_AREA       "Area Data"
+    IDS_RESCLASS_MODULE     "Module Data"
+    IDS_RESCLASS_PLOT       "Plot Data"
+    IDS_RESCLASS_TEXTURE_DDS "Textures, DDS"
+    IDS_RESCLASS_DSCRIPT    "Scripts, Debug Info"
+    IDS_RESCLASS_MODEL_PHENO "Models, Pheno"
+    IDS_RESCLASS_TEXTURE_MINIMAP "Images, Minimap"
+    IDS_RESCLASS_TEXTURE_PORTRAIT "Images, Portrait"
+    IDS_RESCLASS_TEXTURE_ICONINV "Images, Icon, Inventory"
+    IDS_RESCLASS_TEXTURE_ICONFEAT "Images, Icon, Feat"
+    IDS_RESCLASS_TEXTURE_ICONSPELL "Images, Icon, Spell"
+    IDS_RESCLASS_TEXTURE_ICONSKILL "Images, Icon, Skill"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_RESCLASS_TEXTURE_ICONOTHER "Images, Icon, Other"
+    IDS_RESCLASS_TEXTURE_ICONSCROLL "Images, Icon, Scroll"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,817 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>NWN Treasure Editor</title>
+</head>
+
+<body>
+
+<h3 align="left">1. Introduction</h3>
+<p align="left">NWN Treasure Editor (NWN Treasure) provides the content creator
+with the ability to easily customize and augment the existing treasure tables
+provided by Bioware.&nbsp; It is a standalone application that produces NSS (NWN
+script source) files that are compiled by the existing NWN toolset.</p>
+<p align="left">If desired by the content provider, NWN Treasure editor will
+produce what is called &quot;Shroudworld&quot; style treasure tables.&nbsp;
+These advanced treasure tables provide automatic respawning of treasure chests,
+NPCs, and a few more advanced features.</p>
+<p><a href="http://www.torlack.com/nwntreasure/nwntreasure.zip">Click here to 
+download NWN Treasure</a></p>
+<hr size="1">
+<h3 align="left">2. About Tables</h3>
+<h4 align="left">What are Treasure/Encounter/Placeable Tables?</h4>
+<p align="left">There are 3 types of tables in the NWN treasure editor
+program.&nbsp; Each type is used to spawn a specific item.&nbsp; All act exactly
+the same.</p>
+<p align="left">Tables are a road map to the creation of content.&nbsp; They tell what
+content to create.&nbsp; For example, a treasure table for a lowly goblin might include 1-6
+gold pieces and a twenty percent chance of dropping a loaf of bread.&nbsp;
+Simple, right?&nbsp; Well, in reality, it is a bit more complicated.&nbsp;</p>
+<p align="left">Supplied with this program is a file called &quot;nwn_default.xml&quot;.&nbsp;
+It contains treasure tables that emulate the treasure tables contained within
+NWN.&nbsp; It contains exactly 511 different treasure tables.&nbsp; Most of
+these treasure tables are only used internally.&nbsp; But it still underscores
+how complex treasure tables can be.&nbsp; Also supplied with this program is
+&quot;nwtreas_demo.xml&quot;.&nbsp; It is a copy of &quot;nwn_default.xml&quot;
+with the addition of a new treasure table used by the &quot;nwtreas_demo&quot;
+module.&nbsp; Finally, there is &quot;respawn_demo.xml&quot; that contains
+sample placeable and encounter tables.</p>
+<p align="left">To understand exactly what a table is, let us compare
+it to a real life game that two friends might play.&nbsp; We will call these two
+friends Moe and Larry.&nbsp; Moe takes a deck of 3x5 index cards.&nbsp; On the
+top of each index card, he writes something for Larry to do or to look for (we will
+call this the &quot;decision&quot;).&nbsp; This could be flip a coin or see if
+there is a red car close by.&nbsp; The rest of the card is filled with commands
+that Larry will have to do depending on the results from what was written at the
+top of the card (we will call these the actions).&nbsp; These could be things
+such as &quot;go home, game over&quot; or &quot;buy some gum&quot;.&nbsp; Now to
+make this game a little bit more interesting, the card could also tell Larry to
+go in search of another card that will give his more tasks to do.</p>
+<p align="left">So after a day of preparation, Moe calls Larry up and tells him,
+&quot;I have placed 50 index cards at different location in the city.&nbsp; I
+want you to start by going to the General Store at the corner of Lexington and
+Main and ask the manager for the card.&quot;&nbsp; So Larry gets in his car and
+drives to the store and asks the manager for the card.&nbsp;&nbsp;</p>
+<p align="left">On the top of the card is written &quot;Decision: Look at the
+people in the checkout lines and depending what you see, perform only one of the
+following actions.&quot;&nbsp; The actions are as follow:</p>
+<ol>
+  <li>
+    <p align="left">If you see a woman with a child, then head over to the drug
+    store on 10th street and ask the manager for your next card.</li>
+  <li>
+    <p align="left">If you see a shopping cart with a broken wheel, then head
+    over to the playground on Washington Ave. There you will find a card taped
+    to the bottom of the slide.</li>
+  <li>
+    <p align="left">If you didn't see either of those, get the dollar I gave to
+    the manager, buy yourself a candy bar and go home.&nbsp; The game is over.</li>
+</ol>
+<p align="left">Even though Larry didn't see a woman with a child, he did see a
+shopping cart with a broken wheel.&nbsp; So he jumps into his car and heads to
+the playground.&nbsp; There he finds another card in a zip lock bag with a 6
+sided die.&nbsp; Written on the card is &quot;Decision: Roll the die and perform
+only one of the following actions.&quot;&nbsp; The actions are as follow:</p>
+<ol>
+  <li>
+    <p align="left">If you roll a 1 or a 2, then head on over to the Mazda
+    dealership 3 blocks down the road.</li>
+  <li>
+    <p align="left">If you roll a 3, 4, or 5 then look under the 3rd swing seat
+    and you will find 10 dollars.&nbsp; Take it and go home.&nbsp; Game over.</li>
+  <li>
+    <p align="left">If you roll a 6, you lose, go home.</li>
+</ol>
+<p align="left">Luckily for Larry, he rolls a 4 and ends the game 10 dollars
+richer.</p>
+<p align="left"><i>So how does this compare with tables?</i></p>
+<p align="left">Tables work the exact same way.&nbsp; Instead of an
+index card, we have a table.&nbsp; Instead of Moe, the content creator
+makes the tables.&nbsp; Instead of Larry, we have the script file executing the
+tables and creating the content.</p>
+<h4 align="left">Decisions and Actions</h4>
+<p align="left">With tables, everything is based on decisions and
+actions.&nbsp; Every table has exactly one decision and zero or more
+actions.&nbsp;&nbsp;</p>
+<p align="left">The types of decisions are as follows:</p>
+<ol>
+  <li>
+    <p align="left">Pick One Of - Given a list of actions, randomly pick one</li>
+  <li>
+    <p align="left">Pick Multiple From - Given a list of actions, pick an action based on a percentage chance.</li>
+  <li>
+    <p align="left">Pick By Racial Type - Pick an action based on the race of a
+    creature, NPC, or PC</li>
+  <li>
+    <p align="left">Pick By Level Range - Pick an action based on the level of
+    the creature, NPC, or PC</li>
+  <li>
+    <p align="left">Pick By Class - Pick an action based on if the creature,
+    NPC, or PC is of a given class</li>
+  <li>
+    <p align="left">Pick By Random Class - Pick an action based on a random
+    choice between all 3 classes the creature, NPC or PC might possess.</li>
+  <li>
+    <p align="left">Pick By Armor Proficiency - Pick an action based on if the
+    creature, NPC, or PC is proficient in a weight of armor.</li>
+  <li>
+    <p align="left">Pick By Weapon Focus - Pick an action based on if the
+    creature, NPC, or PC is focused on a given weapon class.</li>
+  <li>
+    <p align="left">Pick By Specific - Picks an action based on if a previous
+    entry in the table requested that class specific treasure be
+    generated.&nbsp; Otherwise, class generic treasure is generated.&nbsp; This
+    is primarily used by the boss creature spawns.</li>
+</ol>
+<p align="left">The types of decisions supported by NWN Treasure was primarily
+dictated by what was required to emulate Bioware's existing tables.</p>
+<p align="left">The types of actions are as follows:</p>
+<ol>
+  <li>
+    <p align="left">Drop nothing, stop creating treasure</li>
+  <li>
+    <p align="left">Drop Gold</li>
+  <li>
+    <p align="left">Drop an Item</li>
+  <li>
+    <p align="left">Move to Table</li>
+</ol>
+<p align="left">With each type of action, the content creator must specify
+specifics about the treasure to be created.&nbsp; For example, in the case of an
+item, the blueprint name, and the number of items to create must be
+specified.&nbsp; For gold, the dice used to generate the amount of gold has to
+be specified.&nbsp; However, common to all actions, a single parameter that is
+specific to the decision being used must be specified.&nbsp; This tells the
+treasure generator under what circumstances this action is to be executed.&nbsp;
+For example, in the case of &quot;Pick By Racial Type&quot;, the specific
+parameter might be &quot;Human&quot; or &quot;Gnome&quot;.</p>
+<h4 align="left">Decisions in Depth</h4>
+<h5 align="left">&quot;Pick One Of&quot;</h5>
+<p align="left">(Valid with: treasure tables, encounter tables, and placeable
+tables)</p>
+<p align="left">When using the &quot;Pick One Of&quot; decision, a single random
+number is generated. That random number is used to decide which action is to be
+taken.&nbsp; It is important to remember, that with this decision, only one
+action will be taken.&nbsp; To provide more flexibility than each action having
+an equal chance of being chosen, each action is allowed to specify a
+&quot;chance&quot;.&nbsp; This is a number between 0 and 9999.&nbsp; Prior to
+the random number being generated, the sum of all the chances for every action
+in the table is computed.&nbsp; Then the random number is generated
+and an action is chosen.</p>
+<p align="left">Example:</p>
+<ol>
+  <li>
+    <p align="left">Chance 5: Create Gold</li>
+  <li>
+    <p align="left">Chance 1: Create &quot;Uber&quot; Item</li>
+  <li>
+    <p align="left">Chance 4: Do nothing</li>
+</ol>
+<p align="left">In this example, we have 3 actions.&nbsp; Each action has a
+chance assigned to it.&nbsp; The total of all the chances is 10.&nbsp; So, then
+a random number between 0 and 9 would be generated.&nbsp; If the number is 0-4,
+then gold is created.&nbsp; If the number is 5, then the &quot;Uber&quot; item
+is created.&nbsp; If the number is 6-9, then nothing is created.</p>
+<p align="left">Note: You are allowed to assign a chance of 0 to an
+action.&nbsp; You can see an example of this in the Bioware treasure
+tables.&nbsp; Initially, Bioware would generate random animal
+parts.&nbsp; In either March or May, it was decided that animal parts were just
+&quot;too silly&quot; and their chance was set to zero.&nbsp; In strange homage
+to Bioware and the old &quot;that's just plain silly&quot; Month Python sketch,
+I have left in the animal parts treasure table with the chance set to 0.</p>
+<h5 align="left">&quot;Pick Multiple From&quot;</h5>
+<p align="left">(Valid with: treasure tables, encounter tables, and placeable
+tables)</p>
+<p align="left">The &quot;Pick One Of&quot; decision can be though of &quot;Pick
+this or that&quot;.&nbsp; In the case of &quot;Pick Multiple From&quot;, we have
+&quot;Pick this, maybe.&nbsp; Oh and that too, maybe.&nbsp; Oh yes, and one of
+those, sort of.&quot;&nbsp; For each action, a random number is generated
+between 0 and 99.&nbsp; If the random number is less than the percent chance assigned
+to each action then that action is done.&nbsp; Each action is allowed to set a
+percent chance from 0 to 100.&nbsp; If the action has a percent chance of 0,
+then the action will never get taken.&nbsp; If the action has a percent chance
+of 100, it will always be taken.</p>
+<p align="left">Example:</p>
+<ol>
+  <li>
+    <p align="left">Percent Chance 100: Create Gold</li>
+  <li>
+    <p align="left">Percent Chance 30: Create &quot;Uber&quot; Item</li>
+  <li>
+    <p align="left">Percent Chance 0: Create Animal Parts</li>
+</ol>
+<p align="left">In this example, we have 3 actions.&nbsp; The first action has a
+percentage chance of 100.&nbsp; It will always create gold.&nbsp; Then the
+next action is checked.&nbsp; If the random number generated is 0-29, then the
+&quot;Uber&quot; item is created.&nbsp; If the random number is 30-99, then the
+&quot;Uber&quot; item isn't created.&nbsp; Finally, since the &quot;Animal
+Parts&quot; has a 0 percent chance, then it will never get tested.&nbsp; A new
+random number is generated for each action.</p>
+<p align="left">Note: It is important to remember that EACH action will be
+checked.&nbsp; Thus each action has a chance of being taken.</p>
+<h5 align="left">&quot;Pick By Racial Type&quot;</h5>
+<p align="left">(Valid with: treasure tables)</p>
+<p align="left">In Bioware's tables, the racial type was used to weed out
+treasure from certain creatures such as animals or undead.&nbsp; The create
+who's race is being tested can vary greatly depending on what situation the
+treasure is being generated.&nbsp; See the later section on the relatives of
+treasure generation.&nbsp; When the actions for a racial type decision are
+configured, a race must be specified for each action.&nbsp; You can also select
+the race of &quot;Any&quot; as a catch all for the final action.&nbsp; It is
+important to remember than any action listed after an action using
+&quot;Any&quot; will never get executed.</p>
+<p align="left">Example:</p>
+<ol>
+  <li>
+    <p align="left">Undead: Do nothing</li>
+  <li>
+    <p align="left">Animal: Do nothing</li>
+  <li>
+    <p align="left">Orc: Go to the special orc treasure tables.</li>
+  <li>
+    <p align="left">Any: Go to the standard treasure tables.</li>
+</ol>
+<p align="left">In this example, if our NPC is &quot;Undead&quot; or
+&quot;Animal&quot; (we can't be silly now), then no treasure is generated.&nbsp;
+If the race is &quot;Orc&quot; then we continue with treasure generation using a
+treasure table specific for orcs.&nbsp; Otherwise, our &quot;Any&quot; catches
+all other races and executes the standard treasure tables.</p>
+<p align="left">If you don't use &quot;Any&quot; at the end of your
+table, then if you NPC isn't one of the races listed, then no treasure will be
+generated.</p>
+<h5 align="left">&quot;Pick By Level Range&quot;</h5>
+<p align="left">(Valid with: treasure tables)</p>
+<p align="left">&quot;Pick By Level Range&quot; allows the content provider to
+scale treasure based on the range of the NPC or characters.&nbsp; Currently, NWN Treasure
+uses the same level ranges as used by Bioware.&nbsp; However, a
+future enhancement might allow this to be configurable.&nbsp; The level ranges
+are as follows 0-5, 6-8, 9-10,11-13,14-16,17-100.&nbsp; Each of these level
+ranges are given numbers between 1-6 with 1 being levels 0-5 while 6 is levels
+17-100.&nbsp; Each action must specify which level range it applies.&nbsp;
+Multiple actions can not be assigned the same level range.&nbsp; Well, they can
+be assigned the same range, but only the first one will be utilized.</p>
+<p align="left">Example:</p>
+<ol>
+  <li>
+    <p align="left">Level Range 1: Give them a rock</li>
+  <li>
+    <p align="left">Level Range 2: Give them a rusty dagger</li>
+  <li>
+    <p align="left">Level Range 3: Give them a clean rusty dagger</li>
+  <li>
+    <p align="left">Level Range 4: Give them a rusty dagger that has had the mileage
+    rolled back in an attempt to sell it as new.</li>
+  <li>
+    <p align="left">Level Range 5: Give them a new dagger</li>
+  <li>
+    <p align="left">Level Range 6: Give them a new dagger, but one that doesn't
+    fall apart on first use.</li>
+</ol>
+<p align="left">In this example, if the PC was level 12, that
+would equate to a level range of 4 and result in a &quot;rusty dagger that has
+had...&quot;.</p>
+<h5 align="left">&quot;Pick By Class/Random Class&quot;</h5>
+<p align="left">(Valid with: treasure tables)</p>
+<p align="left">&quot;Pick By Class&quot; and &quot;Pick By Random Class&quot;
+allows the content developer to chose treasure based on the class of the NPC or
+PC.&nbsp; The way that &quot;Class&quot; and &quot;Random Class&quot; differ is
+that with &quot;Class&quot; a character is tested to see if he has that
+class.&nbsp; With &quot;Random Class&quot; a random class based on levels from
+the 3 available classes of the character is chosen.&nbsp; Then based on that
+class, the different actions are selected.&nbsp; Like &quot;Pick By Racial
+Type&quot;, this decision has available the catch-all of &quot;any&quot; to send
+the NPC or PC to default tables if they don't have the classes being
+tested.</p>
+<p align="left">Example:</p>
+<ol>
+  <li>
+    <p align="left">Class FIGHTER: Give them a really big sword</li>
+  <li>
+    <p align="left">Class THIEF: Give them a small sword</li>
+  <li>
+    <p align="left">Class MONK: Give them a thank-you card and send them on
+    their way</li>
+  <li>
+    <p align="left">Class Any: Give all other classes 50 gold</li>
+</ol>
+<p align="left">First, let us take the case of a wizard and this is a &quot;Pick
+By Class&quot;.&nbsp; The treasure generator would say, &quot;Is he a fighter?
+No. Is he a thief? No.&nbsp; Is he a monk? No.&nbsp; Then give him 50
+gold.&nbsp; Now, what if the take the case of a thief with a &quot;Pick By
+Class&quot;.&nbsp; In this case, a short sword would be generated.&nbsp; What if
+the thief was a level 10 thief and a level 1 fighter and this was a pick by
+class?&nbsp; Then a really big sword would be created.&nbsp; A HAH!!!&nbsp; THAT
+SUCKS!!!&nbsp; Yes it does.&nbsp; That is why &quot;Pick By Random Class&quot;
+exists.&nbsp; Lets take the case of our level 10 thief and level 1 warrior, but
+this time, our decision is &quot;Pick By Random Class&quot;.&nbsp; The treasure
+generator would look at the PC and see that he is a level 10 thief and a level 1
+fighter.&nbsp; Then it would randomize a number between 0 and 10 (total of 11 which is
+the total number of hit dice for the character) and depending on the roll, it
+picks a class.&nbsp; 10 out of 11 times it will pick thief and 1 out of 11 times
+it will pick fighter.&nbsp; Then that randomly chosen class is used to search
+the action table.&nbsp; If we randomly chose a thief, the short sword would be
+created.&nbsp; Otherwise, the really big sword would be created.</p>
+<p align="left">Aside: It is interesting looking at Bioware's tables.&nbsp; They
+have a table called &quot;table2&quot;.&nbsp; This table generates special class
+specific loot.&nbsp; It uses the random class to generate which class specific
+loot to create.&nbsp; However, if you look at the feat tables, it uses just the
+existence of a class on the character to make a decision.&nbsp; Admittedly, due
+to the way the feat tables are made, few characters will ever have their class
+used to generate feat treasure.</p>
+<p align="left">Note: Only the first action that matches the decision test will
+be executed.</p>
+<h5 align="left">&quot;Pick By Armor Proficiency&quot;</h5>
+<p align="left">(Valid with: treasure tables)</p>
+<p align="left">&quot;Pick By Armor Proficiency&quot; allows to content provider
+to pick treasure based on the type of armor the character will probably
+ware.&nbsp; It is important that action are listed from heavy to light with the
+catch-all of &quot;Any&quot; listed last.&nbsp; This decision was included
+primarily for one treasure table in Bioware's treasure tables that needed to
+test to see if the ranger could use heavy armor.&nbsp; Rangers that have heavy
+armor proficiency use the fighter tables while rangers without use the barbarian
+tables.</p>
+<p align="left">Note: Only the first action that matches the decision test will
+be executed.</p>
+<h5 align="left">&quot;Pick By Weapon Focus&quot;</h5>
+<p align="left">(Valid with: treasure tables)</p>
+<p align="left">&quot;Pick By Weapon Focus&quot; allows the content provider to
+pick treasure based on which weapon the PC has decided to focus on.&nbsp;
+&quot;Any&quot; is available as a catch-all.</p>
+<h5 align="left">&quot;Pick By Specific&quot;</h5>
+<p align="left">(Valid with: treasure tables)</p>
+<p align="left">&quot;Pick By Specific&quot; is only used in Bioware's class
+specific treasure tables.&nbsp; Boss mobs use the specific tables to generate a
+better quality of class specific loot.&nbsp; The only two options for the
+actions are &quot;Specific&quot; and &quot;Generic&quot;.</p>
+<h4 align="left">Actions in Depth</h4>
+<h5 align="left">&quot;Drop Nothing/Spawn Nothing&quot;</h5>
+<p align="left">(Valid with: treasure tables, encounter tables, and placeable
+tables)</p>
+<p align="left">When a &quot;Drop Nothing/Spawn Nothing&quot; action is reached then
+content generation is stopped for that part of the process.&nbsp;
+The only exception is cases where an action has it specified that a
+table is used multiple times to generate content.&nbsp; In that case, only that
+instance of content generation is stopped.&nbsp; Any remaining iterations will
+continue normally.</p>
+<h5 align="left">&quot;Drop Gold&quot;</h5>
+<p align="left">(Valid with: treasure tables)</p>
+<p align="left">&quot;Drop Gold&quot; instructs the treasure generator to create
+some gold.&nbsp; Gold creation has 3 parameters, the number of dice, the die
+itself and a final multiplier.&nbsp; For example, a &quot;Drop Gold&quot; action
+might request 5d20*1.5.&nbsp; This translates into roll a d20 5 times and sum up
+all the values.&nbsp; Then multiply the final value by 1.5.</p>
+<h5 align="left">&quot;Drop Item&quot;</h5>
+<p align="left">(Valid with: treasure tables)</p>
+<p align="left">&quot;Drop Item&quot; instructs the treasure generator to create
+an item.&nbsp; The blueprint of the item must be specified and MUST match a
+blueprint name in NWN or you module.&nbsp; Failure to specify a valid blueprint
+name will result in unpredictable results (i.e. the badgers of death).&nbsp; The
+number of items to create can also be defined using a range.&nbsp; If a range of
+&quot;1-30&quot; is specified, then between 1 and 30 copies of the item will be
+generated.&nbsp; The specific value will be randomized.&nbsp; If you specify a
+closed range such as &quot;2-2&quot;, then 2 items will always be
+generated.&nbsp; At this point, if you specify more than one copy of
+non-stackable items, I don't know what will happen.</p>
+<h5 align="left">&quot;Spawn Creature/NPC&quot;</h5>
+<p align="left">(Valid with: encounter tables)</p>
+<p align="left">&quot;Spawn Creature/NPC&quot; will spawn the given creature or
+NPC.&nbsp; The blueprint of the creature must be specified and MUST match a
+blueprint name in NWN or you module.&nbsp; Failure to specify a valid blueprint
+name will result in unpredictable results (i.e. the badgers of death).&nbsp; The
+number of creatures to spawn can also be defined using a range.&nbsp; If a range of
+&quot;1-30&quot; is specified, then between 1 and 30 copies of the creature will be
+generated.&nbsp; The specific value will be randomized.&nbsp; If you specify a
+closed range such as &quot;2-2&quot;, then 2 items will always be
+generated.&nbsp;&nbsp;</p>
+<h5 align="left">&quot;Spawn Placeable&quot;</h5>
+<p align="left">(Valid with: placeable tables)</p>
+<p align="left">&quot;Spawn Placeable&quot; will spawn the given
+placeable.&nbsp; The blueprint of the creature must be specified and MUST match a
+blueprint name in NWN or you module.&nbsp; Failure to specify a valid blueprint
+name will result in unpredictable results (i.e. the badgers of death).&nbsp;</p>
+<h5 align="left">&quot;Move to Table&quot;</h5>
+<p align="left">(Valid with: treasure tables, encounter tables, and placeable
+tables)</p>
+<p align="left">&quot;Move to Table&quot; allows the content provider to chain
+together multiple decisions into one large table.&nbsp; For example, if
+you wanted a special table for rangers with heavy armor, then you would
+first have to have a table that &quot;Pick By Class&quot; to select all
+the rangers, and then a table that &quot;Pick By Armor
+Proficiency&quot; to select rangers with heavy armor.</p>
+<p align="left">Like &quot;Drop Item&quot;, this action allows you to run the
+given table 1 or more times.&nbsp; If one run of the treasure table
+runs yields a &quot;Drop Nothing/Spawn Nothing&quot;, then only that iteration will be
+stopped.&nbsp; All remaining iterations will continue.</p>
+<p align="left">Two other options for this action are available.&nbsp; The first
+is &quot;Modifier&quot;.&nbsp; This option allows you to temporarily boost the
+level of the character for which treasure is being generated.&nbsp; Thus, any
+later decisions using &quot;Pick By Level Range&quot; will use the adjusted
+range.&nbsp; Modifiers are not cumulative.&nbsp; If you specify a zero, the
+modifier will be reset to zero.&nbsp; Most all actions of this type leave
+&quot;Modifier&quot; set to &quot;Inherit&quot;.&nbsp; This option tells the
+treasure generator to leave the current modifier unadjusted.</p>
+<p align="left">The second option is &quot;Specific&quot;.&nbsp; This option
+temporarily tells the treasure generator that any decisions using &quot;Pick By
+Specific&quot; should select the value specified.&nbsp; Most all actions of this
+type leave &quot;Specific&quot; set to &quot;Inherit&quot;.</p>
+<h4 align="left">The Relatives of Treasure Generation</h4>
+<p align="left">One very important concept to the treasure generation is for
+whom is the treasure being generated.&nbsp; In the case of NPC's, when they
+spawn, their treasure is generated relative to themselves.&nbsp; If they are a
+rogue, then any special class treasure will be generated for a rogue.&nbsp; In
+the case of treasure chests, the player who opened the chest or destroyed the
+chest is used to generate the treasure.</p>
+<p align="left">For multiplayer games, this is a very important thing to keep in
+mind.&nbsp; As is, treasure for chests will be generated primarily for the
+&quot;lewt whores&quot; who have to be the first who open the chest.&nbsp;
+(Yours truly included.&nbsp; Just ask Amberyll and Deeva.)&nbsp; This problem
+will be resolves in a future version of NWN Treasure.</p>
+
+<hr size="1">
+<h3 align="left">3. Editing Tables</h3>
+<h4 align="left">Creating New Tables</h4>
+<p align="left">When you create a new table, you need to specify three
+things, the name of the table, the decision to be used, and if the table is
+global.</p>
+<p align="left">I <b><i><font color="#FF0000">STRONGLY</font> </i></b>suggest
+that all new table names are prefixed with something other than &quot;nw_&quot;.&nbsp;
+For example, if Segal creates a few treasure tables for everyone to use in
+Shroudworld, he will prefix the treasure tables with &quot;sw_&quot;.&nbsp; The
+ones he won't share might be prefixed with &quot;swa_&quot;, which is the prefix
+for his module.&nbsp; For my module, my treasure tables are prefixed with &quot;mk_&quot;.</p>
+<p align="left">The global flag is very important.&nbsp; If a table is
+marked as global, then it appears directly below the &quot;<i>XXXX</i> Tables&quot;
+entry in the tree.&nbsp; The icon has a small blue circle in the lower right
+hand corner.&nbsp; Global tables are always included in the exported script and have callable routines created for them.&nbsp; If you wish
+to invoke a table directly from a script, then you MUST mark that table
+as global.</p>
+<p align="left">In some cases you will see tables in root of the
+&quot;<i>XXXX</i> Tables&quot; along with your global tables.&nbsp; However, these
+tables have a small yellow question mark in the lower right hand corner of the
+icon.&nbsp; These are tables that have been created but are not marked as global
+and have not been referenced by any other tables.&nbsp; Non-global, unreferenced
+tables will not be included in the exported script.</p>
+<h4 align="left">Creating New Actions</h4>
+<p align="left">One you have created a new table, you can start to add actions
+to the table.&nbsp; Selected the table and then use the &quot;Insert In...&quot;
+option to add a new action inside of the selected table.&nbsp; After the first
+action has been added, you can select the newly added action and then use
+&quot;Insert After..&quot; to create a new action after the selected action.</p>
+<p align="left">If your new action is &quot;Move To Table&quot;, you can
+selected from an existing table or type the name of a new table.&nbsp; If you do
+type in the name of a new table you will be prompted to make sure that you wish
+to create a new table.&nbsp; If you do create a new table, the decision for the
+table will default to &quot;Pick One Of&quot;.&nbsp; To change this, select the
+action you just added and select &quot;Table Properties&quot;.</p>
+<p align="left">Note: Once an action has been created, you can not change the
+type of action.</p>
+<h4 align="left">Modifying Tables</h4>
+<p align="left">Modifying table properties can be confusing.&nbsp; Tables in the
+root of the tree are easy to modify.&nbsp; However, tables that exist deep
+within the tree are more or less hidden.&nbsp; There isn't anything you can
+select that says &quot;this is table nw_item_fighter_weapon_s_1&quot;.&nbsp;
+However, all &quot;Move To Table&quot; actions have a table associated with
+them.&nbsp; So if you want to change the properties of the table and not the
+action, select the &quot;Move To Table&quot; action in question and then press
+&quot;Table Properties&quot;.&nbsp; This will allow you to change the decision
+and global flag settings for that table.</p>
+<h4 align="left">Moving Actions</h4>
+<p align="left">Actions can not be moved from table to table.&nbsp; However,
+their order within a table can be changed.&nbsp; For some decisions, the order is very
+important.&nbsp; Any decision that has an &quot;Any&quot; option should always
+have the &quot;Any&quot; listed at the end.&nbsp; If you get your actions out of
+order, you can select the action you wish to move an then use the Up/Down
+commands to move them.</p>
+
+<hr size="1">
+<h3 align="left">4. Using NWN Treasure</h3>
+<p align="left">NWN Treasure is really two programs in one.&nbsp; The first
+program allows content providers to edit the default NWN treasure tables and
+then export a script file that is compatible with Bioware's &quot;nw_o2_coninclude&quot;.&nbsp; The second part of
+NWN Treasure is by far much
+more powerful.&nbsp; It provides the core scripts for a complete NPC/Placeable
+respawn system that will also utilize the treasure tables.</p>
+<p align="left">So, before you can continue on, you have to ask yourself, do you
+want the full Shroudworld respawn system or do you just want to be able to edit
+your treasure tables.</p>
+<hr size="1">
+<h3 align="left">4.1 Using NWN Treasure Just to Edit Treasure Tables</h3>
+<p align="left">So, you have decided that all you want to do is create new
+treasure tables.&nbsp; Well, you still have one question to answer, do you want
+to use these new treasure tables for ALL your NPCs and treasure chests or just
+to new NPCs and treasure chests.</p>
+<p align="left"><u><i><b><font color="#FF0000">WARNING:</font></b></i></u> Under
+NO circumstances should you EVER overwrite the scripts contained in NWN's
+override directory.&nbsp; Don't do it.&nbsp; JUST DON'T DO IT.</p>
+<p align="left"><u><i><b><font color="#FF0000">WARNING:</font></b></i></u>  When
+exporting scripts, you should not have that script open in the script
+editor.&nbsp;</p>
+<p align="left"><u><i><b><font color="#FF0000">WARNING:</font></b></i></u> You can not just export
+files into your modules temp directory and expect the Bioware tools to know
+about them.&nbsp; The easiest thing to do is inside of the Bioware tools, create
+a blank script with the exact same name, save and then close the script.&nbsp;
+Then export to that file using NWN Treasure.</p>
+<h4 align="left">Exporting Your Treasure Tables</h4>
+<p align="left">In order to be able to use your new treasure tables in your
+module, the first must be exported.&nbsp; If you haven't exported the treasure
+script to your module before, you must first create a new script in the NWN
+toolkit with the name of the file you wish to export.&nbsp; Close the script
+editor but keep the NWN toolkit loaded with your module open.&nbsp; Then in the NWN Treasure
+program, select the export option.&nbsp; Locate the newly created
+script in your &quot;C:NeverwinterNights\NWN\Modules\tempxxx\&quot; directory
+and save.&nbsp; (Note: The exact directory name will vary depending on where NWN
+was installed.)</p>
+<h4 align="left">Using Your Treasure Tables With NPCs</h4>
+<p align="left">In order to have your NPCs use your new treasure table, you must
+create a new OnSpawn NPC script and assign that script to your NPC.&nbsp; Using
+the default NPC OnSpawn script as a starting point, the following changes must
+be made.&nbsp; (Remember, save to a different file name)</p>
+<ol>
+  <li>
+    <p align="left">Locate the line &quot;#include
+    &quot;nw_o2_coninclude&quot;&quot; and replace &quot;nw_o2_coninclude&quot;
+    with the name of the script you exported.</li>
+  <li>
+    <p align="left">Locate the line &quot;GenerateNPCTreasure ()&quot; and
+    replace it with a call to the treasure table of your choice.</li>
+</ol>
+<p align="left">For example:</p>
+<blockquote>
+  <p align="left">Let us assume you have created a treasure table called &quot;my_phatlewt&quot;.&nbsp;
+  In order to generate treasure on a NPC using that table, you would make the
+  following call.</p>
+  <p align="left">CT_my_phatlewt (OBJECT_SELF, OBJECT_SELF);</p>
+</blockquote>
+<h4 align="left">Using Your Treasure Tables With Placeables</h4>
+<p align="left">In order to have your placeables use your new treasure table,
+you must create a new OnOpen and OnClose placeables script and assign this
+script to your placeable.&nbsp; In almost all cases, both the OnOpen and OnClose
+scripts can be the exact same script.&nbsp; Using on of the default NWN OnOpen
+scripts such as &quot;nw_o2_classmed&quot; as a starting point, make the
+following changes.&nbsp; (Remember, save to a different file name)</p>
+<ol>
+  <li>
+    <p align="left">Locate the line &quot;#include
+    &quot;nw_o2_coninclude&quot;&quot; and replace &quot;nw_o2_coninclude&quot;
+    with the name of the script you exported.</li>
+  <li>
+    <p align="left">Locate the line &quot;GenerateXXXTreasure ()&quot; and
+    replace it with a call to the treasure table of your choice.</li>
+</ol>
+<p align="left">For example:</p>
+<blockquote>
+  <p align="left">Let us assume you have created a treasure table called &quot;my_phatlewt&quot;.&nbsp;
+  In order to generate treasure on a placeable using that table, you would make
+  the following call.</p>
+  <p align="left">CT_my_phatlewt (GetLastOpener (), OBJECT_SELF);</p>
+</blockquote>
+
+<hr size="1">
+
+<h3 align="left">4.2 Using NWN Treasure With Shroudworld Style Respawn</h3>
+<p align="left">So, you have decided use all the features available in NWN Treasure.</p>
+<p align="left"><u><i><b><font color="#FF0000">WARNING:</font></b></i></u> Under
+NO circumstances should you EVER overwrite the scripts contained in NWN's
+override directory.&nbsp; Don't do it.&nbsp; JUST DON'T DO IT.</p>
+<p align="left"><u><i><b><font color="#FF0000">WARNING:</font></b></i></u>  When
+exporting scripts, you should not have that script open in the script
+editor.&nbsp;</p>
+<p align="left"><u><i><b><font color="#FF0000">WARNING:</font></b></i></u> You can not just export
+files into your modules temp directory and expect the Bioware tools to know
+about them.&nbsp; The easiest thing to do is inside of the Bioware tools, create
+a blank script with the exact same name, save and then close the script.&nbsp;
+Then export to that file using NWN Treasure.</p>
+<h4 align="left">Exporting Your Treasure Tables</h4>
+<p align="left">In order to be able to use your new treasure tables in your
+module, the first must be exported.&nbsp; If you haven't exported the treasure
+script to your module before, you must first create a new script in the NWN
+toolkit with the name of the file you wish to export.&nbsp; Close the script
+editor but keep the NWN toolkit loaded with your module open.&nbsp; Then in the NWN Treasure
+program, select the export option.&nbsp; Locate the newly created
+script in your &quot;C:NeverwinterNights\NWN\Modules\tempxxx\&quot; directory
+and save.&nbsp; (Note: The exact directory name will vary depending on where NWN
+was installed.)</p>
+<p align="left">When exporting for Shroudworld, make sure you select the
+&quot;Shroudworld&quot; mode in the export dialog box.</p>
+<h4 align="left">Using the Shroudworld Respawn System</h4>
+<p align="left">At the time of this writing, all content for Shroudworld will be
+combined into a single module.&nbsp; However, since not all content will be
+using all the features of the respawner, content providers who use the respawner
+won't be able to depend on the NWN default scripts being modified for use with
+the respawner.&nbsp; Thus, NPCs and placeables that wish to use the respawner
+MUST make new blueprints that use specialized scripts.&nbsp;</p>
+<p align="left">The good news is that only three scripts need to be created; NPC
+OnSpawn, NPC OnDeath, and placeable OnOpen/OnClose.</p>
+<h4 align="left">Creating a new NPC OnSpawn</h4>
+<p align="left">In order to have your NPCs use the respawner, you must
+create a new OnSpawn NPC script and assign that script to your NPC blueprints.&nbsp; Using
+the default NPC OnSpawn script as a starting point, the following changes must
+be made.&nbsp; (Remember, save to a different file name)</p>
+<ol>
+  <li>
+    <p align="left">Locate the line &quot;#include
+    &quot;nw_o2_coninclude&quot;&quot; and replace &quot;nw_o2_coninclude&quot;
+    with &quot;sw_i0_treasure&quot;.</li>
+  <li>
+    <p align="left">Locate the line &quot;GenerateNPCTreasure ()&quot; and
+    replace it with a call to &quot;DoNPCSpawn ();&quot;.</li>
+</ol>
+<h4 align="left">Creating a new NPC OnDeath</h4>
+<p align="left">In order to have your NPCs use the respawner, you must
+create a new OnDeath NPC script and assign that script to your NPC blueprints.&nbsp; Using
+the default NPC OnDeath script as a starting point, the following changes must
+be made.&nbsp; (Remember, save to a different file name)</p>
+<ol>
+  <li>
+    <p align="left">Add a new include, &quot;#include
+    &quot;sw_i0_treasure&quot;&quot;.</li>
+  <li>
+    <p align="left">Prior to the &quot;NW_I_AM_DEAD&quot; shout line, add a call
+    to &quot;DoNPCDeath ();&quot;</li>
+</ol>
+<h4 align="left">Creating a new Placeable OnOpen/OnClose</h4>
+<p align="left">In order to have your placeables use the respawner, you must
+create a new OnOpen/OnClose placeable script and assign that script to your
+placeable blueprints.&nbsp; Using
+the default placeable OnOpen/OnClose script as a starting point, the following changes must
+be made.&nbsp; (Remember, save to a different file name)</p>
+<ol>
+  <li>
+    <p align="left">Locate the line &quot;#include
+    &quot;nw_o2_coninclude&quot;&quot; and replace &quot;nw_o2_coninclude&quot;
+    with &quot;sw_i0_treasure&quot;.</li>
+  <li>
+    <p align="left">Replace ALL of the code in the main routine, but leave the
+    main and surrounding &quot;{}&quot;, with a call to &quot;DoOpenDeath
+    ();&quot;</li>
+</ol>
+<p align="left">If you wish for all your placeables to have a default treasure,
+the add the following line prior to the call to &quot;DoOpenDeath&quot;.<p align="left">&nbsp;&nbsp;&nbsp;
+SetLocalString (OBJECT_SELF, &quot;SW_RS_DEFAULT_PROFILE&quot;, &quot;mytablename&quot;);<br>
+<h4 align="left">Using Your Treasure Tables With Placeables</h4>
+<p align="left">In order to have your placeables use your new treasure table,
+you must create a new OnOpen and OnClose placeables script and assign this
+script to your placeable.&nbsp; In almost all cases, both the OnOpen and OnClose
+scripts can be the exact same script.&nbsp; Using on of the default NWN OnOpen
+scripts such as &quot;nw_o2_classmed&quot; as a starting point, make the
+following changes.&nbsp; (Remember, save to a different file name)</p>
+<ol>
+  <li>
+    <p align="left">Locate the line &quot;#include
+    &quot;nw_o2_coninclude&quot;&quot; and replace &quot;nw_o2_coninclude&quot;
+    with the name of the script you exported.</li>
+  <li>
+    <p align="left">Locate the line &quot;GenerateXXXTreasure ()&quot; and
+    replace it with a call to the treasure table of your choice.</li>
+</ol>
+<p align="left">For example:</p>
+<blockquote>
+  <p align="left">Let us assume you have created a treasure table called &quot;my_phatlewt&quot;.&nbsp;
+  In order to generate treasure on a placeable using that table, you would make
+  the following call.</p>
+  <p align="left">CT_my_phatlewt (GetLastOpener (), OBJECT_SELF);</p>
+</blockquote>
+
+<h4 align="left"> Telling NWN Treasure what script to execute</h4>
+<p align="left">In order for NWN Treasure to know what script to execute, you
+must assign a local string to each of your areas.&nbsp; Inside the OnModuleLoad,
+use the following example to set the treasure script for an area:</p>
+<blockquote>
+  <p align="left">object oArea = GetObjectByTag (&quot;MY_AREA_NAME&quot;);<br>
+  SetLocalString (oArea, &quot;SW_RS_SCRIPT&quot;, &quot;my_treasure&quot;);</p>
+</blockquote>
+<h4 align="left"> Telling NWN Treasure a default respawn time</h4>
+<p align="left">Be default, NWN Treasure will default to a respawn time of 30
+seconds.&nbsp; If you wish to change this for an area, then the
+local integer &quot;SW_RS_RESPAWN_DEFTIME&quot; must be set to the number of
+seconds.&nbsp; This value must be non-zero.</p>
+<blockquote>
+  <p align="left">object oArea = GetObjectByTag (&quot;MY_AREA_NAME&quot;);<br>
+  SetLocalInt (oArea, &quot;SW_RS_RESPAWN_DEFTIME&quot;, 10);</p>
+</blockquote>
+<h4 align="left">Setting Up Respawn and Treasure on Your NPCs and chests</h4>
+<p align="left">By default, treasure will be created the same way that the
+original treasure tables make treasure for NPCs and chests.&nbsp; (Unless you
+have modified the treasure tables).&nbsp; Containers that use
+&quot;nw_o2_classmed&quot; will still generate medium level treasure.&nbsp; NPCs
+will still generate low level NPC treasure.</p>
+<p align="left">However, respawning the NPCs and containers is a big
+issue.&nbsp; All respawned content MUST come from existing blueprints.&nbsp; If
+you place an NPC in your module, customize it heavily but do not create a new
+blueprint with all the modifications, that NPC will not respawn properly.</p>
+<p align="left">Instead of going into great detail about how everything works,
+let us look at examples on how to set things up.</p>
+<hr size="1">
+<h3 align="left">5. How to do Different Things with the Shroudworld Respawn</h3>
+<h4 align="left">5.1. I want this NPC/Container I got from the NWN palette to
+respawn automatically</h4>
+<p align="left">One of the nice things is that for NPCs, all the tag names are
+the same as the blueprint names.&nbsp; So, unless the tag name is different than
+the blueprint name, you are done.&nbsp; However, this is not the case for
+containers.</p>
+<p align="left">If the tag name is different, then modify the tag name on the
+NPC/Container placed in your module.&nbsp; Set the tag to be the same as the
+blueprint name found on the advanced tab.&nbsp; You will NOT need to add this
+modified creature/container to your palette.&nbsp; The respawn system will
+remember the tag name for future respawns.</p>
+<h4 align="left">5.2. I want this NPC/Container I got from the NWN palette to
+respawn automatically, but I want to customize it.</h4>
+<p align="left">If you want to customize the look of your NPC/Container or add
+such things as traps and have them respawn, then you MUST add the new
+NPC/Container to the palette.&nbsp;&nbsp;</p>
+<p align="left">Place the NPC/Container in your module.&nbsp; Make all the
+customizations required.&nbsp; Change the tag to make the name that you will use
+for the blueprint name in the palette.&nbsp; Add the NPC/Container to the
+palette.&nbsp; Make SURE you set the blueprint name (advanced tab) to match the
+name used for the tag.</p>
+<h4 align="left">5.3. I want this NPC/Container, but I think the loot sucks.&nbsp;
+Can I change it to use a different treasure name?</h4>
+<p align="left">Yes.&nbsp; Place the NPC/Container in your module.&nbsp; Edit
+the tag name and add at the beginning the name of the treasure table followed by
+two underscores.</p>
+<p align="left">For example, let us say this is an NPC with the tag and
+blueprint of &quot;PHATGUARD&quot;.&nbsp; By default, all NPCs use the &quot;nw_npc_low&quot;
+treasure table.&nbsp; If you want this NPC to drop high level loot, then you can
+change his tag to &quot;nw_high__PHATGUARD&quot;.&nbsp; The respawn system is
+smart enough to see the loot table name at the start and then use the second
+part as the blue print name.</p>
+<h4 align="left">5.4. I have a blueprint called &quot;MYGUARD&quot; that I use for
+my waypoints and posts.&nbsp; I have modified their tag so they use the
+waypoints or posts that I want them to.&nbsp; But the respawn system always
+gives me badgers.</h4>
+<p align="left">The problem is that if you have a blueprint called &quot;MYGUARD&quot;
+but have modified all instances of that blueprint with tags such as
+&quot;GUARDWPSET1&quot; and &quot;GUARDPOSTA&quot;, the respawn engine doesn't
+have a clue what to spawn.&nbsp; Thus the game creates badgers.&nbsp; Why
+badgers?&nbsp; I don't know.&nbsp; But that is only half the problem.&nbsp; The
+respawn system does have a method of telling it that when it sees a specific tag
+to then use what is called a &quot;profile&quot; to determine how to respawn the
+NPC.&nbsp; But if this was used in this case, all respawned guards would lose
+their specific tags (they would be spawned with the tag from the
+blueprint).&nbsp; They would fail to work.</p>
+<p align="left">The only way to get around this problem is that for every
+waypoint set and every post, a new blueprint must be made with the tag set to
+the name of the waypoint set or post and the blueprint name matching that
+tag.&nbsp; It really isn't a good solution, but at the moment there is little
+that can be done short of replacing the waypoint system.</p>
+<h4 align="left">5.5. How do I use a specific treasure table for my NWN
+encounters?</h4>
+<p align="left">Now we are starting to get into a feature in NWN Treasure called
+profiles.&nbsp; This allows the content developer to define treasure tables and
+other respawn information for a mob with a given name.</p>
+<p align="left">For example, let us assume your encounter spawned mobs with a
+tag of &quot;NW_DEER&quot;.&nbsp; Inside of NWN Treasure, create a new profile and
+call it &quot;nw_deer&quot;.&nbsp; Leave all fields as default except the
+treasure table.&nbsp; Change that setting to what you wish it to be and
+save.&nbsp; Export and recompile the script and you are done.</p>
+<h4 align="left">5.6. How do I create my own treasure table</h4>
+<p align="left">Go into the treasure editor, select &quot;Treasure Tables&quot;
+and click on &quot;Insert Table&quot;.&nbsp; Give the table a name such as
+&quot;sw_sewer&quot;.&nbsp; Check the global checkbox and give the table a
+number.&nbsp; Export and recompile the script.</p>
+<p align="left">See #3 for more information on changing the loot table for an
+NPC/Container.&nbsp; Or if you need to use a profile, then change the treasure
+table setting for the profile to your new treasure table.</p>
+<h4 align="left">5.7. How do I have a creature spawn when a treasure chest is open</h4>
+<p align="left">This is another example of where you have to use the profiles in
+NWN Treasure.&nbsp; Create a new profile give it a name.&nbsp; If you use the same
+name as the tag name used by the container's blueprint, then ALL containers
+using that blueprint will use this profile.&nbsp; If you just want it for a few
+chests, then give the profile a unique name that doesn't match any tag name in
+your module.</p>
+<p align="left">Next, set the &quot;Death/Open Spawn&quot; setting to the
+blueprint of the mod you wish to spawn or the name of an encounter table.&nbsp;
+If you want a sound to play, set the name of the sound without the
+&quot;.wav&quot;.&nbsp; If you want damage to be dealt, then set a value larger
+than 0.</p>
+<p align="left">Next, if you will have to change the container's tag to match
+the profile name, then you will need to set the respawn blueprint name to the
+name of the blueprint used to respawn the container.&nbsp; Export and recompile
+the script.</p>
+<p align="left">Place the container in your module.&nbsp; If your profile name
+doesn't match the tag of the container, then change the tag to the name of the
+profile.&nbsp; The respawn system will remember this even after the container
+has been respawned and the tag lost.</p>
+<h4 align="left">5.8. Can I have a creature spawn when my NPC is killed?</h4>
+<p align="left">Yes, follow the exact same steps for question 7.</p>
+<h4 align="left">5.9. Can I create a default treasure for the whole area?</h4>
+<p align="left">Currently, if you want to create a default treasure for the
+whole area, then you MUST use area specific treasure tables (see the
+instructions from when you added Shroudworld respawning to your module.)</p>
+<p align="left">Next, you will need to create a new profile in NWN Treasure.&nbsp;
+Call this profile &quot;*&quot;.&nbsp; That tells the respawn system that this
+profile is to be used for all objects that don't have a profile defined.&nbsp;
+IT IS VERY IMPORTANT THAT THIS IS THE LAST PROFILE IN THE LIST.&nbsp; Use the
+move down button to move it to the bottom.</p>
+<p align="left">In the profile, set the treasure table to the name of the table
+you want to use.&nbsp; If you want no treasure to drop, set it to &quot;nw_none&quot;.&nbsp;
+Now, this will apply to all NPCs and containers unless they have their own
+profile or unless they have a treasure table encoded in their tag such as &quot;nw_high__NW_DEER&quot;.</p>
+
+</body>
+
+</html>

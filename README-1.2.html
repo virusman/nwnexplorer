@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+  <head>
+    <title>Torlack :: News</title>
+    <meta http-equiv="Content-Type" content=
+    "text/html; charset=ISO-8859-1">
+    <meta name="author" content="Torlack">
+    <meta name="copyright" content="Copyright (c) 2002 by Torlack">
+  </head>
+
+  <body>
+    <h3>General Information</h3>
+
+    <p>This source code contains the full source for the following
+    programs:</p>
+
+    <blockquote>
+      <p>NWN Explorer<br>
+       NWN Treasure Editor<br>
+       NWN Model Compiler<br>
+       NWN Script Compiler</p>
+    </blockquote>
+
+    <h3>Download</h3>
+
+    <p><a href=
+    "http://www.torlack.com/nwntools/nwntools-1.2.zip">NWN Tools
+    Source Code</a> (ZIP file format - All sources)</p>
+
+    <p><a href=
+    "http://www.torlack.com/nwntools/nwntools-1.2.tar.gz">NWN Tools
+    Source Code</a> (TAR file format - Without Explorer and
+    Treasure Editor)</p>
+
+    <h3>Copyright and License Information</h3>
+
+    <blockquote>
+<pre>
+Copyright (c) 2002, 2003 - Edward T. Smith
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+2. Neither the name of Edward T. Smith nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+    </blockquote>
+
+    <p>As you can see, this is a standard BSD style license without
+    the advertise clause.</p>
+
+    <h3>This Software and Bioware's Intellectual Property
+    Rights</h3>
+
+    <p>If you are looking for information about how Bioware renders
+    their graphics or information about deep NWN internals, you are
+    looking in the wrong place.</p>
+
+    <p>Bioware (or their lawyers) might not agree, but IMHO, none
+    of the software contained here exposes any intellectual
+    property Bioware might hold.&nbsp; Game companies might not
+    mind much about how they store basic model information, but
+    when it comes to their rendering engine, they can be very
+    protective.&nbsp; Contracts can be won or lost based on the
+    performance or looks of a rendering engine.&nbsp; So exposing
+    or even discovering intellectual property information is
+    something that I avoid at all costs.</p>
+
+    <h3>Non-Windows Ports</h3>
+
+    <p>With the assistance of people lick Erydan and Sumpfork, we
+    now have available the tools to build the NWScript compiler for
+    non-windows operating systems such as Linux, MacOS, and
+    FreeBSD.&nbsp; This work is still in progress but we have made
+    a significant step forward.&nbsp; If you run into any problems
+    building the compiler on other platforms, please send any code
+    corrections to <a href=
+    "mailto:torlack@torlack.com">torlack@torlack.com</a>.&nbsp;
+    However, please remember that I don't do non-Windows operating
+    systems.&nbsp; If you can't get the compiler to compile, I
+    can't provide any support.</p>
+
+    <p>Older versions of GCC seem to have problems with inline
+    functions.&nbsp; To just avoid this problem all together,
+    "<em>AM_CXXFLAGS = -fno-default-inline</em>" has been added to
+    the makefiles.&nbsp; This will hurt performance to a
+    degree.</p>
+
+    <h3>Credits</h3>
+
+    <p>Initial Linux port of the compiler by Francois Guimond
+    a.k.a. Erydan.<br>
+     Assistance with automake/autoconf and MacOS/X port by
+    Sumpfork</p>
+
+    <h3>About the Source</h3>
+
+    <p>The source is a VC7 (VS.NET) solution file.&nbsp; However,
+    all source code for the model compiler should be usable on a
+    more standard compiler platform.&nbsp; There are no "stdafx.h"
+    or "windows.h" includes excluding the main executable.&nbsp;
+    Even there, those includes are "#ifdef" protected and only used
+    for registry access.&nbsp; However, that doesn't mean the
+    software will build on a GCC system without modification.</p>
+
+    <p>NWN Explorer and NWN Treasure Editor both use ATL and
+    WTL.&nbsp; NWN Explorer also uses FMOD from <a href=
+    "http://www.fmod.org/">http://www.fmod.org/</a>.&nbsp; NWN
+    Script compiler uses the MSTA compiler compiler from the COCOM
+    tool set.&nbsp; The package can be downloaded from <a href=
+    "http://cocom.sourceforge.net/">http://cocom.sourceforge.net/</a>.</p>
+
+    <p>May C++ purists will have an aneurysm when they see some of
+    the code.&nbsp; To those I say, "deal with it."&nbsp; (OMG, HE
+    USED A GOTO!!!!!)</p>
+
+    <h3>Revisions</h3>
+
+    <h4>March 12th, 2003:</h4>
+
+    <ul>
+      <li>Blank statements after an if or else statement will now
+      generate a warning.</li>
+
+      <li>The compiler will automatically ignore requests to
+      include the same include file multiple times in a script
+      compilation.</li>
+
+      <li>With the non-Windows versions, if the path specified for
+      the NWN directory doesn't end in a "/", one will be
+      automatically added.</li>
+
+      <li>All the libraries and the model converter have been
+      converted to build with GCC.</li>
+
+      <li>Corrected a problem with the script decompiler regarding
+      the TALENT type.</li>
+    </ul>
+
+    <h4>April 23rd, 2003:</h4>
+
+    <ul>
+      <li>On GCC systems, the script compiler optimizer might throw
+      an assert.&nbsp; The code has been modified to prevent the
+      assert which was non-fatal in nature.</li>
+
+      <li>On some GCC systems, the basename routine is declared as
+      having a "char *" argument.&nbsp; The only place where this
+      caused a problem has been modified to force the type to "char
+      *".&nbsp; A future version will have a better fix for this
+      problem.</li>
+
+      <li>If a function declaration has more arguments than the
+      prototype, the compiler would fail to generate an
+      error.&nbsp; This would result in a compiled script that runs
+      the risk of generating "STACK UNDERFLOW" errors.</li>
+
+      <li>Corrected a bug in the script compiler that would fail to
+      generate an error when a function was called without enough
+      parameters.</li>
+    </ul>
+
+    <h4>July 1st, 2003:</h4>
+
+    <ul>
+      <li>Added the new -v command line argument to the script
+      compiler.&nbsp; This allows for the compiler to compile files
+      using older compiler rules.</li>
+
+      <li>The script compiler now generates the new script debug
+      file (NDB).</li>
+
+      <li>A '.' (dot) in the input path which is not part of the
+      extension will no longer confuse&nbsp;the model and script
+      compiler.</li>
+
+      <li>The default directory for including script includes will
+      be the same directory as the input script.</li>
+
+      <li>The script decompiler now supports the new NOP
+      opcode.</li>
+
+      <li>Corrected a script compiler crash caused by some types of
+      syntax errors.</li>
+
+      <li>Increased the maximum size of a compiled script to 512k
+      to match BioWare maximum script size.</li>
+
+      <li>Added support for SoU key files.</li>
+    </ul>
+  </body>
+</html>
+

@@ -1,0 +1,845 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "atlres.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_NWNTREASURE         ICON                    "res\\nwntreasure.ico"
+IDI_TABLE               ICON                    "res\\table.ico"
+IDI_ENCOUNTER           ICON                    "res\\encounter.ico"
+IDI_ITEM                ICON                    "res\\item.ico"
+IDI_GOLD                ICON                    "res\\gold.ico"
+IDI_NONE                ICON                    "res\\none.ico"
+IDI_TABLE_NOREF         ICON                    "res\\table_noref.ico"
+IDI_TABLE_GLOBAL        ICON                    "res\\table_global.ico"
+IDI_PLACEABLE           ICON                    "res\\placeable.ico"
+IDI_PROFILE             ICON                    "res\\profile.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_NWNTREASURE MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "&Export Script...",           ID_FILE_EXPORTSCRIPT
+        MENUITEM SEPARATOR
+        POPUP "Recent &Files"
+        BEGIN
+            MENUITEM "(empty)",                     ID_FILE_MRU_FILE1
+            , GRAYED
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "Insert New In...",            ID_EDIT_NEW
+        MENUITEM "Insert New After...",         ID_EDIT_NEW_AFTER
+        MENUITEM "Insert Table...",             ID_EDIT_NEW_TABLE
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperties...",              ID_EDIT_PROPERTIES
+        MENUITEM "&Table Properties...",        ID_EDIT_TABLEPROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "Move Up",                     ID_EDIT_MOVEUP
+        MENUITEM "Move Down",                   ID_EDIT_MOVEDOWN
+        MENUITEM SEPARATOR
+        MENUITEM "Delete",                      ID_EDIT_DELETE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About ...",                  ID_APP_ABOUT
+    END
+END
+
+IDR_TOOLBAR_POPUP MENU 
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "Customize...",                ID_POPUP_CUSTOMIZE_TOOLBAR
+    END
+END
+
+IDR_POPUPS MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "Insert New In...",            ID_EDIT_NEW
+        MENUITEM "Insert New After...",         ID_EDIT_NEW_AFTER
+        MENUITEM "Insert Table...",             ID_EDIT_NEW_TABLE
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperties...",              ID_EDIT_PROPERTIES
+        MENUITEM "&Table Properties...",        ID_EDIT_TABLEPROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "Move Up",                     ID_EDIT_MOVEUP
+        MENUITEM "Move Down",                   ID_EDIT_MOVEDOWN
+        MENUITEM SEPARATOR
+        MENUITEM "Delete",                      ID_EDIT_DELETE
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_NWNTREASURE ACCELERATORS 
+BEGIN
+    "?",            ID_APP_ABOUT,           ASCII,  ALT
+    "/",            ID_APP_ABOUT,           ASCII,  ALT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 22, 17, 230, 78
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "NW Treasure Editor Version 2.0",IDC_STATIC,7,6,216,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002, Edward T. Smith",
+                    IDC_STATIC,7,17,216,8
+    DEFPUSHBUTTON   "OK",IDOK,89,57,50,14
+    LTEXT           "Some images Copyright (C) 2002, Bioware",IDC_STATIC,7,
+                    40,216,8
+END
+
+IDD_TBCUSTOMIZE DIALOGEX 0, 0, 357, 33
+STYLE DS_SETFONT | DS_3DLOOK | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | 
+    WS_VISIBLE | WS_CAPTION
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Te&xt options:",-1,4,2,48,15
+    COMBOBOX        IDC_TBCUSTOMIZE_TEXT_OPTIONS,52,0,123,57,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Ico&n options:",-1,4,18,48,15
+    COMBOBOX        IDC_TBCUSTOMIZE_ICON_OPTIONS,52,18,123,57,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_TABLE DIALOGEX 0, 0, 180, 127
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Table Properties"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Table Name",IDC_STATIC,7,9,50,8
+    EDITTEXT        IDC_TABLE_NAME,70,7,103,14,ES_LOWERCASE | ES_AUTOHSCROLL
+    LTEXT           "Decision Mode",IDC_STATIC,7,26,46,8
+    COMBOBOX        IDC_DECISION_MODE,70,24,103,144,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Global Table - Global tables will be made available as starting points.",
+                    IDC_GLOBAL,"Button",BS_AUTOCHECKBOX | BS_TOP | 
+                    BS_MULTILINE | WS_TABSTOP,7,47,166,19
+    LTEXT           "Table Number",IDC_NUMBER_STATIC,7,72,56,8
+    EDITTEXT        IDC_NUMBER,70,70,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_NUMBER_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,109,70,11,14
+    DEFPUSHBUTTON   "OK",IDOK,32,106,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,98,106,50,14
+END
+
+IDD_TABLE_ITEM DIALOGEX 0, 0, 230, 180
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_CONTROLPARENT
+CAPTION "Table Item Properties"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Action To Take",IDC_ACTION_STATIC,7,9,48,8
+    COMBOBOX        IDC_ACTION,70,7,153,126,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Static",IDC_CHANCE_STATIC,7,26,55,8
+    EDITTEXT        IDC_CHANCE_EDIT,70,24,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_CHANCE_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,104,24,11,14
+    COMBOBOX        IDC_CHANCE_COMBO,70,24,153,87,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "The captive dialog goes here",IDC_DIALOG_INSERT,7,47,
+                    216,106,NOT WS_VISIBLE
+    DEFPUSHBUTTON   "OK",IDOK,57,159,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,123,159,50,14
+END
+
+IDD_GOLD DIALOGEX 0, 0, 133, 59
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Number of Die",IDC_STATIC,0,2,50,8
+    EDITTEXT        IDC_DIE_COUNT,63,0,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_DIE_COUNT_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,108,0,11,14
+    LTEXT           "Die",IDC_STATIC,0,19,11,8
+    EDITTEXT        IDC_DIE,63,17,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_DIE_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,110,16,11,
+                    14
+    LTEXT           "Multiplier",IDC_STATIC,0,36,29,8
+    EDITTEXT        IDC_MULTIPLIER,63,34,40,14,ES_AUTOHSCROLL
+END
+
+IDD_ITEM DIALOGEX 0, 0, 211, 95
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Item Blueprint",IDC_STATIC,0,2,50,8
+    EDITTEXT        IDC_ITEM_BLUEPRINT,63,0,125,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_ITEM_BLUEPRINT_BROWSE,193,0,18,14
+    LTEXT           "The minimum and maximum values should both be set to 1 for non-stackable items.  For stackables, the count will be randomized in the given range.",
+                    IDC_STATIC,0,20,211,27
+    LTEXT           "Minimum",IDC_STATIC,0,53,28,8
+    EDITTEXT        IDC_MIN,63,51,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_MIN_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,107,53,11,14
+    LTEXT           "Maximum",IDC_STATIC,0,70,30,8
+    EDITTEXT        IDC_MAX,63,68,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_MAX_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,107,71,11,
+                    14
+END
+
+IDD_TABLE_REF DIALOGEX 0, 0, 217, 106
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Table Name",IDC_STATIC,0,2,50,8
+    COMBOBOX        IDC_TABLE_NAME,63,0,153,260,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "The minimum and maximum specify the number of times this table will be used for generation.",
+                    IDC_STATIC,0,20,216,27
+    LTEXT           "Minimum",IDC_MIN_STATIC,0,42,28,8
+    EDITTEXT        IDC_MIN,63,39,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_MIN_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,107,42,11,14
+    LTEXT           "Maximum",IDC_MAX_STATIC,0,58,30,8
+    EDITTEXT        IDC_MAX,63,56,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_MAX_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,107,59,11,
+                    14
+    LTEXT           "Modifier",IDC_MODIFIER_STATIC,0,75,26,8
+    COMBOBOX        IDC_MODIFIER,63,73,70,132,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Specific",IDC_SPECIFIC_STATIC,0,92,25,8
+    COMBOBOX        IDC_SPECIFIC,63,90,70,131,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+IDD_ITEM_BROWSER DIALOGEX 0, 0, 254, 214
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Browse..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Browse For",IDC_BROWSE_FOR_STATIC,7,9,37,8
+    LTEXT           "Source",IDC_STATIC,7,26,23,8
+    COMBOBOX        IDC_BROWSE_FOR,60,7,187,92,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "",IDC_ITEMS,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,7,40,240,148
+    COMBOBOX        IDC_SOURCE,60,24,187,157,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,69,193,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,135,193,50,14
+END
+
+IDD_EXPORT_SAVE_OPTIONS DIALOGEX 0, 0, 230, 34
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS | 
+    WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Export Style:",IDC_EXPORT_STYLE_STATIC,8,2,58,8
+    COMBOBOX        IDC_EXPORT_STYLE,70,0,90,122,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Debug Style:",IDC_DEBUG_STYLE_STATIC,8,19,58,8
+    COMBOBOX        IDC_DEBUG_STYLE,70,17,90,122,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ENCOUNTER DIALOGEX 0, 0, 211, 95
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Creature Blueprint",-1,0,2,62,8
+    EDITTEXT        IDC_ITEM_BLUEPRINT,63,0,125,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_ITEM_BLUEPRINT_BROWSE,193,0,18,14
+    LTEXT           "Minimum",-1,0,19,28,8
+    EDITTEXT        IDC_MIN,63,17,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_MIN_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    UDS_NOTHOUSANDS,107,19,11,14
+    LTEXT           "Maximum",-1,0,36,30,8
+    EDITTEXT        IDC_MAX,63,34,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_MAX_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,107,37,11,
+                    14
+END
+
+IDD_PLACEABLE DIALOGEX 0, 0, 211, 95
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Placeable Blueprint",-1,0,2,62,8
+    EDITTEXT        IDC_ITEM_BLUEPRINT,63,0,125,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_ITEM_BLUEPRINT_BROWSE,193,0,18,14
+END
+
+IDD_PROFILE DIALOGEX 0, 0, 240, 166
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Profile Properties"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Profile Name",IDC_STATIC,7,9,50,8
+    EDITTEXT        IDC_PROFILE_NAME,80,7,153,14,ES_LOWERCASE | 
+                    ES_AUTOHSCROLL
+    LTEXT           "Respawn Type",IDC_STATIC,7,26,48,8
+    COMBOBOX        IDC_RESPAWN_TYPE,80,24,153,144,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,56,145,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,122,145,50,14
+    LTEXT           "Respawn Time",IDC_RESPAWN_TIME_STATIC,7,43,47,8
+    EDITTEXT        IDC_RESPAWN_TIME,80,41,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_RESPAWN_TIME_SPIN,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,123,41,11,14
+    LTEXT           "Respawn",IDC_RESPAWN_NAME_STATIC,7,60,30,8
+    COMBOBOX        IDC_RESPAWN_NAME,80,58,130,174,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_RESPAWN_NAME_BROWSE,215,58,18,14
+    LTEXT           "Death/Open Spawn",IDC_STATIC,7,77,64,8
+    COMBOBOX        IDC_DEATHOPEN_SPAWN,80,75,130,134,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_DEATHOPEN_SPAWN_BROWSE,215,75,18,14
+    LTEXT           "Death/Open Sound",IDC_STATIC,7,94,62,8
+    EDITTEXT        IDC_DEATHOPEN_SOUND,80,92,128,14,ES_AUTOHSCROLL
+    LTEXT           "Death/Open Damage",IDC_STATIC,7,111,68,8
+    EDITTEXT        IDC_DEATHOPEN_DAMAGE,80,109,40,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_DEATHOPEN_DAMAGE_SPIN,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,121,108,11,14
+    LTEXT           "Treasure Table",IDC_STATIC,7,128,49,8
+    COMBOBOX        IDC_TREASURE_TABLE,80,126,153,161,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""atlres.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_TOOLBAR_16_256COLOR BITMAP                  "res\\toolbar_16_256color.bmp"
+IDB_TOOLBAR_24_256COLOR BITMAP                  "res\\toolbar_24_256color.bmp"
+IDB_TOOLBAR_16_16COLOR  BITMAP                  "res\\toolbar_16_16color.bmp"
+IDB_TOOLBAR_24_16COLOR  BITMAP                  "res\\toolbar_24_16color.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXT_INCLUDE
+//
+
+IDR_SCRIPT_TEMPLATE_START TEXT_INCLUDE            "script_template_start.nss"
+IDR_SCRIPT_BIOWARE_ROUTINES TEXT_INCLUDE            "script_bioware_routines.nss"
+IDR_SCRIPT_SW_RESPAWN_ROUTINES TEXT_INCLUDE            "script_sw_respawn_routines.nss"
+IDR_SCRIPT_SW_RESPAWN_START TEXT_INCLUDE            "script_sw_respawn_start.nss"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 71
+    END
+
+    IDD_TABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 120
+    END
+
+    IDD_TABLE_ITEM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 173
+    END
+
+    IDD_ITEM_BROWSER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 247
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 207
+    END
+
+    IDD_PROFILE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_NWNTREASURE         "NWN Treasure Editor"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ERR_MAIN_WINDOW     "Unable to create the main window."
+    IDS_ERR_OPEN_SCRIPT     "Unable to open the script file."
+    IDS_ERR_DIE_COUNT       "The number of dice to roll must be between 1 and 9999"
+    IDS_ERR_DIE             "The die must be between 2 and 9999"
+    IDS_ERR_MULTIPLIER      "The multiplier must be greater than 0"
+    IDS_ERR_CHANCE          "The chance must be between 0 and 9999"
+    IDS_ERR_RANGE           "The level range must be between 1 and 6"
+    IDS_ERR_MIN             "The minimum must be between 1 and 9999"
+    IDS_ERR_MAX             "The maximum must be between 1 and 9999"
+    IDS_ERR_MIN_MAX         "The maximum must be greater or equal to the minimum"
+    IDS_ERR_NEW_TABLE       "The table name specified doesn't exist.  Do you wish to create a new one?"
+    IDS_ERR_DEREF_TABLE     "The table currently assigned will no longer be referenced.  Do you wish to delete the table?"
+    IDS_ERR_NO_TABLE        "The table name specified doesn't reference a valid table."
+    IDS_ERR_DUPLICATE       "A table name with the specified name already exists."
+    IDS_ERR_REFED           "This table is referenced by other table.  Those references must be removed prior to deletion."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ERR_OPEN_WRITE      "Error opening output file"
+    IDS_ERR_PROMPT_SAVE     "The current file has been modified, do you wish to save the changes?"
+    IDS_ERR_XML_NO_ATTRS    "Attributes not allowed on the element"
+    IDS_ERR_XML_UNEXPECTED_ELEMENT "Unknown or unexpected element"
+    IDS_ERR_XML_UNEXPECTED  "Unexpected error parsing the XML file"
+    IDS_ERR_XML             "Error parsing data in """"%s"""".\r\n\r\nError: %s\r\nLine: %d\r\nColumn: %d"
+    IDS_ERR_EXPAT_CREATE    "Unable to create the XML parser."
+    IDS_ERR_INVALID_TABLE_NAME 
+                            "Invalid table name.  Table names must not be blank and can only contain letters, digits, and underscores."
+    IDS_ERR_INVALID_BLUEPRINT_NAME 
+                            "Invalid blueprint name.  Blueprint names must not be blank and can only contain letters, digits, and underscores."
+    IDS_ERR_TABLE_RECUSIONS "The specified table would cause a recusion in the tables and thus isn't allowed."
+    IDS_ERR_FOUND_RECUSION  "Table recusion found with the following tables.  The resulting script may not compile.\r\n\r\n"
+    IDS_ERR_COPY_RESOURCE   "Unable to copy a required resource to the script file."
+    IDS_ERR_NWN_DIRECTORY   "Unable to locate NWN.\r\n\r\nThe registery key HKLM\\Software\\Bioware\\NWN\\Neverwinter\\Location must be set to the location of the game."
+    IDS_ERR_NOPALETTE       "Unable to load the palette file."
+    IDS_ERR_CHANCE_PERCENT  "The percent chance must be between 0 and 100"
+    IDS_ERR_OPEN            "Unable to open the specified file."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TBCUSTOMIZE_SMALL_ICONS "Small icons"
+    IDS_TBCUSTOMIZE_LARGE_ICONS "Large icons"
+    IDS_TBCUSTOMIZE_BOTTOM_LABELS "Show text labels"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TBCUSTOMIZE_NO_LABELS "No text labels"
+    IDS_TBCUSTOMIZE_RIGHT_LABELS "Selective text on right"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy\nCopy"
+END
+
+STRINGTABLE 
+BEGIN
+    ATL_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_COLUMN1             "Name"
+    IDS_COLUMN2             "Information"
+    IDS_TREASURE_TABLES     "Treasure Tables"
+    IDS_ENCOUNTER_TABLES    "Encounter Tables"
+    IDS_CHANCE              "Chance %d"
+    IDS_LEVEL_RANGE         "Level Range %d"
+    IDS_GENERIC             "Generic"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ARMOR_PROFICIENCY   "Armor Proficiency %s"
+    IDS_DROP_NOTHING        "Drop Nothing"
+    IDS_DROP_GOLD           "Drop Gold"
+    IDS_DROP_ITEM           "Drop Item"
+    IDS_DROP_TABLE          "Move to Table"
+    IDS_NWN                 "Neverwinter Nights"
+    IDS_CHANCE_PERCENT      "Percent Chance %d"
+    IDS_EXPORT_STYLE_BIOWARE "Replacement of nw_o2_coninclude.nss"
+    IDS_DEBUG_STYLE_NONE    "Don't generate treasure debug statements"
+    IDS_DEBUG_STYLE_PRINT   "Send debug statements to the log file"
+    IDS_DEBUG_STYLE_SPEAK   "Speak debug statements (objects only, no NPCS)"
+    IDS_CHANCE_CLASS_TYPE   "Class"
+    IDS_SPAWN_NOTHING       "Spawn Nothing"
+    IDS_SPAWN_TABLE         "Move to Table"
+    IDS_SPAWN_ENCOUNTER     "Spawn Creature/NPC"
+    IDS_PLACEABLE_TABLES    "Placeable Tables"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TREASURE_COMMAND_N1 "Error"
+    IDS_TREASURE_COMMAND_00 "None"
+    IDS_TREASURE_COMMAND_01 "Pick One Of"
+    IDS_TREASURE_COMMAND_02 "Pick Multiple From"
+    IDS_TREASURE_COMMAND_03 "Pick By Racial Type"
+    IDS_TREASURE_COMMAND_04 "Pick By Level Range"
+    IDS_TREASURE_COMMAND_05 "Pick By Random Class"
+    IDS_TREASURE_COMMAND_06 "Pick By Specific"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TREASURE_COMMAND_07 "Pick By Weapon Focus"
+    IDS_TREASURE_COMMAND_08 "Pick By Armor Proficiency"
+    IDS_TREASURE_COMMAND_09 "Pick By Class"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_RACIAL_TYPE_N1      "Error"
+    IDS_RACIAL_TYPE_00      "Any"
+    IDS_RACIAL_TYPE_01      "Dwarf\nRACIAL_TYPE_DWARF"
+    IDS_RACIAL_TYPE_02      "Elf\nRACIAL_TYPE_ELF"
+    IDS_RACIAL_TYPE_03      "Gnome\nRACIAL_TYPE_GNOME"
+    IDS_RACIAL_TYPE_04      "Halfling\nRACIAL_TYPE_HALFLING"
+    IDS_RACIAL_TYPE_05      "HalfElf\nRACIAL_TYPE_HALFELF"
+    IDS_RACIAL_TYPE_06      "HalfOrc\nRACIAL_TYPE_HALFORC"
+    IDS_RACIAL_TYPE_07      "Human\nRACIAL_TYPE_HUMAN"
+    IDS_RACIAL_TYPE_08      "Aberration\nRACIAL_TYPE_ABERRATION"
+    IDS_RACIAL_TYPE_09      "Animal\nRACIAL_TYPE_ANIMAL"
+    IDS_RACIAL_TYPE_10      "Beast\nRACIAL_TYPE_BEAST"
+    IDS_RACIAL_TYPE_11      "Construct\nRACIAL_TYPE_CONSTRUCT"
+    IDS_RACIAL_TYPE_12      "Dragon\nRACIAL_TYPE_DRAGON"
+    IDS_RACIAL_TYPE_13      "Humanoid_Goblinoid\nRACIAL_TYPE_HUMANOID_GOBLINOID"
+    IDS_RACIAL_TYPE_14      "Humanoid_Monstrous\nRACIAL_TYPE_HUMANOID_MONSTROUS"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_RACIAL_TYPE_15      "Humanoid_Orc\nRACIAL_TYPE_HUMANOID_ORC"
+    IDS_RACIAL_TYPE_16      "Humanoid_Reptilian\nRACIAL_TYPE_HUMANOID_REPTILIAN"
+    IDS_RACIAL_TYPE_17      "Elemental\nRACIAL_TYPE_ELEMENTAL"
+    IDS_RACIAL_TYPE_18      "Fey\nRACIAL_TYPE_FEY"
+    IDS_RACIAL_TYPE_19      "Giant\nRACIAL_TYPE_GIANT"
+    IDS_RACIAL_TYPE_20      "Magical_Beast\nRACIAL_TYPE_MAGICAL_BEAST"
+    IDS_RACIAL_TYPE_21      "Outsider\nRACIAL_TYPE_OUTSIDER"
+    IDS_RACIAL_TYPE_22      "Shapechanger\nRACIAL_TYPE_SHAPECHANGER"
+    IDS_RACIAL_TYPE_23      "Undead\nRACIAL_TYPE_UNDEAD"
+    IDS_RACIAL_TYPE_24      "Vermin\nRACIAL_TYPE_VERMIN"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_SPECIFIC            "Specific"
+    IDS_MODIFIER            "Modifier = %d"
+    IDS_RACE                "Race %s"
+    IDS_CLASS               "Class %s"
+    IDS_COUNT               "Count = %d"
+    IDS_GOLD_INFO           "%dd%d, Multiplier = %f"
+    IDS_COUNT_RANGE         "Count = %d-%d"
+    IDS_CHANCE_CHANCE       "Chance"
+    IDS_CHANCE_LEVEL_RANGE  "Level Range"
+    IDS_CHANCE_SPECIFIC     "Specific"
+    IDS_CHANCE_RACIAL_TYPE  "Race"
+    IDS_CHANCE_RANDOM_CLASS_TYPE "Random Class"
+    IDS_INHERIT             "Inherit"
+    IDS_CHANCE_WEAPON_FOCUS "Weapon Focus"
+    IDS_WEAPON_FOCUS        "Weapon Focus %s"
+    IDS_CHANCE_ARMOR_PROFICIENCY "Armor Proficiency"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_CLASS_TYPE_N1       "Error"
+    IDS_CLASS_TYPE_00       "Any"
+    IDS_CLASS_TYPE_01       "Barbarian\nCLASS_TYPE_BARBARIAN"
+    IDS_CLASS_TYPE_02       "Bard\nCLASS_TYPE_BARD"
+    IDS_CLASS_TYPE_03       "Cleric\nCLASS_TYPE_CLERIC"
+    IDS_CLASS_TYPE_04       "Druid\nCLASS_TYPE_DRUID"
+    IDS_CLASS_TYPE_05       "Fighter\nCLASS_TYPE_FIGHTER"
+    IDS_CLASS_TYPE_06       "Monk\nCLASS_TYPE_MONK"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_CLASS_TYPE_07       "Paladin\nCLASS_TYPE_PALADIN"
+    IDS_CLASS_TYPE_08       "Ranger\nCLASS_TYPE_RANGER"
+    IDS_CLASS_TYPE_09       "Rogue\nCLASS_TYPE_ROGUE"
+    IDS_CLASS_TYPE_10       "Sorcerer\nCLASS_TYPE_SORCERER"
+    IDS_CLASS_TYPE_11       "Wizard\nCLASS_TYPE_WIZARD"
+    IDS_CLASS_TYPE_12       "Aberration\nCLASS_TYPE_ABERRATION"
+    IDS_CLASS_TYPE_13       "Animal\nCLASS_TYPE_ANIMAL"
+    IDS_CLASS_TYPE_14       "Construct\nCLASS_TYPE_CONSTRUCT"
+    IDS_CLASS_TYPE_15       "Humanoid\nCLASS_TYPE_HUMANOID"
+    IDS_CLASS_TYPE_16       "Monstrous\nCLASS_TYPE_MONSTROUS"
+    IDS_CLASS_TYPE_17       "Elemental\nCLASS_TYPE_ELEMENTAL"
+    IDS_CLASS_TYPE_18       "Fey\nCLASS_TYPE_FEY"
+    IDS_CLASS_TYPE_19       "Dragon\nCLASS_TYPE_DRAGON"
+    IDS_CLASS_TYPE_20       "Undead\nCLASS_TYPE_UNDEAD"
+    IDS_CLASS_TYPE_21       "Commoner\nCLASS_TYPE_COMMONER"
+    IDS_CLASS_TYPE_22       "Beast\nCLASS_TYPE_BEAST"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_CLASS_TYPE_23       "Giant\nCLASS_TYPE_GIANT"
+    IDS_CLASS_TYPE_24       "Magical_Beast\nCLASS_TYPE_MAGICAL_BEAST"
+    IDS_CLASS_TYPE_25       "Outsider\nCLASS_TYPE_OUTSIDER"
+    IDS_CLASS_TYPE_26       "Shapechanger\nCLASS_TYPE_SHAPECHANGER"
+    IDS_CLASS_TYPE_27       "Vermin\nCLASS_TYPE_VERMIN"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_PROPERTIES      "View the selected item's properties\nProperties\nProp."
+    ID_FILE_EXPORTSCRIPT    "Export a script file that will generate this treasure\nExport Script"
+    ID_EDIT_TABLEPROPERTIES "View the selected item's table properties\nTable Properties\nTable Prop."
+    ID_EDIT_DELETE          "Delete the selected item\nDelete\nDelete"
+    ID_EDIT_NEW             "Create new entry in the selected table.\nCreate In\nCreate In"
+    ID_EDIT_NEW_AFTER       "Create new entry in a table after selected entry.\nCreate After\nAfter"
+    ID_EDIT_MOVEUP          "Move the item up in the table\nMove Up\nUp"
+    ID_EDIT_MOVEDOWN        "Move the item down in the table\nMove Down\nDown"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_NEW_TABLE       "Create a new table\nCreate Table\nTable"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_WEAPON_FOCUS_N1     "Error"
+    IDS_WEAPON_FOCUS_00     "Any"
+    IDS_WEAPON_FOCUS_01     "BASTARD_SWORD\nFEAT_WEAPON_FOCUS_BASTARD_SWORD"
+    IDS_WEAPON_FOCUS_02     "BATTLE_AXE\nFEAT_WEAPON_FOCUS_BATTLE_AXE"
+    IDS_WEAPON_FOCUS_03     "CLUB\nFEAT_WEAPON_FOCUS_CLUB"
+    IDS_WEAPON_FOCUS_04     "CREATURE\nFEAT_WEAPON_FOCUS_CREATURE"
+    IDS_WEAPON_FOCUS_05     "DAGGER\nFEAT_WEAPON_FOCUS_DAGGER"
+    IDS_WEAPON_FOCUS_06     "DART\nFEAT_WEAPON_FOCUS_DART"
+    IDS_WEAPON_FOCUS_07     "DIRE_MACE\nFEAT_WEAPON_FOCUS_DIRE_MACE"
+    IDS_WEAPON_FOCUS_08     "DOUBLE_AXE\nFEAT_WEAPON_FOCUS_DOUBLE_AXE"
+    IDS_WEAPON_FOCUS_09     "GREAT_AXE\nFEAT_WEAPON_FOCUS_GREAT_AXE"
+    IDS_WEAPON_FOCUS_10     "GREAT_SWORD\nFEAT_WEAPON_FOCUS_GREAT_SWORD"
+    IDS_WEAPON_FOCUS_11     "HALBERD\nFEAT_WEAPON_FOCUS_HALBERD"
+    IDS_WEAPON_FOCUS_12     "HAND_AXE\nFEAT_WEAPON_FOCUS_HAND_AXE"
+    IDS_WEAPON_FOCUS_13     "HEAVY_CROSSBOW\nFEAT_WEAPON_FOCUS_HEAVY_CROSSBOW"
+    IDS_WEAPON_FOCUS_14     "HEAVY_FLAIL\nFEAT_WEAPON_FOCUS_HEAVY_FLAIL"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_WEAPON_FOCUS_15     "KAMA\nFEAT_WEAPON_FOCUS_KAMA"
+    IDS_WEAPON_FOCUS_16     "KATANA\nFEAT_WEAPON_FOCUS_KATANA"
+    IDS_WEAPON_FOCUS_17     "KUKRI\nFEAT_WEAPON_FOCUS_KUKRI"
+    IDS_WEAPON_FOCUS_18     "LIGHT_CROSSBOW\nFEAT_WEAPON_FOCUS_LIGHT_CROSSBOW"
+    IDS_WEAPON_FOCUS_19     "LIGHT_FLAIL\nFEAT_WEAPON_FOCUS_LIGHT_FLAIL"
+    IDS_WEAPON_FOCUS_20     "LIGHT_HAMMER\nFEAT_WEAPON_FOCUS_LIGHT_HAMMER"
+    IDS_WEAPON_FOCUS_21     "LIGHT_MACE\nFEAT_WEAPON_FOCUS_LIGHT_MACE"
+    IDS_WEAPON_FOCUS_22     "LONG_SWORD\nFEAT_WEAPON_FOCUS_LONG_SWORD"
+    IDS_WEAPON_FOCUS_23     "LONGBOW\nFEAT_WEAPON_FOCUS_LONGBOW"
+    IDS_WEAPON_FOCUS_24     "MORNING_STAR\nFEAT_WEAPON_FOCUS_MORNING_STAR"
+    IDS_WEAPON_FOCUS_25     "RAPIER\nFEAT_WEAPON_FOCUS_RAPIER"
+    IDS_WEAPON_FOCUS_26     "SCIMITAR\nFEAT_WEAPON_FOCUS_SCIMITAR"
+    IDS_WEAPON_FOCUS_27     "SCYTHE\nFEAT_WEAPON_FOCUS_SCYTHE"
+    IDS_WEAPON_FOCUS_28     "SHORT_SWORD\nFEAT_WEAPON_FOCUS_SHORT_SWORD"
+    IDS_WEAPON_FOCUS_29     "SHORTBOW\nFEAT_WEAPON_FOCUS_SHORTBOW"
+    IDS_WEAPON_FOCUS_30     "SHURIKEN\nFEAT_WEAPON_FOCUS_SHURIKEN"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_WEAPON_FOCUS_31     "SICKLE\nFEAT_WEAPON_FOCUS_SICKLE"
+    IDS_WEAPON_FOCUS_32     "SLING\nFEAT_WEAPON_FOCUS_SLING"
+    IDS_WEAPON_FOCUS_33     "SPEAR\nFEAT_WEAPON_FOCUS_SPEAR"
+    IDS_WEAPON_FOCUS_34     "STAFF\nFEAT_WEAPON_FOCUS_STAFF"
+    IDS_WEAPON_FOCUS_35     "THROWING_AXE\nFEAT_WEAPON_FOCUS_THROWING_AXE"
+    IDS_WEAPON_FOCUS_36     "TWO_BLADED_SWORD\nFEAT_WEAPON_FOCUS_TWO_BLADED_SWORD"
+    IDS_WEAPON_FOCUS_37     "UNARMED_STRIKE\nFEAT_WEAPON_FOCUS_UNARMED_STRIKE"
+    IDS_WEAPON_FOCUS_38     "WAR_HAMMER\nFEAT_WEAPON_FOCUS_WAR_HAMMER"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ARMOR_PROFICIENCY_N1 "Error"
+    IDS_ARMOR_PROFICIENCY_00 "Any"
+    IDS_ARMOR_PROFICIENCY_01 "HEAVY\nFEAT_ARMOR_PROFICIENCY_HEAVY"
+    IDS_ARMOR_PROFICIENCY_02 "LIGHT\nFEAT_ARMOR_PROFICIENCY_LIGHT"
+    IDS_ARMOR_PROFICIENCY_03 "MEDIUM\nFEAT_ARMOR_PROFICIENCY_MEDIUM"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ERR_TABLE_NUMBER    "Table numbers must be between 100 and 9999."
+    IDS_ERR_DUP_TABLE_NUMBER 
+                            "The specified table number is already in use by another global table."
+    IDS_ERR_TABLE_MISMATCH  "The table name specified doesn't match the context"
+    IDS_ERR_INVALID_PROFILE_NAME 
+                            "Profile names can only contain letters, numbers, underscores, and up to one asterisk"
+    IDS_ERR_RESPAWN_TIME    "Respawn times must be between 0 and 99999"
+    IDS_ERR_INVALID_DAMAGE  "Death/Open damage must be between 0 and 999"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_SPAWN_PLACEABLE     "Spawn Placeable"
+    IDS_PROFILE_TABLES      "Profile Tables"
+    IDS_RESPAWN_TYPE_NONE   "No Respawn"
+    IDS_RESPAWN_TYPE_RESPAWN "Respawn"
+    IDS_PAREN_DEFAULT       "(Default)"
+    IDS_BROWSE_FOR_ITEMS    "Browse for Items"
+    IDS_BROWSE_FOR_ENCOUNTERS "Browse for Creatures and NPCs"
+    IDS_BROWSE_FOR_PLACEABLES "Browse for Placeables"
+    IDS_EXPORT_STYLE_SW     "ShroudWorld Style Respawn Script"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

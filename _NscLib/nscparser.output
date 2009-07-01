@@ -1,0 +1,4443 @@
+     0  $accept : translation_unit $end
+     1  primary_expression : IDENTIFIER
+     2  primary_expression : INTEGER_CONST
+     3  primary_expression : FLOAT_CONST
+     4  primary_expression : STRING_CONST
+     5  primary_expression : OBJECT_SELF_CONST
+     6  primary_expression : OBJECT_INVALID_CONST
+     7  primary_expression : '('(40) expression ')'(41)
+     8  primary_expression : '['(91) ']'(93)
+     9  primary_expression : '['(91) FLOAT_CONST ']'(93)
+    10  primary_expression : '['(91) FLOAT_CONST ','(44) FLOAT_CONST ']'(93)
+    11  primary_expression : '['(91) FLOAT_CONST ','(44) FLOAT_CONST ','(44) FLOAT_CONST ']'(93)
+    12  postfix_expression : primary_expression
+    13  postfix_expression : IDENTIFIER '('(40) argument_expression_list ')'(41)
+    14  postfix_expression : IDENTIFIER '('(40) ')'(41)
+    15  postfix_expression : postfix_expression '.'(46) IDENTIFIER
+    16  postfix_expression : postfix_expression PLUSPLUS
+    17  postfix_expression : postfix_expression MINUSMINUS
+    18  argument_expression_list : assignment_expression
+    19  argument_expression_list : argument_expression_list ','(44) assignment_expression
+    20  unary_expression : postfix_expression
+    21  unary_expression : PLUSPLUS unary_expression
+    22  unary_expression : MINUSMINUS unary_expression
+    23  unary_expression : '+'(43) unary_expression
+    24  unary_expression : '-'(45) unary_expression
+    25  unary_expression : '~'(126) unary_expression
+    26  unary_expression : '!'(33) unary_expression
+    27  multiplicative_expression : unary_expression
+    28  multiplicative_expression : multiplicative_expression '*'(42) unary_expression
+    29  multiplicative_expression : multiplicative_expression '/'(47) unary_expression
+    30  multiplicative_expression : multiplicative_expression '%'(37) unary_expression
+    31  additive_expression : multiplicative_expression
+    32  additive_expression : additive_expression '+'(43) multiplicative_expression
+    33  additive_expression : additive_expression '-'(45) multiplicative_expression
+    34  shift_expression : additive_expression
+    35  shift_expression : shift_expression SL additive_expression
+    36  shift_expression : shift_expression SR additive_expression
+    37  shift_expression : shift_expression USR additive_expression
+    38  relational_expression : shift_expression
+    39  relational_expression : relational_expression '<'(60) shift_expression
+    40  relational_expression : relational_expression '>'(62) shift_expression
+    41  relational_expression : relational_expression LTEQ shift_expression
+    42  relational_expression : relational_expression GTEQ shift_expression
+    43  equality_expression : relational_expression
+    44  equality_expression : equality_expression EQ relational_expression
+    45  equality_expression : equality_expression NOTEQ relational_expression
+    46  and_expression : equality_expression
+    47  and_expression : and_expression '&'(38) equality_expression
+    48  exclusive_or_expression : and_expression
+    49  exclusive_or_expression : exclusive_or_expression '^'(94) and_expression
+    50  inclusive_or_expression : exclusive_or_expression
+    51  inclusive_or_expression : inclusive_or_expression '|'(124) exclusive_or_expression
+    52  logical_and_expression : inclusive_or_expression
+    53  logical_and_expression : logical_and_expression ANDAND inclusive_or_expression
+    54  logical_or_expression : logical_and_expression
+    55  logical_or_expression : logical_or_expression OROR logical_and_expression
+    56  conditional_expression : logical_or_expression
+    57  conditional_expression : logical_or_expression '?'(63) expression ':'(58) conditional_expression
+    58  assignment_expression : conditional_expression
+    59  assignment_expression : unary_expression '='(61) assignment_expression
+    60  assignment_expression : unary_expression MULEQ assignment_expression
+    61  assignment_expression : unary_expression DIVEQ assignment_expression
+    62  assignment_expression : unary_expression MODEQ assignment_expression
+    63  assignment_expression : unary_expression ADDEQ assignment_expression
+    64  assignment_expression : unary_expression SUBEQ assignment_expression
+    65  assignment_expression : unary_expression SLEQ assignment_expression
+    66  assignment_expression : unary_expression SREQ assignment_expression
+    67  assignment_expression : unary_expression USREQ assignment_expression
+    68  assignment_expression : unary_expression ANDEQ assignment_expression
+    69  assignment_expression : unary_expression XOREQ assignment_expression
+    70  assignment_expression : unary_expression OREQ assignment_expression
+    71  expression : assignment_expression
+    72  constant_expression : conditional_expression
+    73  qualified_type_specifier : CONST $1 type_specifier
+    74  $1 :
+    75  qualified_type_specifier : type_specifier
+    76  type_specifier : VOID_TYPE
+    77  type_specifier : INT_TYPE
+    78  type_specifier : FLOAT_TYPE
+    79  type_specifier : OBJECT_TYPE
+    80  type_specifier : STRING_TYPE
+    81  type_specifier : ACTION_TYPE
+    82  type_specifier : VECTOR_TYPE
+    83  type_specifier : struct_type_start IDENTIFIER
+    84  type_specifier : ENGINE_TYPE
+    85  struct_type_start : STRUCT_TYPE
+    86  statement : non_blank_statement
+    87  statement : ';'(59)
+    88  statement_blank_error : non_blank_statement
+    89  statement_blank_error : ';'(59)
+    90  non_blank_statement : labeled_statement
+    91  non_blank_statement : compound_statement
+    92  non_blank_statement : expression_statement
+    93  non_blank_statement : selection_statement
+    94  non_blank_statement : iteration_statement
+    95  non_blank_statement : jump_statement
+    96  non_blank_statement : declaration
+    97  labeled_statement : case_statement
+    98  case_statement : CASE $2 constant_expression ':'(58)
+    99  $2 :
+   100  case_statement : DEFAULT $3 ':'(58)
+   101  $3 :
+   102  compound_statement : compound_statement_start '}'(125)
+   103  compound_statement : compound_statement_start statement_list '}'(125)
+   104  compound_statement_start : '{'(123)
+   105  statement_list : statement
+   106  statement_list : statement_list statement
+   107  expression_statement : $4 expression ';'(59)
+   108  $4 :
+   109  expression_statement : error
+   110  selection_statement : if_start statement_blank_error
+   111  selection_statement : if_else_start statement_blank_error
+   112  selection_statement : switch_start statement
+   113  if_else_start : if_start statement_blank_error ELSE
+   114  if_start : IF '('(40) $5 expression ')'(41)
+   115  $5 :
+   116  switch_start : SWITCH $6 '('(40) expression ')'(41)
+   117  $6 :
+   118  iteration_statement : while_start statement
+   119  iteration_statement : do_start statement WHILE $7 '('(40) expression ')'(41) ';'(59)
+   120  $7 :
+   121  iteration_statement : for_start statement
+   122  for_start : for_start_start ';'(59) ';'(59) ')'(41)
+   123  for_start : for_start_start expression ';'(59) ';'(59) ')'(41)
+   124  for_start : for_start_start ';'(59) expression ';'(59) ')'(41)
+   125  for_start : for_start_start expression ';'(59) expression ';'(59) ')'(41)
+   126  for_start : for_start_start ';'(59) ';'(59) expression ')'(41)
+   127  for_start : for_start_start expression ';'(59) ';'(59) expression ')'(41)
+   128  for_start : for_start_start ';'(59) expression ';'(59) expression ')'(41)
+   129  for_start : for_start_start expression ';'(59) expression ';'(59) expression ')'(41)
+   130  for_start_start : FOR '('(40)
+   131  while_start : WHILE '('(40) $8 expression ')'(41)
+   132  $8 :
+   133  do_start : DO
+   134  jump_statement : CONTINUE $9 ';'(59)
+   135  $9 :
+   136  jump_statement : BREAK $10 ';'(59)
+   137  $10 :
+   138  jump_statement : return_start ';'(59)
+   139  jump_statement : return_start expression ';'(59)
+   140  return_start : RETURN
+   141  declaration : qualified_type_specifier init_declarator_list ';'(59)
+   142  init_declarator_list : init_declarator
+   143  init_declarator_list : init_declarator_list ','(44) init_declarator
+   144  init_declarator : init_declarator_identifier
+   145  init_declarator : init_declarator_identifier '='(61) assignment_expression
+   146  init_declarator_identifier : IDENTIFIER
+   147  function_definition : function_declarator compound_statement
+   148  function_prototype : function_declarator ';'(59)
+   149  function_declarator : qualified_type_specifier IDENTIFIER '('(40) function_parameter_type_list ')'(41)
+   150  function_declarator : qualified_type_specifier IDENTIFIER '('(40) ')'(41)
+   151  function_parameter_type_list : function_parameter_list
+   152  function_parameter_type_list : function_parameter_list ','(44)
+   153  function_parameter_list : function_parameter_declaration
+   154  function_parameter_list : function_parameter_list ','(44) function_parameter_declaration
+   155  function_parameter_declaration : qualified_type_specifier IDENTIFIER
+   156  function_parameter_declaration : qualified_type_specifier IDENTIFIER '='(61) assignment_expression
+   157  struct_definition : struct_type_start IDENTIFIER '{'(123) struct_declaration_list '}'(125) ';'(59)
+   158  struct_declaration_list : struct_declaration
+   159  struct_declaration_list : struct_declaration_list struct_declaration
+   160  struct_declaration : qualified_type_specifier struct_declarator_list ';'(59)
+   161  struct_declarator_list : IDENTIFIER
+   162  struct_declarator_list : struct_declarator_list ','(44) IDENTIFIER
+   163  translation_unit :
+   164  translation_unit : external_declaration
+   165  translation_unit : translation_unit external_declaration
+   166  translation_unit : error
+   167  external_declaration : function_definition
+   168  external_declaration : function_prototype
+   169  external_declaration : declaration
+   170  external_declaration : struct_definition
+
+
+
+
+  shift/reduce conflict (shift 9, reduce 163) on STRUCT_TYPE
+  shift/reduce conflict (shift  (state is now unaccesible), reduce 163) on CONST
+  shift/reduce conflict (shift 12, reduce 163) on VOID_TYPE
+  shift/reduce conflict (shift 13, reduce 163) on INT_TYPE
+  shift/reduce conflict (shift 14, reduce 163) on FLOAT_TYPE
+  shift/reduce conflict (shift 15, reduce 163) on OBJECT_TYPE
+  shift/reduce conflict (shift 16, reduce 163) on STRING_TYPE
+  shift/reduce conflict (shift 17, reduce 163) on ACTION_TYPE
+  shift/reduce conflict (shift 18, reduce 163) on VECTOR_TYPE
+  shift/reduce conflict (shift 19, reduce 163) on ENGINE_TYPE
+State 0
+
+	$accept : . translation_unit $end  (0)
+
+	error  shift 3
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, push 1 attributes and goto 1
+
+	external_declaration  goto 2
+	function_definition  goto 4
+	function_prototype  goto 5
+	declaration  goto 6
+	struct_definition  goto 7
+	struct_type_start  goto 8
+	qualified_type_specifier  goto 10
+	type_specifier  goto 11
+	function_declarator  goto 20
+
+
+State 1
+
+	$accept : translation_unit . $end  (0)
+	translation_unit : translation_unit . external_declaration  (165)
+
+	$end  shift 278
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  error
+
+	external_declaration  goto 279
+	function_definition  goto 4
+	function_prototype  goto 5
+	declaration  goto 6
+	struct_definition  goto 7
+	struct_type_start  goto 8
+	qualified_type_specifier  goto 10
+	type_specifier  goto 11
+	function_declarator  goto 20
+
+
+State 2 (is not pushed into the stack)
+
+	translation_unit : external_declaration .  (164)
+
+	.  push 1 states, goto 1 and action for 164
+
+
+State 3
+
+	translation_unit : error .  (166)
+
+	.  goto 1 and action for 166
+
+
+State 4 (is not pushed into the stack)
+
+	external_declaration : function_definition .  (167)
+
+	.  reduce 167
+
+
+State 5 (is not pushed into the stack)
+
+	external_declaration : function_prototype .  (168)
+
+	.  reduce 168
+
+
+State 6 (is not pushed into the stack)
+
+	external_declaration : declaration .  (169)
+
+	.  reduce 169
+
+
+State 7 (is not pushed into the stack)
+
+	external_declaration : struct_definition .  (170)
+
+	.  reduce 170
+
+
+State 8 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : struct_type_start . IDENTIFIER  (83)
+	struct_definition : struct_type_start . IDENTIFIER '{'(123) struct_declaration_list '}'(125) ';'(59)  (157)
+
+	IDENTIFIER  shift 267
+	.  error
+
+
+State 9 (is not pushed into the stack) (attribute is not used)
+
+	struct_type_start : STRUCT_TYPE .  (85)
+
+	.  reduce 85
+
+
+State 10
+
+	declaration : qualified_type_specifier . init_declarator_list ';'(59)  (141)
+	function_declarator : qualified_type_specifier . IDENTIFIER '('(40) function_parameter_type_list ')'(41)  (149)
+	function_declarator : qualified_type_specifier . IDENTIFIER '('(40) ')'(41)  (150)
+
+	IDENTIFIER  shift 254
+	.  error
+
+	init_declarator_list  goto 241
+	init_declarator  goto 242
+
+
+State 11 (is not pushed into the stack)
+
+	qualified_type_specifier : type_specifier .  (75)
+
+	.  reduce 75
+
+
+State 12 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : VOID_TYPE .  (76)
+
+	.  reduce 76
+
+
+State 13 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : INT_TYPE .  (77)
+
+	.  reduce 77
+
+
+State 14 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : FLOAT_TYPE .  (78)
+
+	.  reduce 78
+
+
+State 15 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : OBJECT_TYPE .  (79)
+
+	.  reduce 79
+
+
+State 16 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : STRING_TYPE .  (80)
+
+	.  reduce 80
+
+
+State 17 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : ACTION_TYPE .  (81)
+
+	.  reduce 81
+
+
+State 18 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : VECTOR_TYPE .  (82)
+
+	.  reduce 82
+
+
+State 19 (is not pushed into the stack)
+
+	type_specifier : ENGINE_TYPE .  (84)
+
+	.  reduce 84
+
+
+State 20
+
+	function_definition : function_declarator . compound_statement  (147)
+	function_prototype : function_declarator . ';'(59)  (148)
+
+	';'(59)  shift 22
+	'{'(123)  shift 24
+	.  error
+
+	compound_statement  goto 21
+	compound_statement_start  goto 23
+
+
+State 21 (is not pushed into the stack)
+
+	function_definition : function_declarator compound_statement .  (147)
+
+	.  reduce 147
+
+
+State 22 (is not pushed into the stack) (attribute is not used)
+
+	function_prototype : function_declarator ';'(59) .  (148)
+
+	.  reduce 148
+
+
+State 23
+
+	compound_statement : compound_statement_start . '}'(125)  (102)
+	compound_statement : compound_statement_start . statement_list '}'(125)  (103)
+
+	';'(59)  shift 29
+	'{'(123)  shift 24
+	'}'(125)  shift 25
+	error  shift 53
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	BREAK  shift, goto 236 and action for 137
+	CASE  push 1 states, shift, goto 57 and action for 99
+	CONTINUE  shift, goto 238 and action for 135
+	DEFAULT  shift, goto 55 and action for 101
+	DO  shift 46
+	FOR  shift 45
+	IF  shift 51
+	RETURN  shift 40
+	SWITCH  shift, goto 190 and action for 117
+	WHILE  shift 47
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, goto 52 and action for 108
+
+	statement  goto 27
+	non_blank_statement  goto 28
+	labeled_statement  goto 30
+	compound_statement  goto 31
+	expression_statement  goto 32
+	selection_statement  goto 33
+	iteration_statement  goto 34
+	jump_statement  goto 35
+	declaration  goto 36
+	qualified_type_specifier  goto 37
+	type_specifier  goto 11
+	struct_type_start  goto 38
+	return_start  goto 39
+	while_start  goto 41
+	do_start  goto 42
+	for_start  goto 43
+	for_start_start  goto 44
+	if_start  goto 48
+	if_else_start  goto 49
+	switch_start  goto 50
+	compound_statement_start  goto 23
+	case_statement  goto 54
+
+
+State 24 (is not pushed into the stack) (attribute is not used)
+
+	compound_statement_start : '{'(123) .  (104)
+
+	.  reduce 104
+
+
+State 25 (is not pushed into the stack) (attribute is not used)
+
+	compound_statement : compound_statement_start '}'(125) .  (102)
+
+	.  reduce 102
+
+
+State 26
+
+	compound_statement : compound_statement_start statement_list . '}'(125)  (103)
+	statement_list : statement_list . statement  (106)
+
+	';'(59)  shift 29
+	'{'(123)  shift 24
+	'}'(125)  shift 250
+	error  shift 53
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	BREAK  shift, goto 236 and action for 137
+	CASE  push 1 states, shift, goto 57 and action for 99
+	CONTINUE  shift, goto 238 and action for 135
+	DEFAULT  shift, goto 55 and action for 101
+	DO  shift 46
+	FOR  shift 45
+	IF  shift 51
+	RETURN  shift 40
+	SWITCH  shift, goto 190 and action for 117
+	WHILE  shift 47
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, goto 52 and action for 108
+
+	statement  goto 251
+	non_blank_statement  goto 28
+	labeled_statement  goto 30
+	compound_statement  goto 31
+	expression_statement  goto 32
+	selection_statement  goto 33
+	iteration_statement  goto 34
+	jump_statement  goto 35
+	declaration  goto 36
+	qualified_type_specifier  goto 37
+	type_specifier  goto 11
+	struct_type_start  goto 38
+	return_start  goto 39
+	while_start  goto 41
+	do_start  goto 42
+	for_start  goto 43
+	for_start_start  goto 44
+	if_start  goto 48
+	if_else_start  goto 49
+	switch_start  goto 50
+	compound_statement_start  goto 23
+	case_statement  goto 54
+
+
+State 27 (is not pushed into the stack)
+
+	statement_list : statement .  (105)
+
+	.  push 1 states, goto 26 and action for 105
+
+
+State 28 (is not pushed into the stack)
+
+	statement : non_blank_statement .  (86)
+
+	.  reduce 86
+
+
+State 29 (is not pushed into the stack) (attribute is not used)
+
+	statement : ';'(59) .  (87)
+
+	.  reduce 87
+
+
+State 30 (is not pushed into the stack)
+
+	non_blank_statement : labeled_statement .  (90)
+
+	.  reduce 90
+
+
+State 31 (is not pushed into the stack)
+
+	non_blank_statement : compound_statement .  (91)
+
+	.  reduce 91
+
+
+State 32 (is not pushed into the stack)
+
+	non_blank_statement : expression_statement .  (92)
+
+	.  reduce 92
+
+
+State 33 (is not pushed into the stack)
+
+	non_blank_statement : selection_statement .  (93)
+
+	.  reduce 93
+
+
+State 34 (is not pushed into the stack)
+
+	non_blank_statement : iteration_statement .  (94)
+
+	.  reduce 94
+
+
+State 35 (is not pushed into the stack)
+
+	non_blank_statement : jump_statement .  (95)
+
+	.  reduce 95
+
+
+State 36 (is not pushed into the stack)
+
+	non_blank_statement : declaration .  (96)
+
+	.  reduce 96
+
+
+State 37
+
+	declaration : qualified_type_specifier . init_declarator_list ';'(59)  (141)
+
+	IDENTIFIER  shift 244
+	.  error
+
+	init_declarator_list  goto 241
+	init_declarator  goto 242
+	init_declarator_identifier  goto 243
+
+
+State 38 (is not pushed into the stack) (attribute is not used)
+
+	type_specifier : struct_type_start . IDENTIFIER  (83)
+
+	IDENTIFIER  shift 240
+	.  error
+
+
+State 39 (attribute is not used)
+
+	jump_statement : return_start . ';'(59)  (138)
+	jump_statement : return_start . expression ';'(59)  (139)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	';'(59)  shift 233
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 234
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 40 (is not pushed into the stack) (attribute is not used)
+
+	return_start : RETURN .  (140)
+
+	.  reduce 140
+
+
+State 41
+
+	iteration_statement : while_start . statement  (118)
+
+	';'(59)  shift 29
+	'{'(123)  shift 24
+	error  shift 53
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	BREAK  shift, goto 236 and action for 137
+	CASE  push 1 states, shift, goto 57 and action for 99
+	CONTINUE  shift, goto 238 and action for 135
+	DEFAULT  shift, goto 55 and action for 101
+	DO  shift 46
+	FOR  shift 45
+	IF  shift 51
+	RETURN  shift 40
+	SWITCH  shift, goto 190 and action for 117
+	WHILE  shift 47
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, goto 52 and action for 108
+
+	statement  goto 232
+	non_blank_statement  goto 28
+	labeled_statement  goto 30
+	compound_statement  goto 31
+	expression_statement  goto 32
+	selection_statement  goto 33
+	iteration_statement  goto 34
+	jump_statement  goto 35
+	declaration  goto 36
+	qualified_type_specifier  goto 37
+	type_specifier  goto 11
+	struct_type_start  goto 38
+	return_start  goto 39
+	while_start  goto 41
+	do_start  goto 42
+	for_start  goto 43
+	for_start_start  goto 44
+	if_start  goto 48
+	if_else_start  goto 49
+	switch_start  goto 50
+	compound_statement_start  goto 23
+	case_statement  goto 54
+
+
+State 42
+
+	iteration_statement : do_start . statement WHILE $7 '('(40) expression ')'(41) ';'(59)  (119)
+
+	';'(59)  shift 29
+	'{'(123)  shift 24
+	error  shift 53
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	BREAK  shift, goto 236 and action for 137
+	CASE  push 1 states, shift, goto 57 and action for 99
+	CONTINUE  shift, goto 238 and action for 135
+	DEFAULT  shift, goto 55 and action for 101
+	DO  shift 46
+	FOR  shift 45
+	IF  shift 51
+	RETURN  shift 40
+	SWITCH  shift, goto 190 and action for 117
+	WHILE  shift 47
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, goto 52 and action for 108
+
+	statement  goto 226
+	non_blank_statement  goto 28
+	labeled_statement  goto 30
+	compound_statement  goto 31
+	expression_statement  goto 32
+	selection_statement  goto 33
+	iteration_statement  goto 34
+	jump_statement  goto 35
+	declaration  goto 36
+	qualified_type_specifier  goto 37
+	type_specifier  goto 11
+	struct_type_start  goto 38
+	return_start  goto 39
+	while_start  goto 41
+	do_start  goto 42
+	for_start  goto 43
+	for_start_start  goto 44
+	if_start  goto 48
+	if_else_start  goto 49
+	switch_start  goto 50
+	compound_statement_start  goto 23
+	case_statement  goto 54
+
+
+State 43
+
+	iteration_statement : for_start . statement  (121)
+
+	';'(59)  shift 29
+	'{'(123)  shift 24
+	error  shift 53
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	BREAK  shift, goto 236 and action for 137
+	CASE  push 1 states, shift, goto 57 and action for 99
+	CONTINUE  shift, goto 238 and action for 135
+	DEFAULT  shift, goto 55 and action for 101
+	DO  shift 46
+	FOR  shift 45
+	IF  shift 51
+	RETURN  shift 40
+	SWITCH  shift, goto 190 and action for 117
+	WHILE  shift 47
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, goto 52 and action for 108
+
+	statement  goto 225
+	non_blank_statement  goto 28
+	labeled_statement  goto 30
+	compound_statement  goto 31
+	expression_statement  goto 32
+	selection_statement  goto 33
+	iteration_statement  goto 34
+	jump_statement  goto 35
+	declaration  goto 36
+	qualified_type_specifier  goto 37
+	type_specifier  goto 11
+	struct_type_start  goto 38
+	return_start  goto 39
+	while_start  goto 41
+	do_start  goto 42
+	for_start  goto 43
+	for_start_start  goto 44
+	if_start  goto 48
+	if_else_start  goto 49
+	switch_start  goto 50
+	compound_statement_start  goto 23
+	case_statement  goto 54
+
+
+State 44 (attribute is not used)
+
+	for_start : for_start_start . ';'(59) ';'(59) ')'(41)  (122)
+	for_start : for_start_start . expression ';'(59) ';'(59) ')'(41)  (123)
+	for_start : for_start_start . ';'(59) expression ';'(59) ')'(41)  (124)
+	for_start : for_start_start . expression ';'(59) expression ';'(59) ')'(41)  (125)
+	for_start : for_start_start . ';'(59) ';'(59) expression ')'(41)  (126)
+	for_start : for_start_start . expression ';'(59) ';'(59) expression ')'(41)  (127)
+	for_start : for_start_start . ';'(59) expression ';'(59) expression ')'(41)  (128)
+	for_start : for_start_start . expression ';'(59) expression ';'(59) expression ')'(41)  (129)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	';'(59)  shift 204
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 205
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 45 (is not pushed into the stack) (attribute is not used)
+
+	for_start_start : FOR . '('(40)  (130)
+
+	'('(40)  shift 203
+	.  error
+
+
+State 46 (is not pushed into the stack) (attribute is not used)
+
+	do_start : DO .  (133)
+
+	.  reduce 133
+
+
+State 47 (is not pushed into the stack) (attribute is not used)
+
+	while_start : WHILE . '('(40) $8 expression ')'(41)  (131)
+
+	'('(40)  push 1 states, shift, goto 200 and action for 132
+	.  error
+
+
+State 48
+
+	selection_statement : if_start . statement_blank_error  (110)
+	if_else_start : if_start . statement_blank_error ELSE  (113)
+
+	';'(59)  shift 197
+	'{'(123)  shift 24
+	error  shift 53
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	BREAK  shift, goto 236 and action for 137
+	CASE  push 1 states, shift, goto 57 and action for 99
+	CONTINUE  shift, goto 238 and action for 135
+	DEFAULT  shift, goto 55 and action for 101
+	DO  shift 46
+	FOR  shift 45
+	IF  shift 51
+	RETURN  shift 40
+	SWITCH  shift, goto 190 and action for 117
+	WHILE  shift 47
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, goto 52 and action for 108
+
+	statement_blank_error  goto 198
+	non_blank_statement  goto 196
+	labeled_statement  goto 30
+	compound_statement  goto 31
+	expression_statement  goto 32
+	selection_statement  goto 33
+	iteration_statement  goto 34
+	jump_statement  goto 35
+	declaration  goto 36
+	qualified_type_specifier  goto 37
+	type_specifier  goto 11
+	struct_type_start  goto 38
+	return_start  goto 39
+	while_start  goto 41
+	do_start  goto 42
+	for_start  goto 43
+	for_start_start  goto 44
+	if_start  goto 48
+	if_else_start  goto 49
+	switch_start  goto 50
+	compound_statement_start  goto 23
+	case_statement  goto 54
+
+
+State 49
+
+	selection_statement : if_else_start . statement_blank_error  (111)
+
+	';'(59)  shift 197
+	'{'(123)  shift 24
+	error  shift 53
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	BREAK  shift, goto 236 and action for 137
+	CASE  push 1 states, shift, goto 57 and action for 99
+	CONTINUE  shift, goto 238 and action for 135
+	DEFAULT  shift, goto 55 and action for 101
+	DO  shift 46
+	FOR  shift 45
+	IF  shift 51
+	RETURN  shift 40
+	SWITCH  shift, goto 190 and action for 117
+	WHILE  shift 47
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, goto 52 and action for 108
+
+	statement_blank_error  goto 195
+	non_blank_statement  goto 196
+	labeled_statement  goto 30
+	compound_statement  goto 31
+	expression_statement  goto 32
+	selection_statement  goto 33
+	iteration_statement  goto 34
+	jump_statement  goto 35
+	declaration  goto 36
+	qualified_type_specifier  goto 37
+	type_specifier  goto 11
+	struct_type_start  goto 38
+	return_start  goto 39
+	while_start  goto 41
+	do_start  goto 42
+	for_start  goto 43
+	for_start_start  goto 44
+	if_start  goto 48
+	if_else_start  goto 49
+	switch_start  goto 50
+	compound_statement_start  goto 23
+	case_statement  goto 54
+
+
+State 50
+
+	selection_statement : switch_start . statement  (112)
+
+	';'(59)  shift 29
+	'{'(123)  shift 24
+	error  shift 53
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	BREAK  shift, goto 236 and action for 137
+	CASE  push 1 states, shift, goto 57 and action for 99
+	CONTINUE  shift, goto 238 and action for 135
+	DEFAULT  shift, goto 55 and action for 101
+	DO  shift 46
+	FOR  shift 45
+	IF  shift 51
+	RETURN  shift 40
+	SWITCH  shift, goto 190 and action for 117
+	WHILE  shift 47
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  push 1 states, goto 52 and action for 108
+
+	statement  goto 194
+	non_blank_statement  goto 28
+	labeled_statement  goto 30
+	compound_statement  goto 31
+	expression_statement  goto 32
+	selection_statement  goto 33
+	iteration_statement  goto 34
+	jump_statement  goto 35
+	declaration  goto 36
+	qualified_type_specifier  goto 37
+	type_specifier  goto 11
+	struct_type_start  goto 38
+	return_start  goto 39
+	while_start  goto 41
+	do_start  goto 42
+	for_start  goto 43
+	for_start_start  goto 44
+	if_start  goto 48
+	if_else_start  goto 49
+	switch_start  goto 50
+	compound_statement_start  goto 23
+	case_statement  goto 54
+
+
+State 51 (is not pushed into the stack) (attribute is not used)
+
+	if_start : IF . '('(40) $5 expression ')'(41)  (114)
+
+	'('(40)  push 1 states, shift, goto 187 and action for 115
+	.  error
+
+
+State 52 (attribute is not used)
+
+	expression_statement : $4 . expression ';'(59)  (107)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 185
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 53
+
+	expression_statement : error .  (109)
+
+	.  reduce 109
+
+
+State 54 (is not pushed into the stack)
+
+	labeled_statement : case_statement .  (97)
+
+	.  reduce 97
+
+
+State 55 (is not pushed into the stack) (attribute is not used)
+
+	case_statement : DEFAULT $3 . ':'(58)  (100)
+
+	':'(58)  shift 56
+	.  error
+
+
+State 56 (is not pushed into the stack) (attribute is not used)
+
+	case_statement : DEFAULT $3 ':'(58) .  (100)
+
+	.  reduce 100
+
+
+State 57 (attribute is not used)
+
+	case_statement : CASE $2 . constant_expression ':'(58)  (98)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	conditional_expression  goto 59
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 58 (is not pushed into the stack)
+
+	case_statement : CASE $2 constant_expression . ':'(58)  (98)
+
+	':'(58)  shift 184
+	.  error
+
+
+State 59 (is not pushed into the stack)
+
+	constant_expression : conditional_expression .  (72)
+
+	.  goto 58 and action for 72
+
+
+State 60 (is not pushed into the stack)
+
+	logical_or_expression : logical_or_expression . OROR logical_and_expression  (55)
+	conditional_expression : logical_or_expression .  (56)
+	conditional_expression : logical_or_expression . '?'(63) expression ':'(58) conditional_expression  (57)
+
+	'?'(63)  shift 179
+	OROR  shift 178
+	.  reduce 56
+
+
+State 61 (is not pushed into the stack)
+
+	logical_and_expression : logical_and_expression . ANDAND inclusive_or_expression  (53)
+	logical_or_expression : logical_and_expression .  (54)
+
+	ANDAND  shift 176
+	.  reduce 54
+
+
+State 62 (is not pushed into the stack)
+
+	inclusive_or_expression : inclusive_or_expression . '|'(124) exclusive_or_expression  (51)
+	logical_and_expression : inclusive_or_expression .  (52)
+
+	'|'(124)  shift 174
+	.  reduce 52
+
+
+State 63 (is not pushed into the stack)
+
+	exclusive_or_expression : exclusive_or_expression . '^'(94) and_expression  (49)
+	inclusive_or_expression : exclusive_or_expression .  (50)
+
+	'^'(94)  shift 172
+	.  reduce 50
+
+
+State 64 (is not pushed into the stack)
+
+	and_expression : and_expression . '&'(38) equality_expression  (47)
+	exclusive_or_expression : and_expression .  (48)
+
+	'&'(38)  shift 170
+	.  reduce 48
+
+
+State 65 (is not pushed into the stack)
+
+	equality_expression : equality_expression . EQ relational_expression  (44)
+	equality_expression : equality_expression . NOTEQ relational_expression  (45)
+	and_expression : equality_expression .  (46)
+
+	EQ  shift 166
+	NOTEQ  shift 167
+	.  reduce 46
+
+
+State 66 (is not pushed into the stack)
+
+	relational_expression : relational_expression . '<'(60) shift_expression  (39)
+	relational_expression : relational_expression . '>'(62) shift_expression  (40)
+	relational_expression : relational_expression . LTEQ shift_expression  (41)
+	relational_expression : relational_expression . GTEQ shift_expression  (42)
+	equality_expression : relational_expression .  (43)
+
+	'<'(60)  shift 158
+	'>'(62)  shift 159
+	LTEQ  shift 160
+	GTEQ  shift 161
+	.  reduce 43
+
+
+State 67 (is not pushed into the stack)
+
+	shift_expression : shift_expression . SL additive_expression  (35)
+	shift_expression : shift_expression . SR additive_expression  (36)
+	shift_expression : shift_expression . USR additive_expression  (37)
+	relational_expression : shift_expression .  (38)
+
+	SL  shift 152
+	SR  shift 153
+	USR  shift 154
+	.  reduce 38
+
+
+State 68 (is not pushed into the stack)
+
+	additive_expression : additive_expression . '+'(43) multiplicative_expression  (32)
+	additive_expression : additive_expression . '-'(45) multiplicative_expression  (33)
+	shift_expression : additive_expression .  (34)
+
+	'+'(43)  shift 148
+	'-'(45)  shift 149
+	.  reduce 34
+
+
+State 69 (is not pushed into the stack)
+
+	multiplicative_expression : multiplicative_expression . '*'(42) unary_expression  (28)
+	multiplicative_expression : multiplicative_expression . '/'(47) unary_expression  (29)
+	multiplicative_expression : multiplicative_expression . '%'(37) unary_expression  (30)
+	additive_expression : multiplicative_expression .  (31)
+
+	'%'(37)  shift 144
+	'*'(42)  shift 142
+	'/'(47)  shift 143
+	.  reduce 31
+
+
+State 70 (is not pushed into the stack)
+
+	multiplicative_expression : unary_expression .  (27)
+
+	.  reduce 27
+
+
+State 71 (is not pushed into the stack)
+
+	postfix_expression : postfix_expression . '.'(46) IDENTIFIER  (15)
+	postfix_expression : postfix_expression . PLUSPLUS  (16)
+	postfix_expression : postfix_expression . MINUSMINUS  (17)
+	unary_expression : postfix_expression .  (20)
+
+	'.'(46)  shift 138
+	PLUSPLUS  shift 139
+	MINUSMINUS  shift 140
+	.  reduce 20
+
+
+State 72 (attribute is not used)
+
+	unary_expression : PLUSPLUS . unary_expression  (21)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 137
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 73 (attribute is not used)
+
+	unary_expression : MINUSMINUS . unary_expression  (22)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 136
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 74 (attribute is not used)
+
+	unary_expression : '+'(43) . unary_expression  (23)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 135
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 75 (attribute is not used)
+
+	unary_expression : '-'(45) . unary_expression  (24)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 134
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 76 (attribute is not used)
+
+	unary_expression : '~'(126) . unary_expression  (25)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 133
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 77 (attribute is not used)
+
+	unary_expression : '!'(33) . unary_expression  (26)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 132
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 78 (is not pushed into the stack)
+
+	postfix_expression : primary_expression .  (12)
+
+	.  reduce 12
+
+
+State 79 (is not pushed into the stack)
+
+	primary_expression : IDENTIFIER .  (1)
+	postfix_expression : IDENTIFIER . '('(40) argument_expression_list ')'(41)  (13)
+	postfix_expression : IDENTIFIER . '('(40) ')'(41)  (14)
+
+	'('(40)  shift 125
+	.  reduce 1
+
+
+State 80 (is not pushed into the stack)
+
+	primary_expression : INTEGER_CONST .  (2)
+
+	.  reduce 2
+
+
+State 81 (is not pushed into the stack)
+
+	primary_expression : FLOAT_CONST .  (3)
+
+	.  reduce 3
+
+
+State 82 (is not pushed into the stack)
+
+	primary_expression : STRING_CONST .  (4)
+
+	.  reduce 4
+
+
+State 83 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : OBJECT_SELF_CONST .  (5)
+
+	.  reduce 5
+
+
+State 84 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : OBJECT_INVALID_CONST .  (6)
+
+	.  reduce 6
+
+
+State 85 (attribute is not used)
+
+	primary_expression : '('(40) . expression ')'(41)  (7)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 96
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 86 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : '['(91) . ']'(93)  (8)
+	primary_expression : '['(91) . FLOAT_CONST ']'(93)  (9)
+	primary_expression : '['(91) . FLOAT_CONST ','(44) FLOAT_CONST ']'(93)  (10)
+	primary_expression : '['(91) . FLOAT_CONST ','(44) FLOAT_CONST ','(44) FLOAT_CONST ']'(93)  (11)
+
+	']'(93)  shift 87
+	FLOAT_CONST  shift 88
+	.  error
+
+
+State 87 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : '['(91) ']'(93) .  (8)
+
+	.  reduce 8
+
+
+State 88 (is not pushed into the stack)
+
+	primary_expression : '['(91) FLOAT_CONST . ']'(93)  (9)
+	primary_expression : '['(91) FLOAT_CONST . ','(44) FLOAT_CONST ']'(93)  (10)
+	primary_expression : '['(91) FLOAT_CONST . ','(44) FLOAT_CONST ','(44) FLOAT_CONST ']'(93)  (11)
+
+	','(44)  shift 90
+	']'(93)  shift 89
+	.  error
+
+
+State 89 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : '['(91) FLOAT_CONST ']'(93) .  (9)
+
+	.  reduce 9
+
+
+State 90 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : '['(91) FLOAT_CONST ','(44) . FLOAT_CONST ']'(93)  (10)
+	primary_expression : '['(91) FLOAT_CONST ','(44) . FLOAT_CONST ','(44) FLOAT_CONST ']'(93)  (11)
+
+	FLOAT_CONST  shift 91
+	.  error
+
+
+State 91 (is not pushed into the stack)
+
+	primary_expression : '['(91) FLOAT_CONST ','(44) FLOAT_CONST . ']'(93)  (10)
+	primary_expression : '['(91) FLOAT_CONST ','(44) FLOAT_CONST . ','(44) FLOAT_CONST ']'(93)  (11)
+
+	','(44)  shift 93
+	']'(93)  shift 92
+	.  error
+
+
+State 92 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : '['(91) FLOAT_CONST ','(44) FLOAT_CONST ']'(93) .  (10)
+
+	.  reduce 10
+
+
+State 93 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : '['(91) FLOAT_CONST ','(44) FLOAT_CONST ','(44) . FLOAT_CONST ']'(93)  (11)
+
+	FLOAT_CONST  shift 94
+	.  error
+
+
+State 94 (is not pushed into the stack)
+
+	primary_expression : '['(91) FLOAT_CONST ','(44) FLOAT_CONST ','(44) FLOAT_CONST . ']'(93)  (11)
+
+	']'(93)  shift 95
+	.  error
+
+
+State 95 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : '['(91) FLOAT_CONST ','(44) FLOAT_CONST ','(44) FLOAT_CONST ']'(93) .  (11)
+
+	.  reduce 11
+
+
+State 96 (is not pushed into the stack)
+
+	primary_expression : '('(40) expression . ')'(41)  (7)
+
+	')'(41)  shift 124
+	.  error
+
+
+State 97 (is not pushed into the stack)
+
+	expression : assignment_expression .  (71)
+
+	.  reduce 71
+
+
+State 98 (is not pushed into the stack)
+
+	assignment_expression : conditional_expression .  (58)
+
+	.  reduce 58
+
+
+State 99 (is not pushed into the stack)
+
+	multiplicative_expression : unary_expression .  (27)
+	assignment_expression : unary_expression . '='(61) assignment_expression  (59)
+	assignment_expression : unary_expression . MULEQ assignment_expression  (60)
+	assignment_expression : unary_expression . DIVEQ assignment_expression  (61)
+	assignment_expression : unary_expression . MODEQ assignment_expression  (62)
+	assignment_expression : unary_expression . ADDEQ assignment_expression  (63)
+	assignment_expression : unary_expression . SUBEQ assignment_expression  (64)
+	assignment_expression : unary_expression . SLEQ assignment_expression  (65)
+	assignment_expression : unary_expression . SREQ assignment_expression  (66)
+	assignment_expression : unary_expression . USREQ assignment_expression  (67)
+	assignment_expression : unary_expression . ANDEQ assignment_expression  (68)
+	assignment_expression : unary_expression . XOREQ assignment_expression  (69)
+	assignment_expression : unary_expression . OREQ assignment_expression  (70)
+
+	'='(61)  shift 100
+	ADDEQ  shift 104
+	SUBEQ  shift 105
+	MULEQ  shift 101
+	DIVEQ  shift 102
+	MODEQ  shift 103
+	XOREQ  shift 110
+	ANDEQ  shift 109
+	OREQ  shift 111
+	SLEQ  shift 106
+	SREQ  shift 107
+	USREQ  shift 108
+	.  reduce 27
+
+
+State 100 (attribute is not used)
+
+	assignment_expression : unary_expression '='(61) . assignment_expression  (59)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 123
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 101 (attribute is not used)
+
+	assignment_expression : unary_expression MULEQ . assignment_expression  (60)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 122
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 102 (attribute is not used)
+
+	assignment_expression : unary_expression DIVEQ . assignment_expression  (61)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 121
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 103 (attribute is not used)
+
+	assignment_expression : unary_expression MODEQ . assignment_expression  (62)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 120
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 104 (attribute is not used)
+
+	assignment_expression : unary_expression ADDEQ . assignment_expression  (63)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 119
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 105 (attribute is not used)
+
+	assignment_expression : unary_expression SUBEQ . assignment_expression  (64)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 118
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 106 (attribute is not used)
+
+	assignment_expression : unary_expression SLEQ . assignment_expression  (65)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 117
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 107 (attribute is not used)
+
+	assignment_expression : unary_expression SREQ . assignment_expression  (66)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 116
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 108 (attribute is not used)
+
+	assignment_expression : unary_expression USREQ . assignment_expression  (67)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 115
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 109 (attribute is not used)
+
+	assignment_expression : unary_expression ANDEQ . assignment_expression  (68)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 114
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 110 (attribute is not used)
+
+	assignment_expression : unary_expression XOREQ . assignment_expression  (69)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 113
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 111 (attribute is not used)
+
+	assignment_expression : unary_expression OREQ . assignment_expression  (70)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 112
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 112 (is not pushed into the stack)
+
+	assignment_expression : unary_expression OREQ assignment_expression .  (70)
+
+	.  reduce 70
+
+
+State 113 (is not pushed into the stack)
+
+	assignment_expression : unary_expression XOREQ assignment_expression .  (69)
+
+	.  reduce 69
+
+
+State 114 (is not pushed into the stack)
+
+	assignment_expression : unary_expression ANDEQ assignment_expression .  (68)
+
+	.  reduce 68
+
+
+State 115 (is not pushed into the stack)
+
+	assignment_expression : unary_expression USREQ assignment_expression .  (67)
+
+	.  reduce 67
+
+
+State 116 (is not pushed into the stack)
+
+	assignment_expression : unary_expression SREQ assignment_expression .  (66)
+
+	.  reduce 66
+
+
+State 117 (is not pushed into the stack)
+
+	assignment_expression : unary_expression SLEQ assignment_expression .  (65)
+
+	.  reduce 65
+
+
+State 118 (is not pushed into the stack)
+
+	assignment_expression : unary_expression SUBEQ assignment_expression .  (64)
+
+	.  reduce 64
+
+
+State 119 (is not pushed into the stack)
+
+	assignment_expression : unary_expression ADDEQ assignment_expression .  (63)
+
+	.  reduce 63
+
+
+State 120 (is not pushed into the stack)
+
+	assignment_expression : unary_expression MODEQ assignment_expression .  (62)
+
+	.  reduce 62
+
+
+State 121 (is not pushed into the stack)
+
+	assignment_expression : unary_expression DIVEQ assignment_expression .  (61)
+
+	.  reduce 61
+
+
+State 122 (is not pushed into the stack)
+
+	assignment_expression : unary_expression MULEQ assignment_expression .  (60)
+
+	.  reduce 60
+
+
+State 123 (is not pushed into the stack)
+
+	assignment_expression : unary_expression '='(61) assignment_expression .  (59)
+
+	.  reduce 59
+
+
+State 124 (is not pushed into the stack) (attribute is not used)
+
+	primary_expression : '('(40) expression ')'(41) .  (7)
+
+	.  reduce 7
+
+
+State 125 (attribute is not used)
+
+	postfix_expression : IDENTIFIER '('(40) . argument_expression_list ')'(41)  (13)
+	postfix_expression : IDENTIFIER '('(40) . ')'(41)  (14)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	')'(41)  shift 127
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 128
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 126 (is not pushed into the stack)
+
+	postfix_expression : IDENTIFIER '('(40) argument_expression_list . ')'(41)  (13)
+	argument_expression_list : argument_expression_list . ','(44) assignment_expression  (19)
+
+	')'(41)  shift 129
+	','(44)  shift 130
+	.  error
+
+
+State 127 (is not pushed into the stack) (attribute is not used)
+
+	postfix_expression : IDENTIFIER '('(40) ')'(41) .  (14)
+
+	.  reduce 14
+
+
+State 128 (is not pushed into the stack)
+
+	argument_expression_list : assignment_expression .  (18)
+
+	.  goto 126 and action for 18
+
+
+State 129 (is not pushed into the stack) (attribute is not used)
+
+	postfix_expression : IDENTIFIER '('(40) argument_expression_list ')'(41) .  (13)
+
+	.  reduce 13
+
+
+State 130 (attribute is not used)
+
+	argument_expression_list : argument_expression_list ','(44) . assignment_expression  (19)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 131
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 131 (is not pushed into the stack)
+
+	argument_expression_list : argument_expression_list ','(44) assignment_expression .  (19)
+
+	.  pop 1 states, pop 1 attributes, goto 126 and action for 19
+
+
+State 132 (is not pushed into the stack)
+
+	unary_expression : '!'(33) unary_expression .  (26)
+
+	.  reduce 26
+
+
+State 133 (is not pushed into the stack)
+
+	unary_expression : '~'(126) unary_expression .  (25)
+
+	.  reduce 25
+
+
+State 134 (is not pushed into the stack)
+
+	unary_expression : '-'(45) unary_expression .  (24)
+
+	.  reduce 24
+
+
+State 135 (is not pushed into the stack)
+
+	unary_expression : '+'(43) unary_expression .  (23)
+
+	.  reduce 23
+
+
+State 136 (is not pushed into the stack)
+
+	unary_expression : MINUSMINUS unary_expression .  (22)
+
+	.  reduce 22
+
+
+State 137 (is not pushed into the stack)
+
+	unary_expression : PLUSPLUS unary_expression .  (21)
+
+	.  reduce 21
+
+
+State 138 (is not pushed into the stack) (attribute is not used)
+
+	postfix_expression : postfix_expression '.'(46) . IDENTIFIER  (15)
+
+	IDENTIFIER  shift 141
+	.  error
+
+
+State 139 (is not pushed into the stack) (attribute is not used)
+
+	postfix_expression : postfix_expression PLUSPLUS .  (16)
+
+	.  reduce 16
+
+
+State 140 (is not pushed into the stack) (attribute is not used)
+
+	postfix_expression : postfix_expression MINUSMINUS .  (17)
+
+	.  reduce 17
+
+
+State 141 (is not pushed into the stack)
+
+	postfix_expression : postfix_expression '.'(46) IDENTIFIER .  (15)
+
+	.  reduce 15
+
+
+State 142 (attribute is not used)
+
+	multiplicative_expression : multiplicative_expression '*'(42) . unary_expression  (28)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 147
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 143 (attribute is not used)
+
+	multiplicative_expression : multiplicative_expression '/'(47) . unary_expression  (29)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 146
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 144 (attribute is not used)
+
+	multiplicative_expression : multiplicative_expression '%'(37) . unary_expression  (30)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	unary_expression  goto 145
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 145 (is not pushed into the stack)
+
+	multiplicative_expression : multiplicative_expression '%'(37) unary_expression .  (30)
+
+	.  reduce 30
+
+
+State 146 (is not pushed into the stack)
+
+	multiplicative_expression : multiplicative_expression '/'(47) unary_expression .  (29)
+
+	.  reduce 29
+
+
+State 147 (is not pushed into the stack)
+
+	multiplicative_expression : multiplicative_expression '*'(42) unary_expression .  (28)
+
+	.  reduce 28
+
+
+State 148 (attribute is not used)
+
+	additive_expression : additive_expression '+'(43) . multiplicative_expression  (32)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	multiplicative_expression  goto 151
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 149 (attribute is not used)
+
+	additive_expression : additive_expression '-'(45) . multiplicative_expression  (33)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	multiplicative_expression  goto 150
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 150 (is not pushed into the stack)
+
+	additive_expression : additive_expression '-'(45) multiplicative_expression .  (33)
+	multiplicative_expression : multiplicative_expression . '*'(42) unary_expression  (28)
+	multiplicative_expression : multiplicative_expression . '/'(47) unary_expression  (29)
+	multiplicative_expression : multiplicative_expression . '%'(37) unary_expression  (30)
+
+	'%'(37)  shift 144
+	'*'(42)  shift 142
+	'/'(47)  shift 143
+	.  reduce 33
+
+
+State 151 (is not pushed into the stack)
+
+	additive_expression : additive_expression '+'(43) multiplicative_expression .  (32)
+	multiplicative_expression : multiplicative_expression . '*'(42) unary_expression  (28)
+	multiplicative_expression : multiplicative_expression . '/'(47) unary_expression  (29)
+	multiplicative_expression : multiplicative_expression . '%'(37) unary_expression  (30)
+
+	'%'(37)  shift 144
+	'*'(42)  shift 142
+	'/'(47)  shift 143
+	.  reduce 32
+
+
+State 152 (attribute is not used)
+
+	shift_expression : shift_expression SL . additive_expression  (35)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	additive_expression  goto 157
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 153 (attribute is not used)
+
+	shift_expression : shift_expression SR . additive_expression  (36)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	additive_expression  goto 156
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 154 (attribute is not used)
+
+	shift_expression : shift_expression USR . additive_expression  (37)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	additive_expression  goto 155
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 155 (is not pushed into the stack)
+
+	shift_expression : shift_expression USR additive_expression .  (37)
+	additive_expression : additive_expression . '+'(43) multiplicative_expression  (32)
+	additive_expression : additive_expression . '-'(45) multiplicative_expression  (33)
+
+	'+'(43)  shift 148
+	'-'(45)  shift 149
+	.  reduce 37
+
+
+State 156 (is not pushed into the stack)
+
+	shift_expression : shift_expression SR additive_expression .  (36)
+	additive_expression : additive_expression . '+'(43) multiplicative_expression  (32)
+	additive_expression : additive_expression . '-'(45) multiplicative_expression  (33)
+
+	'+'(43)  shift 148
+	'-'(45)  shift 149
+	.  reduce 36
+
+
+State 157 (is not pushed into the stack)
+
+	shift_expression : shift_expression SL additive_expression .  (35)
+	additive_expression : additive_expression . '+'(43) multiplicative_expression  (32)
+	additive_expression : additive_expression . '-'(45) multiplicative_expression  (33)
+
+	'+'(43)  shift 148
+	'-'(45)  shift 149
+	.  reduce 35
+
+
+State 158 (attribute is not used)
+
+	relational_expression : relational_expression '<'(60) . shift_expression  (39)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	shift_expression  goto 165
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 159 (attribute is not used)
+
+	relational_expression : relational_expression '>'(62) . shift_expression  (40)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	shift_expression  goto 164
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 160 (attribute is not used)
+
+	relational_expression : relational_expression LTEQ . shift_expression  (41)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	shift_expression  goto 163
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 161 (attribute is not used)
+
+	relational_expression : relational_expression GTEQ . shift_expression  (42)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	shift_expression  goto 162
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 162 (is not pushed into the stack)
+
+	relational_expression : relational_expression GTEQ shift_expression .  (42)
+	shift_expression : shift_expression . SL additive_expression  (35)
+	shift_expression : shift_expression . SR additive_expression  (36)
+	shift_expression : shift_expression . USR additive_expression  (37)
+
+	SL  shift 152
+	SR  shift 153
+	USR  shift 154
+	.  reduce 42
+
+
+State 163 (is not pushed into the stack)
+
+	relational_expression : relational_expression LTEQ shift_expression .  (41)
+	shift_expression : shift_expression . SL additive_expression  (35)
+	shift_expression : shift_expression . SR additive_expression  (36)
+	shift_expression : shift_expression . USR additive_expression  (37)
+
+	SL  shift 152
+	SR  shift 153
+	USR  shift 154
+	.  reduce 41
+
+
+State 164 (is not pushed into the stack)
+
+	relational_expression : relational_expression '>'(62) shift_expression .  (40)
+	shift_expression : shift_expression . SL additive_expression  (35)
+	shift_expression : shift_expression . SR additive_expression  (36)
+	shift_expression : shift_expression . USR additive_expression  (37)
+
+	SL  shift 152
+	SR  shift 153
+	USR  shift 154
+	.  reduce 40
+
+
+State 165 (is not pushed into the stack)
+
+	relational_expression : relational_expression '<'(60) shift_expression .  (39)
+	shift_expression : shift_expression . SL additive_expression  (35)
+	shift_expression : shift_expression . SR additive_expression  (36)
+	shift_expression : shift_expression . USR additive_expression  (37)
+
+	SL  shift 152
+	SR  shift 153
+	USR  shift 154
+	.  reduce 39
+
+
+State 166 (attribute is not used)
+
+	equality_expression : equality_expression EQ . relational_expression  (44)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	relational_expression  goto 169
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 167 (attribute is not used)
+
+	equality_expression : equality_expression NOTEQ . relational_expression  (45)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	relational_expression  goto 168
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 168 (is not pushed into the stack)
+
+	equality_expression : equality_expression NOTEQ relational_expression .  (45)
+	relational_expression : relational_expression . '<'(60) shift_expression  (39)
+	relational_expression : relational_expression . '>'(62) shift_expression  (40)
+	relational_expression : relational_expression . LTEQ shift_expression  (41)
+	relational_expression : relational_expression . GTEQ shift_expression  (42)
+
+	'<'(60)  shift 158
+	'>'(62)  shift 159
+	LTEQ  shift 160
+	GTEQ  shift 161
+	.  reduce 45
+
+
+State 169 (is not pushed into the stack)
+
+	equality_expression : equality_expression EQ relational_expression .  (44)
+	relational_expression : relational_expression . '<'(60) shift_expression  (39)
+	relational_expression : relational_expression . '>'(62) shift_expression  (40)
+	relational_expression : relational_expression . LTEQ shift_expression  (41)
+	relational_expression : relational_expression . GTEQ shift_expression  (42)
+
+	'<'(60)  shift 158
+	'>'(62)  shift 159
+	LTEQ  shift 160
+	GTEQ  shift 161
+	.  reduce 44
+
+
+State 170 (attribute is not used)
+
+	and_expression : and_expression '&'(38) . equality_expression  (47)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	equality_expression  goto 171
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 171 (is not pushed into the stack)
+
+	and_expression : and_expression '&'(38) equality_expression .  (47)
+	equality_expression : equality_expression . EQ relational_expression  (44)
+	equality_expression : equality_expression . NOTEQ relational_expression  (45)
+
+	EQ  shift 166
+	NOTEQ  shift 167
+	.  reduce 47
+
+
+State 172 (attribute is not used)
+
+	exclusive_or_expression : exclusive_or_expression '^'(94) . and_expression  (49)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	and_expression  goto 173
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 173 (is not pushed into the stack)
+
+	exclusive_or_expression : exclusive_or_expression '^'(94) and_expression .  (49)
+	and_expression : and_expression . '&'(38) equality_expression  (47)
+
+	'&'(38)  shift 170
+	.  reduce 49
+
+
+State 174 (attribute is not used)
+
+	inclusive_or_expression : inclusive_or_expression '|'(124) . exclusive_or_expression  (51)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	exclusive_or_expression  goto 175
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 175 (is not pushed into the stack)
+
+	inclusive_or_expression : inclusive_or_expression '|'(124) exclusive_or_expression .  (51)
+	exclusive_or_expression : exclusive_or_expression . '^'(94) and_expression  (49)
+
+	'^'(94)  shift 172
+	.  reduce 51
+
+
+State 176 (attribute is not used)
+
+	logical_and_expression : logical_and_expression ANDAND . inclusive_or_expression  (53)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	inclusive_or_expression  goto 177
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 177 (is not pushed into the stack)
+
+	logical_and_expression : logical_and_expression ANDAND inclusive_or_expression .  (53)
+	inclusive_or_expression : inclusive_or_expression . '|'(124) exclusive_or_expression  (51)
+
+	'|'(124)  shift 174
+	.  reduce 53
+
+
+State 178 (attribute is not used)
+
+	logical_or_expression : logical_or_expression OROR . logical_and_expression  (55)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	logical_and_expression  goto 183
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 179 (attribute is not used)
+
+	conditional_expression : logical_or_expression '?'(63) . expression ':'(58) conditional_expression  (57)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 180
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 180 (is not pushed into the stack)
+
+	conditional_expression : logical_or_expression '?'(63) expression . ':'(58) conditional_expression  (57)
+
+	':'(58)  shift 181
+	.  error
+
+
+State 181 (attribute is not used)
+
+	conditional_expression : logical_or_expression '?'(63) expression ':'(58) . conditional_expression  (57)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	conditional_expression  goto 182
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+	unary_expression  goto 70
+	postfix_expression  goto 71
+	primary_expression  goto 78
+
+
+State 182 (is not pushed into the stack)
+
+	conditional_expression : logical_or_expression '?'(63) expression ':'(58) conditional_expression .  (57)
+
+	.  reduce 57
+
+
+State 183 (is not pushed into the stack)
+
+	logical_or_expression : logical_or_expression OROR logical_and_expression .  (55)
+	logical_and_expression : logical_and_expression . ANDAND inclusive_or_expression  (53)
+
+	ANDAND  shift 176
+	.  reduce 55
+
+
+State 184 (is not pushed into the stack) (attribute is not used)
+
+	case_statement : CASE $2 constant_expression ':'(58) .  (98)
+
+	.  reduce 98
+
+
+State 185 (is not pushed into the stack)
+
+	expression_statement : $4 expression . ';'(59)  (107)
+
+	';'(59)  shift 186
+	.  error
+
+
+State 186 (is not pushed into the stack) (attribute is not used)
+
+	expression_statement : $4 expression ';'(59) .  (107)
+
+	.  reduce 107
+
+
+State 187 (attribute is not used)
+
+	if_start : IF '('(40) $5 . expression ')'(41)  (114)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 188
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 188 (is not pushed into the stack)
+
+	if_start : IF '('(40) $5 expression . ')'(41)  (114)
+
+	')'(41)  shift 189
+	.  error
+
+
+State 189 (is not pushed into the stack) (attribute is not used)
+
+	if_start : IF '('(40) $5 expression ')'(41) .  (114)
+
+	.  reduce 114
+
+
+State 190 (is not pushed into the stack) (attribute is not used)
+
+	switch_start : SWITCH $6 . '('(40) expression ')'(41)  (116)
+
+	'('(40)  shift 191
+	.  error
+
+
+State 191 (attribute is not used)
+
+	switch_start : SWITCH $6 '('(40) . expression ')'(41)  (116)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 192
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 192 (is not pushed into the stack)
+
+	switch_start : SWITCH $6 '('(40) expression . ')'(41)  (116)
+
+	')'(41)  shift 193
+	.  error
+
+
+State 193 (is not pushed into the stack) (attribute is not used)
+
+	switch_start : SWITCH $6 '('(40) expression ')'(41) .  (116)
+
+	.  reduce 116
+
+
+State 194 (is not pushed into the stack)
+
+	selection_statement : switch_start statement .  (112)
+
+	.  reduce 112
+
+
+State 195 (is not pushed into the stack)
+
+	selection_statement : if_else_start statement_blank_error .  (111)
+
+	.  reduce 111
+
+
+State 196 (is not pushed into the stack)
+
+	statement_blank_error : non_blank_statement .  (88)
+
+	.  reduce 88
+
+
+State 197 (is not pushed into the stack) (attribute is not used)
+
+	statement_blank_error : ';'(59) .  (89)
+
+	.  reduce 89
+
+
+  shift/reduce conflict (shift 199, reduce 110) on ELSE
+State 198 (is not pushed into the stack)
+
+	selection_statement : if_start statement_blank_error .  (110)
+	if_else_start : if_start statement_blank_error . ELSE  (113)
+
+	ELSE  shift 199
+	.  reduce 110
+
+
+State 199 (is not pushed into the stack) (attribute is not used)
+
+	if_else_start : if_start statement_blank_error ELSE .  (113)
+
+	.  reduce 113
+
+
+State 200 (attribute is not used)
+
+	while_start : WHILE '('(40) $8 . expression ')'(41)  (131)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 201
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 201 (is not pushed into the stack)
+
+	while_start : WHILE '('(40) $8 expression . ')'(41)  (131)
+
+	')'(41)  shift 202
+	.  error
+
+
+State 202 (is not pushed into the stack) (attribute is not used)
+
+	while_start : WHILE '('(40) $8 expression ')'(41) .  (131)
+
+	.  reduce 131
+
+
+State 203 (is not pushed into the stack) (attribute is not used)
+
+	for_start_start : FOR '('(40) .  (130)
+
+	.  reduce 130
+
+
+State 204 (attribute is not used)
+
+	for_start : for_start_start ';'(59) . ';'(59) ')'(41)  (122)
+	for_start : for_start_start ';'(59) . expression ';'(59) ')'(41)  (124)
+	for_start : for_start_start ';'(59) . ';'(59) expression ')'(41)  (126)
+	for_start : for_start_start ';'(59) . expression ';'(59) expression ')'(41)  (128)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	';'(59)  shift 216
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 217
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 205 (is not pushed into the stack)
+
+	for_start : for_start_start expression . ';'(59) ';'(59) ')'(41)  (123)
+	for_start : for_start_start expression . ';'(59) expression ';'(59) ')'(41)  (125)
+	for_start : for_start_start expression . ';'(59) ';'(59) expression ')'(41)  (127)
+	for_start : for_start_start expression . ';'(59) expression ';'(59) expression ')'(41)  (129)
+
+	';'(59)  shift 206
+	.  error
+
+
+State 206 (attribute is not used)
+
+	for_start : for_start_start expression ';'(59) . ';'(59) ')'(41)  (123)
+	for_start : for_start_start expression ';'(59) . expression ';'(59) ')'(41)  (125)
+	for_start : for_start_start expression ';'(59) . ';'(59) expression ')'(41)  (127)
+	for_start : for_start_start expression ';'(59) . expression ';'(59) expression ')'(41)  (129)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	';'(59)  shift 207
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 208
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 207 (attribute is not used)
+
+	for_start : for_start_start expression ';'(59) ';'(59) . ')'(41)  (123)
+	for_start : for_start_start expression ';'(59) ';'(59) . expression ')'(41)  (127)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	')'(41)  shift 213
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 214
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 208 (is not pushed into the stack)
+
+	for_start : for_start_start expression ';'(59) expression . ';'(59) ')'(41)  (125)
+	for_start : for_start_start expression ';'(59) expression . ';'(59) expression ')'(41)  (129)
+
+	';'(59)  shift 209
+	.  error
+
+
+State 209 (attribute is not used)
+
+	for_start : for_start_start expression ';'(59) expression ';'(59) . ')'(41)  (125)
+	for_start : for_start_start expression ';'(59) expression ';'(59) . expression ')'(41)  (129)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	')'(41)  shift 210
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 211
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 210 (is not pushed into the stack) (attribute is not used)
+
+	for_start : for_start_start expression ';'(59) expression ';'(59) ')'(41) .  (125)
+
+	.  reduce 125
+
+
+State 211 (is not pushed into the stack)
+
+	for_start : for_start_start expression ';'(59) expression ';'(59) expression . ')'(41)  (129)
+
+	')'(41)  shift 212
+	.  error
+
+
+State 212 (is not pushed into the stack) (attribute is not used)
+
+	for_start : for_start_start expression ';'(59) expression ';'(59) expression ')'(41) .  (129)
+
+	.  reduce 129
+
+
+State 213 (is not pushed into the stack) (attribute is not used)
+
+	for_start : for_start_start expression ';'(59) ';'(59) ')'(41) .  (123)
+
+	.  reduce 123
+
+
+State 214 (is not pushed into the stack)
+
+	for_start : for_start_start expression ';'(59) ';'(59) expression . ')'(41)  (127)
+
+	')'(41)  shift 215
+	.  error
+
+
+State 215 (is not pushed into the stack) (attribute is not used)
+
+	for_start : for_start_start expression ';'(59) ';'(59) expression ')'(41) .  (127)
+
+	.  reduce 127
+
+
+State 216 (attribute is not used)
+
+	for_start : for_start_start ';'(59) ';'(59) . ')'(41)  (122)
+	for_start : for_start_start ';'(59) ';'(59) . expression ')'(41)  (126)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	')'(41)  shift 222
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 223
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 217 (is not pushed into the stack)
+
+	for_start : for_start_start ';'(59) expression . ';'(59) ')'(41)  (124)
+	for_start : for_start_start ';'(59) expression . ';'(59) expression ')'(41)  (128)
+
+	';'(59)  shift 218
+	.  error
+
+
+State 218 (attribute is not used)
+
+	for_start : for_start_start ';'(59) expression ';'(59) . ')'(41)  (124)
+	for_start : for_start_start ';'(59) expression ';'(59) . expression ')'(41)  (128)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	')'(41)  shift 219
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 220
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 219 (is not pushed into the stack) (attribute is not used)
+
+	for_start : for_start_start ';'(59) expression ';'(59) ')'(41) .  (124)
+
+	.  reduce 124
+
+
+State 220 (is not pushed into the stack)
+
+	for_start : for_start_start ';'(59) expression ';'(59) expression . ')'(41)  (128)
+
+	')'(41)  shift 221
+	.  error
+
+
+State 221 (is not pushed into the stack) (attribute is not used)
+
+	for_start : for_start_start ';'(59) expression ';'(59) expression ')'(41) .  (128)
+
+	.  reduce 128
+
+
+State 222 (is not pushed into the stack) (attribute is not used)
+
+	for_start : for_start_start ';'(59) ';'(59) ')'(41) .  (122)
+
+	.  reduce 122
+
+
+State 223 (is not pushed into the stack)
+
+	for_start : for_start_start ';'(59) ';'(59) expression . ')'(41)  (126)
+
+	')'(41)  shift 224
+	.  error
+
+
+State 224 (is not pushed into the stack) (attribute is not used)
+
+	for_start : for_start_start ';'(59) ';'(59) expression ')'(41) .  (126)
+
+	.  reduce 126
+
+
+State 225 (is not pushed into the stack)
+
+	iteration_statement : for_start statement .  (121)
+
+	.  reduce 121
+
+
+State 226 (is not pushed into the stack)
+
+	iteration_statement : do_start statement . WHILE $7 '('(40) expression ')'(41) ';'(59)  (119)
+
+	WHILE  shift, goto 227 and action for 120
+	.  error
+
+
+State 227 (is not pushed into the stack) (attribute is not used)
+
+	iteration_statement : do_start statement WHILE $7 . '('(40) expression ')'(41) ';'(59)  (119)
+
+	'('(40)  shift 228
+	.  error
+
+
+State 228 (attribute is not used)
+
+	iteration_statement : do_start statement WHILE $7 '('(40) . expression ')'(41) ';'(59)  (119)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	expression  goto 229
+	assignment_expression  goto 97
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 229 (is not pushed into the stack)
+
+	iteration_statement : do_start statement WHILE $7 '('(40) expression . ')'(41) ';'(59)  (119)
+
+	')'(41)  shift 230
+	.  error
+
+
+State 230 (is not pushed into the stack) (attribute is not used)
+
+	iteration_statement : do_start statement WHILE $7 '('(40) expression ')'(41) . ';'(59)  (119)
+
+	';'(59)  shift 231
+	.  error
+
+
+State 231 (is not pushed into the stack) (attribute is not used)
+
+	iteration_statement : do_start statement WHILE $7 '('(40) expression ')'(41) ';'(59) .  (119)
+
+	.  reduce 119
+
+
+State 232 (is not pushed into the stack)
+
+	iteration_statement : while_start statement .  (118)
+
+	.  reduce 118
+
+
+State 233 (is not pushed into the stack) (attribute is not used)
+
+	jump_statement : return_start ';'(59) .  (138)
+
+	.  reduce 138
+
+
+State 234 (is not pushed into the stack)
+
+	jump_statement : return_start expression . ';'(59)  (139)
+
+	';'(59)  shift 235
+	.  error
+
+
+State 235 (is not pushed into the stack) (attribute is not used)
+
+	jump_statement : return_start expression ';'(59) .  (139)
+
+	.  reduce 139
+
+
+State 236 (is not pushed into the stack) (attribute is not used)
+
+	jump_statement : BREAK $10 . ';'(59)  (136)
+
+	';'(59)  shift 237
+	.  error
+
+
+State 237 (is not pushed into the stack) (attribute is not used)
+
+	jump_statement : BREAK $10 ';'(59) .  (136)
+
+	.  reduce 136
+
+
+State 238 (is not pushed into the stack) (attribute is not used)
+
+	jump_statement : CONTINUE $9 . ';'(59)  (134)
+
+	';'(59)  shift 239
+	.  error
+
+
+State 239 (is not pushed into the stack) (attribute is not used)
+
+	jump_statement : CONTINUE $9 ';'(59) .  (134)
+
+	.  reduce 134
+
+
+State 240 (is not pushed into the stack)
+
+	type_specifier : struct_type_start IDENTIFIER .  (83)
+
+	.  reduce 83
+
+
+State 241 (is not pushed into the stack)
+
+	declaration : qualified_type_specifier init_declarator_list . ';'(59)  (141)
+	init_declarator_list : init_declarator_list . ','(44) init_declarator  (143)
+
+	','(44)  shift 248
+	';'(59)  shift 247
+	.  error
+
+
+State 242 (is not pushed into the stack)
+
+	init_declarator_list : init_declarator .  (142)
+
+	.  reduce 142
+
+
+State 243 (is not pushed into the stack)
+
+	init_declarator : init_declarator_identifier .  (144)
+	init_declarator : init_declarator_identifier . '='(61) assignment_expression  (145)
+
+	'='(61)  shift 245
+	.  reduce 144
+
+
+State 244 (is not pushed into the stack)
+
+	init_declarator_identifier : IDENTIFIER .  (146)
+
+	.  reduce 146
+
+
+State 245 (attribute is not used)
+
+	init_declarator : init_declarator_identifier '='(61) . assignment_expression  (145)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 246
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 246 (is not pushed into the stack)
+
+	init_declarator : init_declarator_identifier '='(61) assignment_expression .  (145)
+
+	.  reduce 145
+
+
+State 247 (is not pushed into the stack) (attribute is not used)
+
+	declaration : qualified_type_specifier init_declarator_list ';'(59) .  (141)
+
+	.  reduce 141
+
+
+State 248
+
+	init_declarator_list : init_declarator_list ','(44) . init_declarator  (143)
+
+	IDENTIFIER  shift 244
+	.  error
+
+	init_declarator  goto 249
+	init_declarator_identifier  goto 243
+
+
+State 249 (is not pushed into the stack)
+
+	init_declarator_list : init_declarator_list ','(44) init_declarator .  (143)
+
+	.  reduce 143
+
+
+State 250 (is not pushed into the stack) (attribute is not used)
+
+	compound_statement : compound_statement_start statement_list '}'(125) .  (103)
+
+	.  reduce 103
+
+
+State 251 (is not pushed into the stack)
+
+	statement_list : statement_list statement .  (106)
+
+	.  pop 1 attributes, goto 26 and action for 106
+
+
+State 252
+
+	qualified_type_specifier : CONST $1 . type_specifier  (73)
+
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	.  error
+
+	type_specifier  goto 253
+	struct_type_start  goto 38
+
+
+State 253 (is not pushed into the stack)
+
+	qualified_type_specifier : CONST $1 type_specifier .  (73)
+
+	.  reduce 73
+
+
+State 254 (is not pushed into the stack)
+
+	function_declarator : qualified_type_specifier IDENTIFIER . '('(40) function_parameter_type_list ')'(41)  (149)
+	function_declarator : qualified_type_specifier IDENTIFIER . '('(40) ')'(41)  (150)
+	init_declarator_identifier : IDENTIFIER .  (146)
+
+	'('(40)  shift 255
+	.  goto 243 and action for 146
+
+
+State 255
+
+	function_declarator : qualified_type_specifier IDENTIFIER '('(40) . function_parameter_type_list ')'(41)  (149)
+	function_declarator : qualified_type_specifier IDENTIFIER '('(40) . ')'(41)  (150)
+
+	')'(41)  shift 257
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  error
+
+	function_parameter_declaration  goto 259
+	qualified_type_specifier  goto 260
+	type_specifier  goto 11
+	struct_type_start  goto 38
+
+
+State 256 (is not pushed into the stack)
+
+	function_declarator : qualified_type_specifier IDENTIFIER '('(40) function_parameter_type_list . ')'(41)  (149)
+
+	')'(41)  shift 266
+	.  error
+
+
+State 257 (is not pushed into the stack) (attribute is not used)
+
+	function_declarator : qualified_type_specifier IDENTIFIER '('(40) ')'(41) .  (150)
+
+	.  reduce 150
+
+
+State 258 (is not pushed into the stack)
+
+	function_parameter_type_list : function_parameter_list .  (151)
+	function_parameter_type_list : function_parameter_list . ','(44)  (152)
+	function_parameter_list : function_parameter_list . ','(44) function_parameter_declaration  (154)
+
+	','(44)  shift 264
+	.  goto 256
+
+
+State 259 (is not pushed into the stack)
+
+	function_parameter_list : function_parameter_declaration .  (153)
+
+	.  goto 258 and action for 153
+
+
+State 260
+
+	function_parameter_declaration : qualified_type_specifier . IDENTIFIER  (155)
+	function_parameter_declaration : qualified_type_specifier . IDENTIFIER '='(61) assignment_expression  (156)
+
+	IDENTIFIER  shift 261
+	.  error
+
+
+State 261 (is not pushed into the stack)
+
+	function_parameter_declaration : qualified_type_specifier IDENTIFIER .  (155)
+	function_parameter_declaration : qualified_type_specifier IDENTIFIER . '='(61) assignment_expression  (156)
+
+	'='(61)  shift 262
+	.  reduce 155
+
+
+State 262 (attribute is not used)
+
+	function_parameter_declaration : qualified_type_specifier IDENTIFIER '='(61) . assignment_expression  (156)
+
+	'!'(33)  shift 77
+	'('(40)  shift 85
+	'+'(43)  shift 74
+	'-'(45)  shift 75
+	'['(91)  shift 86
+	'~'(126)  shift 76
+	IDENTIFIER  shift 79
+	INTEGER_CONST  shift 80
+	FLOAT_CONST  shift 81
+	STRING_CONST  shift 82
+	PLUSPLUS  shift 72
+	MINUSMINUS  shift 73
+	OBJECT_SELF_CONST  shift 83
+	OBJECT_INVALID_CONST  shift 84
+	.  error
+
+	assignment_expression  goto 263
+	conditional_expression  goto 98
+	unary_expression  goto 99
+	postfix_expression  goto 71
+	primary_expression  goto 78
+	logical_or_expression  goto 60
+	logical_and_expression  goto 61
+	inclusive_or_expression  goto 62
+	exclusive_or_expression  goto 63
+	and_expression  goto 64
+	equality_expression  goto 65
+	relational_expression  goto 66
+	shift_expression  goto 67
+	additive_expression  goto 68
+	multiplicative_expression  goto 69
+
+
+State 263 (is not pushed into the stack)
+
+	function_parameter_declaration : qualified_type_specifier IDENTIFIER '='(61) assignment_expression .  (156)
+
+	.  reduce 156
+
+
+State 264
+
+	function_parameter_type_list : function_parameter_list ','(44) .  (152)
+	function_parameter_list : function_parameter_list ','(44) . function_parameter_declaration  (154)
+
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  pop 1 states, pop 1 attributes and goto 256
+
+	function_parameter_declaration  goto 265
+	qualified_type_specifier  goto 260
+	type_specifier  goto 11
+	struct_type_start  goto 38
+
+
+State 265 (is not pushed into the stack)
+
+	function_parameter_list : function_parameter_list ','(44) function_parameter_declaration .  (154)
+
+	.  pop 1 states, pop 2 attributes, goto 258 and action for 154
+
+
+State 266 (is not pushed into the stack) (attribute is not used)
+
+	function_declarator : qualified_type_specifier IDENTIFIER '('(40) function_parameter_type_list ')'(41) .  (149)
+
+	.  reduce 149
+
+
+State 267 (is not pushed into the stack)
+
+	type_specifier : struct_type_start IDENTIFIER .  (83)
+	struct_definition : struct_type_start IDENTIFIER . '{'(123) struct_declaration_list '}'(125) ';'(59)  (157)
+
+	'{'(123)  shift 268
+	.  reduce 83
+
+
+State 268
+
+	struct_definition : struct_type_start IDENTIFIER '{'(123) . struct_declaration_list '}'(125) ';'(59)  (157)
+
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  error
+
+	struct_declaration  goto 270
+	qualified_type_specifier  goto 271
+	type_specifier  goto 11
+	struct_type_start  goto 38
+
+
+State 269
+
+	struct_definition : struct_type_start IDENTIFIER '{'(123) struct_declaration_list . '}'(125) ';'(59)  (157)
+	struct_declaration_list : struct_declaration_list . struct_declaration  (159)
+
+	'}'(125)  shift 275
+	FLOAT_TYPE  shift 14
+	INT_TYPE  shift 13
+	OBJECT_TYPE  shift 15
+	STRING_TYPE  shift 16
+	VOID_TYPE  shift 12
+	STRUCT_TYPE  shift 9
+	VECTOR_TYPE  shift 18
+	ENGINE_TYPE  shift 19
+	ACTION_TYPE  shift 17
+	CONST  push 1 states, push 1 attributes, shift, goto 252 and action for 74
+	.  error
+
+	struct_declaration  goto 276
+	qualified_type_specifier  goto 271
+	type_specifier  goto 11
+	struct_type_start  goto 38
+
+
+State 270 (is not pushed into the stack)
+
+	struct_declaration_list : struct_declaration .  (158)
+
+	.  push 1 states, goto 269 and action for 158
+
+
+State 271
+
+	struct_declaration : qualified_type_specifier . struct_declarator_list ';'(59)  (160)
+
+	IDENTIFIER  push 1 attributes, shift, goto 272 and action for 161
+	.  error
+
+
+State 272 (is not pushed into the stack)
+
+	struct_declaration : qualified_type_specifier struct_declarator_list . ';'(59)  (160)
+	struct_declarator_list : struct_declarator_list . ','(44) IDENTIFIER  (162)
+
+	','(44)  shift 274
+	';'(59)  shift 273
+	.  error
+
+
+State 273 (is not pushed into the stack) (attribute is not used)
+
+	struct_declaration : qualified_type_specifier struct_declarator_list ';'(59) .  (160)
+
+	.  reduce 160
+
+
+State 274 (is not pushed into the stack) (attribute is not used)
+
+	struct_declarator_list : struct_declarator_list ','(44) . IDENTIFIER  (162)
+
+	IDENTIFIER  shift, goto 272 and action for 162
+	.  error
+
+
+State 275 (is not pushed into the stack) (attribute is not used)
+
+	struct_definition : struct_type_start IDENTIFIER '{'(123) struct_declaration_list '}'(125) . ';'(59)  (157)
+
+	';'(59)  shift 277
+	.  error
+
+
+State 276 (is not pushed into the stack)
+
+	struct_declaration_list : struct_declaration_list struct_declaration .  (159)
+
+	.  pop 1 attributes, goto 269 and action for 159
+
+
+State 277 (is not pushed into the stack) (attribute is not used)
+
+	struct_definition : struct_type_start IDENTIFIER '{'(123) struct_declaration_list '}'(125) ';'(59) .  (157)
+
+	.  reduce 157
+
+
+State 278 (is not pushed into the stack) (attribute is not used)
+
+	$accept : translation_unit $end .  (0)
+
+	.  accept
+
+
+State 279 (is not pushed into the stack)
+
+	translation_unit : translation_unit external_declaration .  (165)
+
+	.  pop 1 attributes, goto 1 and action for 165
+
+
+State 0 contains 10 shift/reduce conflicts.
+State 198 contains 1 shift/reduce conflict.
+
+
+75 terminals (including `error' and EOF), 75 terminal equivalence classes
+68 nonterminals, 171 rules
+420 important LALR-situations, 4071 all LALR-situations
+291 LALR-sets, 280 final states (81 pushed states)
+83 all regular arcs, 35 regular arc equivalence classes
+55 duplicated actions

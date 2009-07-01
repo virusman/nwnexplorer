@@ -1,0 +1,24 @@
+	The Java port of NeverWinter Nights uses two main Design Patterns.  
+	One is from the classic book Design Patterns, by the Gang of Four, 
+called the Mediator pattern.  As I understand it a Mediator is an object that
+controls the interaction between two or more software objects, thereby 
+increasing maintainability and reuse of the mediated objects.  In this case,
+the Mediators I have created handle the interaction between the main GUI 
+elements in the program and the data objects those GUIs are used to 
+construct.  
+	The other pattern I have used is basically a Mediator pattern on a 
+larger scale.  This architecture level pattern is called PAC, Presentation-
+Abstraction-Control, a twist on the more popular MVC, Model-View-Controller.
+The Presentation component in the PAC pattern is the analog of the View 
+component of the MVC pattern, the Control component mirrors the Controller, 
+and the Abstraction component mirrors the Model.  The difference with the 
+PAC pattern is that the Presentation and Abstraction components do not 
+communicate with one another directly.  Instead they do it through the 
+Control component.  Furthermore, a software system that is composed of PAC 
+subsystems conducts communication between PAC subsystems via Control 
+components.
+	It might have also been useful to make some of the dialogs Singletons because they are modal to begin with.  However, I figured that a Java program has a larger than average memory footprint to begin with, so Singletons would be even more wasteful.
+	As a result of my understanding and use of these patterns, the GUI 
+and data object classes in this design are very light weight.  The GUI 
+classes only have get methods.  The data objects only have set and get 
+methods.  These data objects provide no other services. 

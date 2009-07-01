@@ -1,0 +1,24 @@
+
+NWN Tools was originally developped by Edward T. Smith (a.k.a. Torlack). After
+being employed by BioWare, he deemed it was no longer appropriate for him to
+develop this project as it might violate his contract. In order for the
+community to still have access to this work, he contributed the source tree to
+the Open Knights Consortium who will now be maintaining it.
+
+As of now, NWN Tools is no longer owned by a single individual, but instead is
+a group effort of many individuals. While it may have an assigned maintainer,
+anyone is welcomed to join with the Open Knights and to contribute patches to
+it.
+
+The following individuals have done major work for NWN Tools and should be
+noted:
+
+  Original Author
+  Edward T. Smith (Torlack) - torlack@torlack.com
+
+  Initial Linux Port
+  Francois Guimond (Eyrdan) - eyrdan@users.sourceforge.net
+
+  Initial MacOS X Port & Automake/Autoconf Assistance
+  Peter Gorniak (sumpfork) - pgorniak@mac.com
+
