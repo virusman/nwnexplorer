@@ -625,7 +625,7 @@ void CNwnMdlNodeHeader::Decompile (CNwnStream *pStream, CNwnMdlModel *pModel,
             CNwnPointer <char> *ppNames = pLight ->
                 m_apszTextureNames .GetData (pauchModelData);
             snprintf (szText, _countof (szText),
-                      "  texturenames %zd", pLight ->m_apszTextureNames .GetCount ());
+                      "  texturenames %ld", (long)(pLight ->m_apszTextureNames .GetCount ()));
             pStream ->WriteLine (szText);
             for (int i = 0; i < (int) pLight ->m_apszTextureNames .GetCount (); i++)
             {
@@ -640,7 +640,7 @@ void CNwnMdlNodeHeader::Decompile (CNwnStream *pStream, CNwnMdlModel *pModel,
             float *pfSizes = pLight ->
                 m_afFlareSizes .GetData (pauchModelData);
             snprintf (szText, _countof (szText),
-                      "  flaresizes %zd", pLight ->m_afFlareSizes .GetCount ());
+                      "  flaresizes %ld", (long)(pLight ->m_afFlareSizes .GetCount ()));
             pStream ->WriteLine (szText);
             for (int i = 0; i < (int) pLight ->m_afFlareSizes .GetCount (); i++)
             {
@@ -655,7 +655,7 @@ void CNwnMdlNodeHeader::Decompile (CNwnStream *pStream, CNwnMdlModel *pModel,
             float *pfPositions = pLight ->
                 m_afFlarePositions .GetData (pauchModelData);
             snprintf (szText, _countof (szText),
-                      "  flarepositions %zd", pLight ->m_afFlarePositions .GetCount ());
+                      "  flarepositions %ld", (long)(pLight ->m_afFlarePositions .GetCount ()));
             pStream ->WriteLine (szText);
             for (int i = 0; i < (int) pLight ->m_afFlarePositions .GetCount (); i++)
             {
@@ -670,7 +670,7 @@ void CNwnMdlNodeHeader::Decompile (CNwnStream *pStream, CNwnMdlModel *pModel,
             CVector3 *pvColorShifts = pLight ->
                 m_avFlareColorShifts .GetData (pauchModelData);
             snprintf (szText, _countof (szText),
-                      "  flarecolorshifts %zd", pLight ->m_avFlareColorShifts .GetCount ());
+                      "  flarecolorshifts %ld", (long)(pLight ->m_avFlareColorShifts .GetCount ()));
             pStream ->WriteLine (szText);
             for (int i = 0; i < (int) pLight ->m_avFlareColorShifts .GetCount (); i++)
             {
@@ -1198,7 +1198,7 @@ void CNwnMdlNodeHeader::Decompile (CNwnStream *pStream, CNwnMdlModel *pModel,
             if (apTVerts [ti] != NULL && pMesh ->m_sFaces .GetCount () > 0)
             {
                 snprintf (szText, _countof (szText),
-                          "  texindices%d %zd", ti, pMesh ->m_sFaces .GetCount ());
+                          "  texindices%d %ld", ti, (long)(pMesh ->m_sFaces .GetCount ()));
                 pStream ->WriteLine (szText);
                 for (int i = 0; i < (int) pMesh ->m_sFaces .GetCount (); i++)
                 {
