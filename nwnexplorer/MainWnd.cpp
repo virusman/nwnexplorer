@@ -2683,6 +2683,100 @@ LRESULT CMainWnd::OnResourceTreeMove (WORD wNotifyCode,
 
 //-----------------------------------------------------------------------------
 //
+// @mfunc Handle a request to toggle an option
+//
+// @parm WORD | wNotifyCode | Command notification code
+// 
+// @parm WORD | wID | ID of the control
+//
+// @parm HWND | hWndCtl | Handle of the control
+//
+// @parm BOOL & | bHandled | If handled, set to true
+//
+// @rdesc Routine results
+//
+//-----------------------------------------------------------------------------
+
+LRESULT CMainWnd::OnToggle (WORD wNotifyCode, 
+                            WORD wID, HWND hWndCtl, BOOL &bHandled) 
+{
+    switch (wID) {
+        case ID_TOGGLES_AABB:
+            g_fViewModelsShowAABB = !g_fViewModelsShowAABB;
+            break;
+
+        case ID_TOGGLES_ALPHA:
+            g_nViewModelsAlphaBehavior = (g_nViewModelsAlphaBehavior + 1) % 3;
+            break;
+
+        case ID_TOGGLES_BACKFACE:
+            g_fViewModelsBackfaceCull = !g_fViewModelsBackfaceCull;
+            break;
+
+        case ID_TOGGLES_EMITTERS:
+            g_fViewModelsRunEmit = !g_fViewModelsRunEmit;
+            break;
+
+        case ID_TOGGLES_FULLAMBIENT:
+            g_fViewModelsFullAmbient = !g_fViewModelsFullAmbient;
+            break;
+
+        case ID_TOGGLES_MESHOUTLINE:
+            g_fViewModelsOutlinePolys = !g_fViewModelsOutlinePolys;
+            break;
+
+        case ID_TOGGLES_ORTHOGRAPHIC:
+            g_fViewModelsOrthographic = !g_fViewModelsOrthographic;
+            break;
+
+        case ID_TOGGLES_PREFERDDS:
+            g_fViewModelsPreferDds = !g_fViewModelsPreferDds;
+            break;
+
+        case ID_TOGGLES_USE_DDS:
+            g_fViewModelsPreventDds = !g_fViewModelsPreventDds;
+            break;
+
+        case ID_TOGGLES_USE_TGA:
+            g_fViewModelsPreventTga = !g_fViewModelsPreventTga;
+            break;
+
+        case ID_TOGGLES_TILEFADE_1:
+            g_nViewModelsHideFade ^= 1;
+            break;
+
+        case ID_TOGGLES_TILEFADE_2:
+            g_nViewModelsHideFade ^= 2;
+            break;
+
+        case ID_TOGGLES_TILEFADE_4:
+            g_nViewModelsHideFade ^= 4;
+            break;
+
+        case ID_TOGGLES_SHOWDUMMY:
+            g_fViewModelsShowDummy = !g_fViewModelsShowDummy;
+            break;
+
+        case ID_TOGGLES_SHOWEMITTER:
+            g_fViewModelsShowEmit = !g_fViewModelsShowEmit;
+            break;
+
+        case ID_TOGGLES_SHOWLIGHT:
+            g_fViewModelsShowLight = !g_fViewModelsShowLight;
+            break;
+
+        case ID_TOGGLES_SHOWROOT:
+            g_fViewModelsShowRoot = !g_fViewModelsShowRoot;
+            break;
+
+        default: return FALSE;
+    }
+
+    return TRUE;
+}
+
+//-----------------------------------------------------------------------------
+//
 // @mfunc Open a new file
 //
 // @parm LPCTSTR | pszName | Name of the file

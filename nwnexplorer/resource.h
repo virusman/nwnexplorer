@@ -273,6 +273,23 @@
 #define ID_RESOURCES_MOVEUP                     40016
 #define ID_RESOURCES_MOVEDOWN                   40017
 #define ID_FILE_RELOAD                          40018
+#define ID_TOGGLES_TILEFADE_1                   41001
+#define ID_TOGGLES_TILEFADE_2                   41002
+#define ID_TOGGLES_TILEFADE_4                   41003
+#define ID_TOGGLES_ALPHA                        41004
+#define ID_TOGGLES_BACKFACE                     41005
+#define ID_TOGGLES_USE_DDS                      41006
+#define ID_TOGGLES_EMITTERS                     41007
+#define ID_TOGGLES_FULLAMBIENT                  41008
+#define ID_TOGGLES_MESHOUTLINE                  41009
+#define ID_TOGGLES_ORTHOGRAPHIC                 41010
+#define ID_TOGGLES_PREFERDDS                    41011
+#define ID_TOGGLES_USE_TGA                      41012
+#define ID_TOGGLES_AABB                         41013
+#define ID_TOGGLES_SHOWDUMMY                    41014
+#define ID_TOGGLES_SHOWEMITTER                  41015
+#define ID_TOGGLES_SHOWLIGHT                    41016
+#define ID_TOGGLES_SHOWROOT                     41017
 
 // Next default values for new objects
 // 

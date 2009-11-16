@@ -518,35 +518,35 @@ void CMdlRtNode::Render (CResModelRef &sRes, float fTime, DWORD nFlags)
         gluQuadricDrawStyle(quadric, GLU_LINE);
 
         if (m_pParent == NULL) {
-          glVertex3f( 0.1f, -0.1f, -0.1f);
-          glVertex3f( 0.1f,  0.1f, -0.1f);
-          glVertex3f(-0.1f,  0.1f, -0.1f);
-          glVertex3f(-0.1f, -0.1f, -0.1f);
-          
-          glVertex3f(-0.1f, -0.1f,  0.1f);
-          glVertex3f( 0.1f, -0.1f,  0.1f);
-          glVertex3f( 0.1f,  0.1f,  0.1f);
-          glVertex3f(-0.1f,  0.1f,  0.1f);
-          
-          glVertex3f(-0.1f,  0.1f,  0.1f);
-          glVertex3f( 0.1f,  0.1f,  0.1f);
-          glVertex3f( 0.1f,  0.1f, -0.1f);
-          glVertex3f(-0.1f,  0.1f, -0.1f);
-          
-          glVertex3f( 0.1f, -0.1f,  0.1f);
-          glVertex3f( 0.1f, -0.1f, -0.1f);
-          glVertex3f(-0.1f, -0.1f, -0.1f);
-          glVertex3f(-0.1f, -0.1f,  0.1f);
-          
-          glVertex3f(-0.1f, -0.1f, -0.1f);
-          glVertex3f(-0.1f,  0.1f, -0.1f);
-          glVertex3f(-0.1f,  0.1f,  0.1f);
-          glVertex3f(-0.1f, -0.1f,  0.1f);
-          
-          glVertex3f( 0.1f, -0.1f,  0.1f);
-          glVertex3f( 0.1f, -0.1f, -0.1f);
-          glVertex3f( 0.1f,  0.1f, -0.1f);
-          glVertex3f( 0.1f,  0.1f,  0.1f);
+            glVertex3f(-0.1f, -0.1f, -0.1f);
+            glVertex3f( 0.1f, -0.1f, -0.1f);
+            glVertex3f( 0.1f,  0.1f, -0.1f);
+            glVertex3f(-0.1f,  0.1f, -0.1f);
+
+            glVertex3f(-0.1f, -0.1f, -0.1f);
+            glVertex3f(-0.1f, -0.1f,  0.1f);
+            glVertex3f(-0.1f,  0.1f,  0.1f);
+            glVertex3f(-0.1f,  0.1f, -0.1f);
+
+            glVertex3f( 0.1f, -0.1f,  0.1f);
+            glVertex3f( 0.1f, -0.1f, -0.1f);
+            glVertex3f( 0.1f,  0.1f, -0.1f);
+            glVertex3f( 0.1f,  0.1f,  0.1f);
+
+            glVertex3f(-0.1f, -0.1f, -0.1f);
+            glVertex3f( 0.1f, -0.1f, -0.1f);
+            glVertex3f( 0.1f, -0.1f,  0.1f);
+            glVertex3f(-0.1f, -0.1f,  0.1f);
+
+            glVertex3f(-0.1f, -0.1f,  0.1f);
+            glVertex3f( 0.1f, -0.1f,  0.1f);
+            glVertex3f( 0.1f,  0.1f,  0.1f);
+            glVertex3f(-0.1f,  0.1f,  0.1f);
+
+            glVertex3f(-0.1f,  0.1f,  0.1f);
+            glVertex3f(-0.1f,  0.1f, -0.1f);
+            glVertex3f( 0.1f,  0.1f, -0.1f);
+            glVertex3f( 0.1f,  0.1f,  0.1f);
         } else if (m_pNode -> m_ulFlags == NwnMdlNT_Light)
             gluSphere(quadric, 0.1, 10, 10);
         else

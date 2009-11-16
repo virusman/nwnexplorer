@@ -110,6 +110,30 @@ BEGIN
         MENUITEM SEPARATOR
         MENUITEM "&Search...\tCtrl+S",          ID_RESOURCES_SEARCH
     END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "Use Full Ambient Light\tAlt+Shift+L",   ID_TOGGLES_FULLAMBIENT
+        MENUITEM "Use Orthographic View\tAlt+Shift+O",    ID_TOGGLES_ORTHOGRAPHIC
+        MENUITEM "Perform Backface Culling\tAlt+Shift+B", ID_TOGGLES_BACKFACE
+        MENUITEM "Outline Model Meshes\tAlt+Shift+M",     ID_TOGGLES_MESHOUTLINE
+        MENUITEM SEPARATOR
+        MENUITEM "Toggle Tilefade 1\tAlt+Shift+1",        ID_TOGGLES_TILEFADE_1
+        MENUITEM "Toggle Tilefade 2\tAlt+Shift+2",        ID_TOGGLES_TILEFADE_1
+        MENUITEM "Toggle Tilefade 4\tAlt+Shift+4",        ID_TOGGLES_TILEFADE_1
+        MENUITEM SEPARATOR
+        MENUITEM "Prefer DDS Textures\tAlt+Shift+P",      ID_TOGGLES_PREFERDDS,
+        MENUITEM "Use DDS Textures\tAlt+Shift+D",         ID_TOGGLES_USE_DDS,
+        MENUITEM "Use TGA Textures\tAlt+Shift+T",         ID_TOGGLES_USE_TGA,
+        MENUITEM "Toggle Alpha Behavior\tAlt+Shift+A",    ID_TOGGLES_ALPHA
+        MENUITEM SEPARATOR
+        MENUITEM "Run Emitters\tAlt+Shift+E",             ID_TOGGLES_EMITTERS
+        MENUITEM "Show AABB Meshes\tAlt+Shift+W",         ID_TOGGLES_AABB
+        MENUITEM SEPARATOR
+        MENUITEM "Show Dummy Nodes\tCtrl+Alt+Shift+D",    ID_TOGGLES_SHOWDUMMY
+        MENUITEM "Show Emitter Nodes\tCtrl+Alt+Shift+E",  ID_TOGGLES_SHOWEMITTER
+        MENUITEM "Show Light Nodes\tCtrl+Alt+Shift+L",    ID_TOGGLES_SHOWLIGHT
+        MENUITEM "Show Root Node\tCtrl+Alt+Shift+R",      ID_TOGGLES_SHOWROOT
+    END
     POPUP "&Help"
     BEGIN
         MENUITEM "&About ...",                  ID_APP_ABOUT
@@ -152,25 +176,42 @@ END
 
 IDR_NWNEXPLORER ACCELERATORS 
 BEGIN
-    "/",            ID_APP_ABOUT,           ASCII,  ALT, NOINVERT
-    "?",            ID_APP_ABOUT,           ASCII,  ALT, NOINVERT
-    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
-    "N",            ID_FILE_OPENNWN,        VIRTKEY, CONTROL, ALT, NOINVERT
-    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
-    "O",            ID_FILE_OPEN_BINARY,    VIRTKEY, CONTROL, ALT, NOINVERT
-    "R",            ID_FILE_RELOAD,         VIRTKEY, CONTROL, NOINVERT
-    VK_F5,          ID_FILE_RELOAD,         VIRTKEY, CONTROL, NOINVERT
-    "W",            ID_RESOURCES_CLOSEALLVIEWSEXCEPT, VIRTKEY, CONTROL, SHIFT, NOINVERT
-    "W",            ID_RESOURCES_CLOSEALLVIEWS, VIRTKEY, CONTROL, ALT, NOINVERT
-    "W",            ID_RESOURCES_CLOSEVIEW, VIRTKEY, CONTROL, NOINVERT
-    "E",            ID_RESOURCES_EXPORT,    VIRTKEY, CONTROL, NOINVERT
-    "S",            ID_RESOURCES_SEARCH,    VIRTKEY, CONTROL, NOINVERT
-    VK_RETURN,      ID_RESOURCES_VIEW,      VIRTKEY, NOINVERT
-    "T",            ID_RESOURCES_VIEWINNEWWINDOW, VIRTKEY, CONTROL, NOINVERT
-    VK_LEFT,        ID_RESOURCES_MOVELEFT,  VIRTKEY, CONTROL, NOINVERT
-    VK_RIGHT,       ID_RESOURCES_MOVERIGHT, VIRTKEY, CONTROL, NOINVERT
-    VK_UP,          ID_RESOURCES_MOVEUP,    VIRTKEY, CONTROL, NOINVERT
-    VK_DOWN,        ID_RESOURCES_MOVEDOWN,  VIRTKEY, CONTROL, NOINVERT
+    "?",            ID_APP_ABOUT,                       ASCII,  ALT, NOINVERT
+    "/",            ID_EDIT_FIND,                       ASCII,  ALT, NOINVERT
+    "F",            ID_EDIT_FIND,                       VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_OPENNWN,                    VIRTKEY, CONTROL, ALT, NOINVERT
+    "O",            ID_FILE_OPEN,                       VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN_BINARY,                VIRTKEY, CONTROL, ALT, NOINVERT
+    "R",            ID_FILE_RELOAD,                     VIRTKEY, CONTROL, NOINVERT
+    VK_F5,          ID_FILE_RELOAD,                     VIRTKEY, CONTROL, NOINVERT
+    "W",            ID_RESOURCES_CLOSEALLVIEWSEXCEPT,   VIRTKEY, CONTROL, SHIFT, NOINVERT
+    "W",            ID_RESOURCES_CLOSEALLVIEWS,         VIRTKEY, CONTROL, ALT, NOINVERT
+    "W",            ID_RESOURCES_CLOSEVIEW,             VIRTKEY, CONTROL, NOINVERT
+    "E",            ID_RESOURCES_EXPORT,                VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_RESOURCES_SEARCH,                VIRTKEY, CONTROL, NOINVERT
+    VK_RETURN,      ID_RESOURCES_VIEW,                  VIRTKEY, NOINVERT
+    "T",            ID_RESOURCES_VIEWINNEWWINDOW,       VIRTKEY, CONTROL, NOINVERT
+    VK_LEFT,        ID_RESOURCES_MOVELEFT,              VIRTKEY, CONTROL, NOINVERT
+    VK_RIGHT,       ID_RESOURCES_MOVERIGHT,             VIRTKEY, CONTROL, NOINVERT
+    VK_UP,          ID_RESOURCES_MOVEUP,                VIRTKEY, CONTROL, NOINVERT
+    VK_DOWN,        ID_RESOURCES_MOVEDOWN,              VIRTKEY, CONTROL, NOINVERT
+    "1",            ID_TOGGLES_TILEFADE_1,              VIRTKEY, ALT, SHIFT, NOINVERT
+    "2",            ID_TOGGLES_TILEFADE_2,              VIRTKEY, ALT, SHIFT, NOINVERT
+    "4",            ID_TOGGLES_TILEFADE_4,              VIRTKEY, ALT, SHIFT, NOINVERT
+    "A",            ID_TOGGLES_ALPHA,                   VIRTKEY, ALT, SHIFT, NOINVERT
+    "B",            ID_TOGGLES_BACKFACE,                VIRTKEY, ALT, SHIFT, NOINVERT
+    "D",            ID_TOGGLES_USE_DDS,                 VIRTKEY, ALT, SHIFT, NOINVERT
+    "E",            ID_TOGGLES_EMITTERS,                VIRTKEY, ALT, SHIFT, NOINVERT
+    "L",            ID_TOGGLES_FULLAMBIENT,             VIRTKEY, ALT, SHIFT, NOINVERT
+    "M",            ID_TOGGLES_MESHOUTLINE,             VIRTKEY, ALT, SHIFT, NOINVERT
+    "O",            ID_TOGGLES_ORTHOGRAPHIC,            VIRTKEY, ALT, SHIFT, NOINVERT
+    "P",            ID_TOGGLES_PREFERDDS,               VIRTKEY, ALT, SHIFT, NOINVERT
+    "T",            ID_TOGGLES_USE_TGA,                 VIRTKEY, ALT, SHIFT, NOINVERT
+    "W",            ID_TOGGLES_AABB,                    VIRTKEY, ALT, SHIFT, NOINVERT
+    "D",            ID_TOGGLES_SHOWDUMMY,               VIRTKEY, CONTROL, ALT, SHIFT, NOINVERT
+    "E",            ID_TOGGLES_SHOWEMITTER,             VIRTKEY, CONTROL, ALT, SHIFT, NOINVERT
+    "L",            ID_TOGGLES_SHOWLIGHT,               VIRTKEY, CONTROL, ALT, SHIFT, NOINVERT
+    "R",            ID_TOGGLES_SHOWROOT,                VIRTKEY, CONTROL, ALT, SHIFT, NOINVERT
 END
 
 

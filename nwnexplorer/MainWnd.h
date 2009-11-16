@@ -147,6 +147,23 @@ class CMainWnd :
             COMMAND_ID_HANDLER (ID_RESOURCES_SEARCH, OnResourceSearch);
             COMMAND_ID_HANDLER (ID_RESOURCES_MOVEUP, OnResourceTreeMove);
             COMMAND_ID_HANDLER (ID_RESOURCES_MOVEDOWN, OnResourceTreeMove);
+            COMMAND_ID_HANDLER (ID_TOGGLES_TILEFADE_1, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_TILEFADE_2, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_TILEFADE_4, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_ALPHA, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_BACKFACE, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_USE_DDS, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_EMITTERS, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_FULLAMBIENT, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_MESHOUTLINE, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_ORTHOGRAPHIC, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_PREFERDDS, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_USE_TGA, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_AABB, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_SHOWDUMMY, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_SHOWEMITTER, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_SHOWLIGHT, OnToggle);
+            COMMAND_ID_HANDLER (ID_TOGGLES_SHOWROOT, OnToggle);
 
             COMMAND_ID_HANDLER (ID_POPUP_CUSTOMIZE_TOOLBAR, OnPopupCustomizeToolbar);
 
@@ -444,6 +461,11 @@ class CMainWnd :
 
                 LRESULT OnFileOptions (WORD wNotifyCode, 
                                        WORD wID, HWND hWndCtl, BOOL& bHandled);
+
+                // @cmember Perform toggles
+                //
+                LRESULT OnToggle (WORD wNotifyCode, 
+                                  WORD wID, HWND hWndCtl, BOOL& bHandled);
 
                 // @cmember Handle generic open
 
