@@ -225,7 +225,7 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "NWN Explorer Version 1.6.1",IDC_STATIC,7,6,216,8,
+    LTEXT           "NWN Explorer Version 1.7.0",IDC_STATIC,7,6,216,8,
                     SS_NOPREFIX
     LTEXT           "Copyright (C) 2002-2009, Edward T. Smith and Doug Swarin",IDC_STATIC,7,17,
                     216,8
