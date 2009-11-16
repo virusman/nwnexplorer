@@ -120,6 +120,7 @@ LRESULT CNwnOptionsPage::OnInitDialog (UINT uMsg,
     m_btnResourceOpenSelected       = GetDlgItem (IDC_RESOURCE_OPEN_SELECTED);
     m_btnViewImagesExportColoredPlt = GetDlgItem (IDC_VIEW_IMAGES_EXPORT_COL_PLT);
     m_btnViewModelsBackfaceCull     = GetDlgItem (IDC_VIEW_MODELS_BACKFACE_CULL);
+    m_btnViewModelsDrawAxes         = GetDlgItem (IDC_VIEW_MODELS_DRAW_AXES);
     m_btnViewModelsFullAmbient      = GetDlgItem (IDC_VIEW_MODELS_FULL_AMBIENT);
     m_btnViewModelsHideFade1        = GetDlgItem (IDC_VIEW_MODELS_HIDE_FADE1);
     m_btnViewModelsHideFade2        = GetDlgItem (IDC_VIEW_MODELS_HIDE_FADE2);
@@ -230,6 +231,7 @@ BOOL CNwnOptionsPage::OnSetActive ()
 
     m_btnViewImagesExportColoredPlt .SetCheck (!!m_fViewImagesExportColoredPlt);
     m_btnViewModelsBackfaceCull     .SetCheck (!!m_fViewModelsBackfaceCull);
+    m_btnViewModelsDrawAxes         .SetCheck (!!m_fViewModelsDrawAxes);
     m_btnViewModelsFullAmbient      .SetCheck (!!m_fViewModelsFullAmbient);
     m_btnViewModelsHideFade1        .SetCheck (!!m_fViewModelsHideFade1);
     m_btnViewModelsHideFade2        .SetCheck (!!m_fViewModelsHideFade2);

@@ -110,6 +110,7 @@ class CNwnOptionsPage :
             COMMAND_HANDLER (IDC_VIEW_MODELS_ALPHA_NORMAL,       BN_CLICKED, OnViewModelsButtonToggle)
             COMMAND_HANDLER (IDC_VIEW_MODELS_ALPHA_ONEBIT,       BN_CLICKED, OnViewModelsButtonToggle)
             COMMAND_HANDLER (IDC_VIEW_MODELS_BACKFACE_CULL,      BN_CLICKED, OnViewModelsButtonToggle)
+            COMMAND_HANDLER (IDC_VIEW_MODELS_DRAW_AXES,          BN_CLICKED, OnViewModelsButtonToggle)
             COMMAND_HANDLER (IDC_VIEW_MODELS_FULL_AMBIENT,       BN_CLICKED, OnViewModelsButtonToggle)
             COMMAND_HANDLER (IDC_VIEW_MODELS_HIDE_FADE1,         BN_CLICKED, OnViewModelsButtonToggle)
             COMMAND_HANDLER (IDC_VIEW_MODELS_HIDE_FADE2,         BN_CLICKED, OnViewModelsButtonToggle)
@@ -158,6 +159,7 @@ class CNwnOptionsPage :
                 m_fResourceOpenSelected       = m_btnResourceOpenSelected       .GetCheck () != 0;
                 m_fViewImagesExportColoredPlt = m_btnViewImagesExportColoredPlt .GetCheck () != 0;
                 m_fViewModelsBackfaceCull     = m_btnViewModelsBackfaceCull     .GetCheck () != 0;
+                m_fViewModelsDrawAxes         = m_btnViewModelsDrawAxes         .GetCheck () != 0;
                 m_fViewModelsFullAmbient      = m_btnViewModelsFullAmbient      .GetCheck () != 0;
                 m_fViewModelsHideFade1        = m_btnViewModelsHideFade1        .GetCheck () != 0;
                 m_fViewModelsHideFade2        = m_btnViewModelsHideFade2        .GetCheck () != 0;
@@ -231,6 +233,7 @@ class CNwnOptionsPage :
 
             BOOL                        m_fViewImagesExportColoredPlt;
             BOOL                        m_fViewModelsBackfaceCull;
+            BOOL                        m_fViewModelsDrawAxes;
             BOOL                        m_fViewModelsFullAmbient;
             BOOL                        m_fViewModelsHideFade1;
             BOOL                        m_fViewModelsHideFade2;
@@ -280,6 +283,7 @@ class CNwnOptionsPage :
 
             CButton                     m_btnViewImagesExportColoredPlt;
             CButton                     m_btnViewModelsBackfaceCull;
+            CButton                     m_btnViewModelsDrawAxes;
             CButton                     m_btnViewModelsFullAmbient;
             CButton                     m_btnViewModelsHideFade1;
             CButton                     m_btnViewModelsHideFade2;

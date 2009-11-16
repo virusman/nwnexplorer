@@ -263,10 +263,10 @@ void CMdlRtNode::Render (CResModelRef &sRes, float fTime, DWORD nFlags)
                 float fv3 = fv [3];
                 size_t nLen = strlen(m_pNode ->m_szName);
 
-                fv [0] = 0.0;
-                fv [1] = 0.0;
-                fv [2] = 0.0;
-                fv [3] = 0.5;
+                fv [0] = 0.0f;
+                fv [1] = 0.0f;
+                fv [2] = 0.0f;
+                fv [3] = 0.5f;
                 glMaterialfv (GL_FRONT, GL_AMBIENT, fv);
                 glMaterialfv (GL_FRONT, GL_DIFFUSE, fv);
                 glMaterialfv (GL_FRONT, GL_SPECULAR, fv);
@@ -300,9 +300,9 @@ void CMdlRtNode::Render (CResModelRef &sRes, float fTime, DWORD nFlags)
 
                 fv [3] = fv3;
             } else {
-                fv [0] = 0.0;
-                fv [1] = 0.0;
-                fv [2] = 0.0;
+                fv [0] = 0.0f;
+                fv [1] = 0.0f;
+                fv [2] = 0.0f;
                 glMaterialfv (GL_FRONT, GL_EMISSION, fv);
             }
 
@@ -317,17 +317,17 @@ void CMdlRtNode::Render (CResModelRef &sRes, float fTime, DWORD nFlags)
 
                 glMaterialf (GL_FRONT, GL_SHININESS, 0.0);
 
-                fv [0] = 0.0;
-                fv [1] = 0.0;
-                fv [2] = 0.0;
+                fv [0] = 0.0f;
+                fv [1] = 0.0f;
+                fv [2] = 0.0f;
                 fv [3] = 0.9f;
                 glMaterialfv (GL_FRONT, GL_AMBIENT, fv);
                 glMaterialfv (GL_FRONT, GL_DIFFUSE, fv);
                 glMaterialfv (GL_FRONT, GL_SPECULAR, fv);
 
-                fv [0] = 1.0;
-                fv [1] = 1.0;
-                fv [2] = 1.0;
+                fv [0] = 1.0f;
+                fv [1] = 1.0f;
+                fv [2] = 1.0f;
                 fv [3] = 1.0f;
                 glMaterialfv (GL_FRONT, GL_EMISSION, fv);
 
@@ -360,9 +360,9 @@ void CMdlRtNode::Render (CResModelRef &sRes, float fTime, DWORD nFlags)
                 float *pVerts = (float *) sRes .GetRawData (pMesh ->m_pavVerts .GetOffset ());
 
                 glMaterialf (GL_FRONT, GL_SHININESS, 0.0);
-                fv [0] = 0.0;
-                fv [1] = 0.0;
-                fv [2] = 0.0;
+                fv [0] = 0.0f;
+                fv [1] = 0.0f;
+                fv [2] = 0.0f;
                 fv [3] = 0.9f;
                 glMaterialfv (GL_FRONT, GL_AMBIENT, fv);
                 glMaterialfv (GL_FRONT, GL_DIFFUSE, fv);
@@ -466,14 +466,16 @@ void CMdlRtNode::Render (CResModelRef &sRes, float fTime, DWORD nFlags)
     } else if (!m_fMesh &&
                (nFlags & (m_pNode -> m_ulFlags == NwnMdlNT_Emitter ? MDL_RENDER_SHOW_EMITTER :
                          (m_pNode -> m_ulFlags == NwnMdlNT_Light  ? MDL_RENDER_SHOW_LIGHT   :
-                          MDL_RENDER_SHOW_DUMMY)))) {
+                         (m_pParent == NULL ? MDL_RENDER_SHOW_ROOT :
+                          MDL_RENDER_SHOW_DUMMY))))) {
         float fv[4];
 
         glMaterialf (GL_FRONT, GL_SHININESS, 0.0);
 
-        fv [0] = 0.0;
-        fv [1] = 0.0;
-        fv [2] = 0.0;
+        /* set up the actual node colors */
+        fv [0] = 0.0f;
+        fv [1] = 0.0f;
+        fv [2] = 0.0f;
         fv [3] = 0.9f;
         glMaterialfv (GL_FRONT, GL_AMBIENT, fv);
         glMaterialfv (GL_FRONT, GL_DIFFUSE, fv);
@@ -483,25 +485,25 @@ void CMdlRtNode::Render (CResModelRef &sRes, float fTime, DWORD nFlags)
         // XXX: support wirecolor in the future
         //
         if (m_pParent == NULL) {
-            fv [0] = 0.0;
-            fv [1] = 1.0;
-            fv [2] = 1.0;
-            fv [3] = 1.0;
+            fv [0] = 0.0f;
+            fv [1] = 1.0f;
+            fv [2] = 1.0f;
+            fv [3] = 1.0f;
         } else if (m_pNode -> m_ulFlags == NwnMdlNT_Emitter) {
-            fv [0] = 1.0;
-            fv [1] = 0.0;
-            fv [2] = 1.0;
-            fv [3] = 1.0;
+            fv [0] = 1.0f;
+            fv [1] = 0.0f;
+            fv [2] = 1.0f;
+            fv [3] = 1.0f;
         } else if (m_pNode -> m_ulFlags == NwnMdlNT_Light) {
-            fv [0] = 1.0;
-            fv [1] = 1.0;
-            fv [2] = 0.0;
-            fv [3] = 1.0;
+            fv [0] = 1.0f;
+            fv [1] = 1.0f;
+            fv [2] = 0.0f;
+            fv [3] = 1.0f;
         } else {
-            fv [0] = 1.0;
-            fv [1] = 1.0;
-            fv [2] = 1.0;
-            fv [3] = 1.0;
+            fv [0] = 1.0f;
+            fv [1] = 1.0f;
+            fv [2] = 1.0f;
+            fv [3] = 1.0f;
         }
 
         glMaterialfv (GL_FRONT, GL_EMISSION, fv);
@@ -518,41 +520,99 @@ void CMdlRtNode::Render (CResModelRef &sRes, float fTime, DWORD nFlags)
         gluQuadricDrawStyle(quadric, GLU_LINE);
 
         if (m_pParent == NULL) {
-            glVertex3f(-0.1f, -0.1f, -0.1f);
-            glVertex3f( 0.1f, -0.1f, -0.1f);
-            glVertex3f( 0.1f,  0.1f, -0.1f);
-            glVertex3f(-0.1f,  0.1f, -0.1f);
-
-            glVertex3f(-0.1f, -0.1f, -0.1f);
-            glVertex3f(-0.1f, -0.1f,  0.1f);
-            glVertex3f(-0.1f,  0.1f,  0.1f);
-            glVertex3f(-0.1f,  0.1f, -0.1f);
-
-            glVertex3f( 0.1f, -0.1f,  0.1f);
-            glVertex3f( 0.1f, -0.1f, -0.1f);
-            glVertex3f( 0.1f,  0.1f, -0.1f);
-            glVertex3f( 0.1f,  0.1f,  0.1f);
-
-            glVertex3f(-0.1f, -0.1f, -0.1f);
-            glVertex3f( 0.1f, -0.1f, -0.1f);
-            glVertex3f( 0.1f, -0.1f,  0.1f);
-            glVertex3f(-0.1f, -0.1f,  0.1f);
-
-            glVertex3f(-0.1f, -0.1f,  0.1f);
-            glVertex3f( 0.1f, -0.1f,  0.1f);
-            glVertex3f( 0.1f,  0.1f,  0.1f);
-            glVertex3f(-0.1f,  0.1f,  0.1f);
-
-            glVertex3f(-0.1f,  0.1f,  0.1f);
-            glVertex3f(-0.1f,  0.1f, -0.1f);
-            glVertex3f( 0.1f,  0.1f, -0.1f);
-            glVertex3f( 0.1f,  0.1f,  0.1f);
+            /* draw twice to fix odd bug */
+            gluDisk(quadric, 0.05, 0.25, 16, 6);
+            gluDisk(quadric, 0.05, 0.25, 16, 6);
         } else if (m_pNode -> m_ulFlags == NwnMdlNT_Light)
             gluSphere(quadric, 0.1, 10, 10);
         else
             gluCylinder(quadric, 0.05, 0.0, 0.2, 10, 12);
 
         gluDeleteQuadric(quadric);
+        glEnd();
+        glEnable (GL_DEPTH_TEST);
+    } else if (m_pParent == NULL && (nFlags & MDL_RENDER_DRAW_AXES)) {
+        float fv[4];
+
+        glMaterialf (GL_FRONT, GL_SHININESS, 0.0);
+
+        /* set up the actual axis colors */
+        fv [0] = 0.0f;
+        fv [1] = 0.0f;
+        fv [2] = 0.0f;
+        fv [3] = 0.5f;
+        glMaterialfv (GL_FRONT, GL_AMBIENT, fv);
+        glMaterialfv (GL_FRONT, GL_DIFFUSE, fv);
+        glMaterialfv (GL_FRONT, GL_SPECULAR, fv);
+
+        fv [0] = 1.0f;
+        fv [1] = 1.0f;
+        fv [2] = 1.0f;
+        fv [3] = 1.0f;
+        glMaterialfv (GL_FRONT, GL_EMISSION, fv);
+
+        glDisableClientState (GL_NORMAL_ARRAY);
+        glDisableClientState (GL_TEXTURE_COORD_ARRAY);
+        glDisable (GL_TEXTURE_2D);
+        glDisable (GL_DEPTH_TEST);
+
+        glLineWidth(1.0);
+        glBegin (GL_LINES);
+
+        glVertex3f(-100.0f,    0.0f,    0.0f);
+        glVertex3f( 100.0f,    0.0f,    0.0f);
+
+        glVertex3f(   0.0f, -100.0f,    0.0f);
+        glVertex3f(   0.0f,  100.0f,    0.0f);
+
+        glVertex3f(   0.0f,    0.0f, -100.0f);
+        glVertex3f(   0.0f,    0.0f,  100.0f);
+
+#if 0
+        glEnd();
+
+        /* set up the disk colors */
+        fv [0] = 0.1f;
+        fv [1] = 0.1f;
+        fv [2] = 0.1f;
+        fv [3] = 0.2f;
+        glMaterialfv (GL_FRONT, GL_AMBIENT, fv);
+        glMaterialfv (GL_FRONT, GL_DIFFUSE, fv);
+        glMaterialfv (GL_FRONT, GL_SPECULAR, fv);
+
+        fv [0] = 0.1f;
+        fv [1] = 0.1f;
+        fv [2] = 0.1f;
+        fv [3] = 0.1f;
+        glMaterialfv (GL_FRONT, GL_EMISSION, fv);
+
+        /* draw disks on the X-Y plane */
+        glBegin (GL_TRIANGLES);
+
+        GLUquadricObj *quadric = gluNewQuadric();
+        gluQuadricDrawStyle(quadric, GLU_FILL);
+
+        /* gluDisk(quadric, 100.0, 100.0, 128, 1); */
+        gluDisk(quadric,  0.0,   5.0, 128, 10);
+        gluDisk(quadric,  0.0,  10.0, 256, 20);
+        gluDisk(quadric,  0.0,  15.0, 384, 30);
+        gluDisk(quadric,  0.0,  20.0, 512, 40);
+
+        gluDeleteQuadric(quadric);
+#else
+        GLUquadricObj *quadric = gluNewQuadric();
+        gluQuadricDrawStyle(quadric, GLU_LINE);
+
+        gluDisk(quadric, 100.0, 100.0, 128, 1);
+        gluDisk(quadric,   5.0,   5.0, 128, 1);
+        gluDisk(quadric,  10.0,  10.0, 256, 1);
+        gluDisk(quadric,  15.0,  15.0, 384, 1);
+        gluDisk(quadric,  20.0,  20.0, 512, 1);
+        gluDisk(quadric,  25.0,  25.0, 640, 1);
+
+        gluDeleteQuadric(quadric);
+#endif
+
         glEnd();
         glEnable (GL_DEPTH_TEST);
     }

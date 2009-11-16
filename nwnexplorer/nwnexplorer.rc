@@ -116,6 +116,7 @@ BEGIN
         MENUITEM "Use Orthographic View\tAlt+Shift+O",    ID_TOGGLES_ORTHOGRAPHIC
         MENUITEM "Perform Backface Culling\tAlt+Shift+B", ID_TOGGLES_BACKFACE
         MENUITEM "Outline Model Meshes\tAlt+Shift+M",     ID_TOGGLES_MESHOUTLINE
+        MENUITEM "Show Axes\tAlt+Shift+X",                ID_TOGGLES_AXES
         MENUITEM SEPARATOR
         MENUITEM "Toggle Tilefade 1\tAlt+Shift+1",        ID_TOGGLES_TILEFADE_1
         MENUITEM "Toggle Tilefade 2\tAlt+Shift+2",        ID_TOGGLES_TILEFADE_1
@@ -129,10 +130,10 @@ BEGIN
         MENUITEM "Run Emitters\tAlt+Shift+E",             ID_TOGGLES_EMITTERS
         MENUITEM "Show AABB Meshes\tAlt+Shift+W",         ID_TOGGLES_AABB
         MENUITEM SEPARATOR
-        MENUITEM "Show Dummy Nodes\tCtrl+Alt+Shift+D",    ID_TOGGLES_SHOWDUMMY
-        MENUITEM "Show Emitter Nodes\tCtrl+Alt+Shift+E",  ID_TOGGLES_SHOWEMITTER
-        MENUITEM "Show Light Nodes\tCtrl+Alt+Shift+L",    ID_TOGGLES_SHOWLIGHT
-        MENUITEM "Show Root Node\tCtrl+Alt+Shift+R",      ID_TOGGLES_SHOWROOT
+        MENUITEM "Show Dummy Nodes\tCtrl+Shift+D",        ID_TOGGLES_SHOWDUMMY
+        MENUITEM "Show Emitter Nodes\tCtrl+Shift+E",      ID_TOGGLES_SHOWEMITTER
+        MENUITEM "Show Light Nodes\tCtrl+Shift+L",        ID_TOGGLES_SHOWLIGHT
+        MENUITEM "Show Root Node\tCtrl+Shift+R",          ID_TOGGLES_SHOWROOT
     END
     POPUP "&Help"
     BEGIN
@@ -208,10 +209,11 @@ BEGIN
     "P",            ID_TOGGLES_PREFERDDS,               VIRTKEY, ALT, SHIFT, NOINVERT
     "T",            ID_TOGGLES_USE_TGA,                 VIRTKEY, ALT, SHIFT, NOINVERT
     "W",            ID_TOGGLES_AABB,                    VIRTKEY, ALT, SHIFT, NOINVERT
-    "D",            ID_TOGGLES_SHOWDUMMY,               VIRTKEY, CONTROL, ALT, SHIFT, NOINVERT
-    "E",            ID_TOGGLES_SHOWEMITTER,             VIRTKEY, CONTROL, ALT, SHIFT, NOINVERT
-    "L",            ID_TOGGLES_SHOWLIGHT,               VIRTKEY, CONTROL, ALT, SHIFT, NOINVERT
-    "R",            ID_TOGGLES_SHOWROOT,                VIRTKEY, CONTROL, ALT, SHIFT, NOINVERT
+    "X",            ID_TOGGLES_AXES,                    VIRTKEY, ALT, SHIFT, NOINVERT
+    "D",            ID_TOGGLES_SHOWDUMMY,               VIRTKEY, CONTROL, SHIFT, NOINVERT
+    "E",            ID_TOGGLES_SHOWEMITTER,             VIRTKEY, CONTROL, SHIFT, NOINVERT
+    "L",            ID_TOGGLES_SHOWLIGHT,               VIRTKEY, CONTROL, SHIFT, NOINVERT
+    "R",            ID_TOGGLES_SHOWROOT,                VIRTKEY, CONTROL, SHIFT, NOINVERT
 END
 
 
@@ -359,6 +361,8 @@ BEGIN
     CONTROL         "Outline polygons in model meshes",
                     IDC_VIEW_MODELS_OUTLINE_POLYS,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,184,195,123,10
+    CONTROL         "Draw axes when viewing models",IDC_VIEW_MODELS_DRAW_AXES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,184,205,123,10
     LTEXT           "Hide tilefade meshes:",IDC_STATIC,185,225,70,8
     CONTROL         "1",IDC_VIEW_MODELS_HIDE_FADE1,"Button",BS_AUTOCHECKBOX | 
                     WS_TABSTOP,260,225,20,10

@@ -70,6 +70,8 @@
 #define         MDL_RENDER_SHOW_DUMMY           (1 <<  8)
 #define         MDL_RENDER_SHOW_LIGHT           (1 <<  9)
 #define         MDL_RENDER_SHOW_EMITTER         (1 << 10)
+#define         MDL_RENDER_SHOW_ROOT            (1 << 11)
+#define         MDL_RENDER_DRAW_AXES            (1 << 15)
 #define         MDL_RENDER_IS_DWK               (1 << 16)
 #define         MDL_RENDER_IS_PWK               (1 << 17)
 #define         MDL_RENDER_IS_WOK               (1 << 18)

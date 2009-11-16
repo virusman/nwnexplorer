@@ -63,6 +63,7 @@ static char THIS_FILE[] = __FILE__;
 extern D3DCOLOR *g_apPalettes [NwnPalette__Count];
 extern HWND g_hWndMain;
 extern BOOL g_fViewModelsBackfaceCull;
+extern BOOL g_fViewModelsDrawAxes;
 extern BOOL g_fViewModelsFullAmbient;
 extern BOOL g_fViewModelsMdlNameTex;
 extern BOOL g_fViewModelsOrthographic;
@@ -580,13 +581,18 @@ LRESULT CModelWnd::OnPaint (UINT uMsg,
                 m_pRtNodeRoot ->Render (m_sRes, 0.0, MDL_RENDER_SHOW_MESH | MDL_RENDER_OUTLINE_POLYS);
 
             if (g_fViewModelsShowDummy)
-                m_pRtNodeRoot ->Render (m_sRes, 0.0, MDL_RENDER_SHOW_DUMMY);
+                m_pRtNodeRoot ->Render (m_sRes, 0.0, MDL_RENDER_SHOW_DUMMY | MDL_RENDER_SHOW_ROOT);
+            else if (g_fViewModelsShowRoot)
+                m_pRtNodeRoot ->Render (m_sRes, 0.0, MDL_RENDER_SHOW_ROOT);
 
             if (g_fViewModelsShowEmit)
                 m_pRtNodeRoot ->Render (m_sRes, 0.0, MDL_RENDER_SHOW_EMITTER);
 
             if (g_fViewModelsShowLight)
                 m_pRtNodeRoot ->Render (m_sRes, 0.0, MDL_RENDER_SHOW_LIGHT);
+
+            if (g_fViewModelsDrawAxes)
+                m_pRtNodeRoot ->Render (m_sRes, 0.0, MDL_RENDER_DRAW_AXES);
         }
 
         //

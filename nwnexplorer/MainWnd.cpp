@@ -86,6 +86,7 @@ BOOL g_fViewModelsOrthographic;
 BOOL g_fViewModelsBackfaceCull;
 BOOL g_fViewImagesExportColoredPlt;
 BOOL g_fViewModelsOutlinePolys;
+BOOL g_fViewModelsDrawAxes;
 DWORD g_nViewImagesAlphaBehavior;
 DWORD g_nViewImagesAlphaTint;
 DWORD g_nViewModelsAlphaBehavior;
@@ -1286,6 +1287,7 @@ void CMainWnd::LoadProfile ()
 
     g_fViewImagesExportColoredPlt = GetSetting(PROFILE_VIEWIMAGESCOLOREDPLT,    0);
     g_fViewModelsBackfaceCull     = GetSetting(PROFILE_VIEWMODELSBACKFACECULL,  0);
+    g_fViewModelsDrawAxes         = GetSetting(PROFILE_VIEWMODELSDRAWAXES,      0);
     g_fViewModelsFullAmbient      = GetSetting(PROFILE_VIEWMODELSFULLAMBIENT,   0);
     g_fViewModelsMdlNameTex       = GetSetting(PROFILE_VIEWMODELSMDLNAMETEX,    0);
     g_fViewModelsOrthographic     = GetSetting(PROFILE_VIEWMODELSORTHOGRAPHIC,  0);
@@ -2036,6 +2038,7 @@ LRESULT CMainWnd::OnFileOptions (WORD wNotifyCode,
 
     sPage1 .m_fViewImagesExportColoredPlt = g_fViewImagesExportColoredPlt;
     sPage1 .m_fViewModelsBackfaceCull     = g_fViewModelsBackfaceCull;
+    sPage1 .m_fViewModelsDrawAxes         = g_fViewModelsDrawAxes;
     sPage1 .m_fViewModelsFullAmbient      = g_fViewModelsFullAmbient;
     sPage1 .m_fViewModelsMdlNameTex       = g_fViewModelsMdlNameTex;
     sPage1 .m_fViewModelsOrthographic     = g_fViewModelsOrthographic;
@@ -2149,6 +2152,7 @@ LRESULT CMainWnd::OnFileOptions (WORD wNotifyCode,
 
         SetSetting (PROFILE_VIEWIMAGESCOLOREDPLT,    (sPage1 .m_fViewImagesExportColoredPlt != 0));
         SetSetting (PROFILE_VIEWMODELSBACKFACECULL,  (sPage1 .m_fViewModelsBackfaceCull     != 0));
+        SetSetting (PROFILE_VIEWMODELSDRAWAXES,      (sPage1 .m_fViewModelsDrawAxes         != 0));
         SetSetting (PROFILE_VIEWMODELSFULLAMBIENT,   (sPage1 .m_fViewModelsFullAmbient      != 0));
         SetSetting (PROFILE_VIEWMODELSMDLNAMETEX,    (sPage1 .m_fViewModelsMdlNameTex       != 0));
         SetSetting (PROFILE_VIEWMODELSORTHOGRAPHIC,  (sPage1 .m_fViewModelsOrthographic     != 0));
@@ -2707,6 +2711,10 @@ LRESULT CMainWnd::OnToggle (WORD wNotifyCode,
 
         case ID_TOGGLES_ALPHA:
             g_nViewModelsAlphaBehavior = (g_nViewModelsAlphaBehavior + 1) % 3;
+            break;
+
+        case ID_TOGGLES_AXES:
+            g_fViewModelsDrawAxes = !g_fViewModelsDrawAxes;
             break;
 
         case ID_TOGGLES_BACKFACE:

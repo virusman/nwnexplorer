@@ -181,6 +181,7 @@ struct ModelContext
 #define PROFILE_VIEWMODELSBACKGROUND    _T ("ViewModelsBackground")
 
 #define PROFILE_VIEWMODELSBACKFACECULL  _T ("ViewModelsBackfaceCull")
+#define PROFILE_VIEWMODELSDRAWAXES      _T ("ViewModelsDrawAxes")
 #define PROFILE_VIEWMODELSHIDEFADE      _T ("ViewModelsHideFade")
 #define PROFILE_VIEWMODELSOUTLINEPOLYS  _T ("ViewModelsOutlinePolys")
 

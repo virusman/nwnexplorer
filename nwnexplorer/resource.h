@@ -104,6 +104,7 @@
 #define IDC_VIEW_MODELS_SHOW_LIGHT              2042
 #define IDC_VIEW_MODELS_SHOW_EMIT               2043
 #define IDC_VIEW_MODELS_RUN_EMIT                2044
+#define IDC_VIEW_MODELS_DRAW_AXES               2045
 #define IDD_ABOUTBOX                            3001
 #define IDD_TBCUSTOMIZE                         3002
 #define IDD_MODEL_COLOR                         3003
@@ -277,19 +278,20 @@
 #define ID_TOGGLES_TILEFADE_2                   41002
 #define ID_TOGGLES_TILEFADE_4                   41003
 #define ID_TOGGLES_ALPHA                        41004
-#define ID_TOGGLES_BACKFACE                     41005
-#define ID_TOGGLES_USE_DDS                      41006
-#define ID_TOGGLES_EMITTERS                     41007
-#define ID_TOGGLES_FULLAMBIENT                  41008
-#define ID_TOGGLES_MESHOUTLINE                  41009
-#define ID_TOGGLES_ORTHOGRAPHIC                 41010
-#define ID_TOGGLES_PREFERDDS                    41011
-#define ID_TOGGLES_USE_TGA                      41012
-#define ID_TOGGLES_AABB                         41013
-#define ID_TOGGLES_SHOWDUMMY                    41014
-#define ID_TOGGLES_SHOWEMITTER                  41015
-#define ID_TOGGLES_SHOWLIGHT                    41016
-#define ID_TOGGLES_SHOWROOT                     41017
+#define ID_TOGGLES_AXES                         41005
+#define ID_TOGGLES_BACKFACE                     41006
+#define ID_TOGGLES_USE_DDS                      41007
+#define ID_TOGGLES_EMITTERS                     41008
+#define ID_TOGGLES_FULLAMBIENT                  41009
+#define ID_TOGGLES_MESHOUTLINE                  41010
+#define ID_TOGGLES_ORTHOGRAPHIC                 41011
+#define ID_TOGGLES_PREFERDDS                    41012
+#define ID_TOGGLES_USE_TGA                      41013
+#define ID_TOGGLES_AABB                         41014
+#define ID_TOGGLES_SHOWDUMMY                    41015
+#define ID_TOGGLES_SHOWEMITTER                  41016
+#define ID_TOGGLES_SHOWLIGHT                    41017
+#define ID_TOGGLES_SHOWROOT                     41018
 
 // Next default values for new objects
 // 
