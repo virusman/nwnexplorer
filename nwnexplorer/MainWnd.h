@@ -70,7 +70,7 @@
 class CMainWnd :
     public CFrameWindowImpl <CMainWnd>,
     public CUpdateUI <CMainWnd>,
-    public CSplitterImpl <CMainWnd, true>,
+    public CSplitterImpl <CMainWnd>,
     public CMessageFilter,
     public CIdleHandler
 {
@@ -118,7 +118,7 @@ class CMainWnd :
             // @access ATL interface list
     public:
 
-            typedef CSplitterImpl <CMainWnd, true> _SplitterClass;
+            typedef CSplitterImpl <CMainWnd> _SplitterClass;
 
             BEGIN_MSG_MAP (CMainWnd)
                 NOTIFY_HANDLER (IDC_EXP_TREEVIEW, TVN_DELETEITEM, OnTVDeleteItem)

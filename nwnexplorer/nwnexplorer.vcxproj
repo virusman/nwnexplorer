@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7DF7C551-BBDA-427D-B5C6-6CE34DDE2294}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfAtl>Static</UseOfAtl>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfAtl>Static</UseOfAtl>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)\..\..\fmodapi375win\api\inc;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)\..\..\fmodapi375win\api\inc;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_STLP_NO_IOSTREAMS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/FIXED:NO %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>fmodvc.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)nwnexplorer.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)\..\..\fmodapi375win\api\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DelayLoadDLLs>fmod.dll;uxtheme.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)nwnexplorer.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OmitFramePointers>true</OmitFramePointers>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_STLP_NO_IOSTREAMS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>fmodvc.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(OutDir)nwnexplorer.exe</OutputFile>
+      <DelayLoadDLLs>fmod.dll;uxtheme.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(ProjectDir)\..\..\fmodapi375win\api\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <Manifest>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CommonView.cpp" />
+    <ClCompile Include="ContainerView.cpp" />
+    <ClCompile Include="ContentWnd.cpp" />
+    <ClCompile Include="DataCache.cpp" />
+    <ClCompile Include="DataSource.cpp" />
+    <ClCompile Include="DataSourceBif.cpp" />
+    <ClCompile Include="DataSourceDir.cpp" />
+    <ClCompile Include="DataSourceKey.cpp" />
+    <ClCompile Include="DataSourceMod.cpp" />
+    <ClCompile Include="HexView.cpp" />
+    <ClCompile Include="HierarchyRawView.cpp" />
+    <ClCompile Include="HierarchyView.cpp" />
+    <ClCompile Include="ImageWnd.cpp" />
+    <ClCompile Include="ITPView.cpp" />
+    <ClCompile Include="MainWnd.cpp" />
+    <ClCompile Include="MdlRtNode.cpp" />
+    <ClCompile Include="ModelAnimDlg.cpp" />
+    <ClCompile Include="ModelColorDlg.cpp" />
+    <ClCompile Include="ModelNodeDlg.cpp" />
+    <ClCompile Include="ModelPosDlg.cpp" />
+    <ClCompile Include="ModelRawFormatter.cpp" />
+    <ClCompile Include="ModelRawHierView.cpp" />
+    <ClCompile Include="ModelRawHierWnd.cpp" />
+    <ClCompile Include="ModelRawView.cpp" />
+    <ClCompile Include="ModelView.cpp" />
+    <ClCompile Include="ModelWnd.cpp" />
+    <ClCompile Include="nwnexplorer.cpp" />
+    <ClCompile Include="NwnOptionsPage.cpp" />
+    <ClCompile Include="PaletteColorButton.cpp" />
+    <ClCompile Include="ScriptRawView.cpp" />
+    <ClCompile Include="SoundSetView.cpp" />
+    <ClCompile Include="SoundView.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TBCustomizeDlg.cpp" />
+    <ClCompile Include="TextView.cpp" />
+    <ClCompile Include="TextViewImpl.cpp" />
+    <ClCompile Include="TextWnd.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AtlRollOutCtrl.h" />
+    <ClInclude Include="BlankWnd.h" />
+    <ClInclude Include="CommonView.h" />
+    <ClInclude Include="ContainerView.h" />
+    <ClInclude Include="ContentWnd.h" />
+    <ClInclude Include="CustomTabCtrl.h" />
+    <ClInclude Include="d3dtypes.h" />
+    <ClInclude Include="Data.h" />
+    <ClInclude Include="DataCache.h" />
+    <ClInclude Include="DataKey.h" />
+    <ClInclude Include="DataRef.h" />
+    <ClInclude Include="DataSource.h" />
+    <ClInclude Include="DataSourceBif.h" />
+    <ClInclude Include="DataSourceDir.h" />
+    <ClInclude Include="DataSourceKey.h" />
+    <ClInclude Include="DataSourceMod.h" />
+    <ClInclude Include="ddraw.h" />
+    <ClInclude Include="DotNetTabCtrl.h" />
+    <ClInclude Include="HexView.h" />
+    <ClInclude Include="HierarchyRawView.h" />
+    <ClInclude Include="HierarchyView.h" />
+    <ClInclude Include="ImageWnd.h" />
+    <ClInclude Include="ITPView.h" />
+    <ClInclude Include="MainWnd.h" />
+    <ClInclude Include="MdlRtNode.h" />
+    <ClInclude Include="ModelColorDlg.h" />
+    <ClInclude Include="ModelPosDlg.h" />
+    <ClInclude Include="ModelRawFormatter.h" />
+    <ClInclude Include="ModelRawHierView.h" />
+    <ClInclude Include="ModelRawHierWnd.h" />
+    <ClInclude Include="ModelRawView.h" />
+    <ClInclude Include="ModelView.h" />
+    <ClInclude Include="ModelWnd.h" />
+    <ClInclude Include="nwnexplorer.h" />
+    <ClInclude Include="NwnOptionsPage.h" />
+    <ClInclude Include="PaletteColorButton.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ScriptRawView.h" />
+    <ClInclude Include="SoundSetView.h" />
+    <ClInclude Include="SoundView.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TBCustomizeDlg.h" />
+    <ClInclude Include="TextView.h" />
+    <ClInclude Include="TextViewImpl.h" />
+    <ClInclude Include="TextWnd.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\idr_in.ico" />
+    <None Include="res\move_down.ico" />
+    <None Include="res\move_left.ico" />
+    <None Include="res\move_right.ico" />
+    <None Include="res\move_up.ico" />
+    <None Include="res\mvpal_armor.bmp" />
+    <None Include="res\mvpal_cloth.bmp" />
+    <None Include="res\mvpal_hair.bmp" />
+    <None Include="res\mvpal_leather.bmp" />
+    <None Include="res\mvpal_skin.bmp" />
+    <None Include="res\mvpal_tattoo.bmp" />
+    <None Include="res\nwnexplorer.ico" />
+    <None Include="res\pal_armor01.tga" />
+    <None Include="res\pal_armor02.tga" />
+    <None Include="res\pal_cloth01.tga" />
+    <None Include="res\pal_hair01.tga" />
+    <None Include="res\pal_leath01.tga" />
+    <None Include="res\pal_skin01.tga" />
+    <None Include="res\pal_tattoo01.tga" />
+    <None Include="res\pitch_backward.ico" />
+    <None Include="res\pitch_forward.ico" />
+    <None Include="res\roll_left.ico" />
+    <None Include="res\roll_right.ico" />
+    <None Include="res\toolbar_16_16color.bmp" />
+    <None Include="res\toolbar_16_256color.bmp" />
+    <None Include="res\toolbar_24_16color.bmp" />
+    <None Include="res\toolbar_24_256color.bmp" />
+    <None Include="res\yaw_left.ico" />
+    <None Include="res\yaw_right.ico" />
+    <None Include="res\zoom_out.ico" />
+    <None Include="Makefile.am" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="nwnexplorer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_MathLib\_MathLib.vcxproj">
+      <Project>{1782b721-0392-4083-8578-83c2ee79443a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\_NmcLib\_NmcLib.vcxproj">
+      <Project>{2b78e60f-960d-44cd-acee-8af8c3e1d6dd}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\_NscLib\_NscLib.vcxproj">
+      <Project>{f24f9c47-096a-4d05-9f3a-07724c9111f5}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\_NwnLib\_NwnLib.vcxproj">
+      <Project>{42a65eb4-f6f3-4685-9d9a-b133c253759d}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="res\nwnexplorer.manifest" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="nwnexplorer.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

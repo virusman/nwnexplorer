@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{edc44cad-3690-4ef5-b4fa-d74c750f58c7}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{926530b9-5820-45a8-ad11-d783ee370caa}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{63662cf9-a1cc-4bd4-87e9-dc45a6f66ad7}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="GNU Files">
+      <UniqueIdentifier>{7b7a4d85-cc65-420d-bbbe-13bffd24aaee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CommonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ContainerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSourceBif.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSourceDir.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSourceKey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataSourceMod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HexView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HierarchyRawView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HierarchyView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ITPView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MdlRtNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelColorDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelPosDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelRawFormatter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelRawHierView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelRawHierWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelRawView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nwnexplorer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnOptionsPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaletteColorButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptRawView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSetView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TBCustomizeDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextViewImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelNodeDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelAnimDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AtlRollOutCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BlankWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ContainerView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomTabCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="d3dtypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataKey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataRef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSourceBif.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSourceDir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSourceKey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataSourceMod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ddraw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DotNetTabCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HexView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HierarchyRawView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HierarchyView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ITPView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MdlRtNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelColorDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelPosDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelRawFormatter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelRawHierView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelRawHierWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelRawView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nwnexplorer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnOptionsPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaletteColorButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptRawView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSetView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TBCustomizeDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextViewImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\idr_in.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\move_down.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\move_left.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\move_right.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\move_up.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\mvpal_armor.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\mvpal_cloth.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\mvpal_hair.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\mvpal_leather.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\mvpal_skin.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\mvpal_tattoo.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\nwnexplorer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pal_armor01.tga">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pal_armor02.tga">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pal_cloth01.tga">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pal_hair01.tga">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pal_leath01.tga">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pal_skin01.tga">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pal_tattoo01.tga">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pitch_backward.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\pitch_forward.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\roll_left.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\roll_right.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\toolbar_16_16color.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\toolbar_16_256color.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\toolbar_24_16color.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\toolbar_24_256color.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\yaw_left.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\yaw_right.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\zoom_out.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Makefile.am">
+      <Filter>GNU Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="nwnexplorer.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="res\nwnexplorer.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
+  </ItemGroup>
+</Project>

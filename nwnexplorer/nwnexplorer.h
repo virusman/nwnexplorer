@@ -260,6 +260,8 @@ int TgaWrite (DataElement *pElement, const char *pszFileName, NwnResType nResTyp
 ResClass GetResourceClass (NwnResType nType, const char *pszName);
 CString GetNwnDirectory ();
 
+using namespace WTL;
+
 #endif // ETS_NWNEXPLORER_H
 
 /* vim: set sw=4: */

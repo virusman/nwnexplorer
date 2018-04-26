@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{64af6e48-3de9-4dfb-add8-662c42015d9b}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{b7d7719e-de8b-4340-be2d-31827ac9627d}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{00ec10e6-3c4d-4e5f-ab07-f4399dc67ea9}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="GNU Files">
+      <UniqueIdentifier>{0c966dbb-9b8d-477d-b284-cb00fbf94f31}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EncounterDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EncounterObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GoldDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GoldObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBrowserDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NoneObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nwntreasure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaceableDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaceableObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RootObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableItemDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableItemObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableRefDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableRefObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TBCustomizeDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DataParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpatImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GoldDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GoldObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBrowserDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NoneObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nwntreasure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaceableDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaceableObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfileDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfileObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RootObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableItemDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableItemObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableRefDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableRefObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TBCustomizeDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\encounter.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\gold.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\item.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\none.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\nwntreasure.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\placeable.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\profile.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\table.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\table_global.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\table_noref.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\toolbar_16_16color.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\toolbar_16_256color.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\toolbar_24_16color.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\toolbar_24_256color.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Makefile.am">
+      <Filter>GNU Files</Filter>
+    </None>
+    <None Include="script_bioware_routines.nss" />
+    <None Include="script_sw_respawn_routines.nss" />
+    <None Include="script_sw_respawn_start.nss" />
+    <None Include="script_template_start.nss" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="nwntreasure.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

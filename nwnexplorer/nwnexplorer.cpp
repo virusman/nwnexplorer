@@ -43,7 +43,7 @@
 #include "nwnexplorer.h"
 #include "MainWnd.h"
 #include "ModelWnd.h"
-#include <fmod/fmod.h>
+#include <fmod.h>
 
 //
 // Debug NEW

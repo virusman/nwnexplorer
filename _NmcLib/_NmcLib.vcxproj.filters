@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{bf27d583-56f4-42f4-8c73-bacacdeba1c6}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{34860585-fe1e-4ba4-9b5d-2f3ab6d28f48}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{a7c08b02-f46c-41f7-a31a-945aa3f6e642}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="GNU Items">
+      <UniqueIdentifier>{b0d29d4c-13ae-4ffb-831e-a84637504ca2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NmcAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NmcCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NmcContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NmcController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NmcCoreParsers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NmcGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NmcMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Nmc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NmcCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NmcContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NmcCoreParsers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NmcListParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NmcMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile.am">
+      <Filter>GNU Items</Filter>
+    </None>
+  </ItemGroup>
+</Project>

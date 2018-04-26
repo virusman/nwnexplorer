@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{def61727-0b68-46d7-9baf-4efc9180552f}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{f3031586-c66b-4480-b945-48bb6c5c7a10}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{b79feba5-0238-488e-a6d1-56bf69401816}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="GNU Files">
+      <UniqueIdentifier>{0a13e03a-ff50-4769-af2c-3dde64ccdbc2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NwnBifFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnDefines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnDialogTlkFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnKeyFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnMdlDecomp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnMdlGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnMdlNodes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnMdlR2A.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnMdlSerialize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnModuleFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NwnStdLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NwnArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnBifFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnDialogTlkFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnDoubleLinkList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnHierarchy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnKeyFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnMdlGeometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnMdlNodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnMemoryFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnModuleFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnSoundSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnStdLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnStreams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnStreamStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NwnTexturePlt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile.am">
+      <Filter>GNU Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6CC0B500-88AE-49AD-9EA4-088EF7D6D703}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)nwntreasure.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)nwntreasure.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <OmitFramePointers>true</OmitFramePointers>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)nwntreasure.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="EncounterDlg.cpp" />
+    <ClCompile Include="EncounterObject.cpp" />
+    <ClCompile Include="ExportDlg.cpp" />
+    <ClCompile Include="GoldDlg.cpp" />
+    <ClCompile Include="GoldObject.cpp" />
+    <ClCompile Include="ItemBrowserDlg.cpp" />
+    <ClCompile Include="ItemDlg.cpp" />
+    <ClCompile Include="ItemObject.cpp" />
+    <ClCompile Include="MainWnd.cpp" />
+    <ClCompile Include="NoneObject.cpp" />
+    <ClCompile Include="nwntreasure.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PlaceableDlg.cpp" />
+    <ClCompile Include="PlaceableObject.cpp" />
+    <ClCompile Include="ProfileDlg.cpp" />
+    <ClCompile Include="ProfileObject.cpp" />
+    <ClCompile Include="RootObject.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TableDlg.cpp" />
+    <ClCompile Include="TableItemDlg.cpp" />
+    <ClCompile Include="TableItemObject.cpp" />
+    <ClCompile Include="TableObject.cpp" />
+    <ClCompile Include="TableRefDlg.cpp" />
+    <ClCompile Include="TableRefObject.cpp" />
+    <ClCompile Include="TBCustomizeDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DataParser.h" />
+    <ClInclude Include="EncounterDlg.h" />
+    <ClInclude Include="EncounterObject.h" />
+    <ClInclude Include="ExpatImpl.h" />
+    <ClInclude Include="ExportDlg.h" />
+    <ClInclude Include="GoldDlg.h" />
+    <ClInclude Include="GoldObject.h" />
+    <ClInclude Include="ItemBrowserDlg.h" />
+    <ClInclude Include="ItemDlg.h" />
+    <ClInclude Include="ItemObject.h" />
+    <ClInclude Include="MainWnd.h" />
+    <ClInclude Include="NoneObject.h" />
+    <ClInclude Include="nwntreasure.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="PlaceableDlg.h" />
+    <ClInclude Include="PlaceableObject.h" />
+    <ClInclude Include="ProfileDlg.h" />
+    <ClInclude Include="ProfileObject.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="RootObject.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TableDlg.h" />
+    <ClInclude Include="TableItemDlg.h" />
+    <ClInclude Include="TableItemObject.h" />
+    <ClInclude Include="TableObject.h" />
+    <ClInclude Include="TableRefDlg.h" />
+    <ClInclude Include="TableRefObject.h" />
+    <ClInclude Include="TBCustomizeDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\encounter.ico" />
+    <None Include="res\gold.ico" />
+    <None Include="res\item.ico" />
+    <None Include="res\none.ico" />
+    <None Include="res\nwntreasure.ico" />
+    <None Include="res\placeable.ico" />
+    <None Include="res\profile.ico" />
+    <None Include="res\table.ico" />
+    <None Include="res\table_global.ico" />
+    <None Include="res\table_noref.ico" />
+    <None Include="res\toolbar_16_16color.bmp" />
+    <None Include="res\toolbar_16_256color.bmp" />
+    <None Include="res\toolbar_24_16color.bmp" />
+    <None Include="res\toolbar_24_256color.bmp" />
+    <None Include="Makefile.am" />
+    <None Include="script_bioware_routines.nss" />
+    <None Include="script_sw_respawn_routines.nss" />
+    <None Include="script_sw_respawn_start.nss" />
+    <None Include="script_template_start.nss" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="nwntreasure.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_ExpatLib\_ExpatLib.vcxproj">
+      <Project>{7d4baa99-a9a0-47dc-b975-7ab6fd0bd254}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\_NwnLib\_NwnLib.vcxproj">
+      <Project>{42a65eb4-f6f3-4685-9d9a-b133c253759d}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

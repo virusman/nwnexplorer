@@ -68,7 +68,7 @@
 class CModelRawHierView : 
     public CCommonView,
     public CWindowImpl <CModelRawHierView>,
-    public CSplitterImpl <CModelRawHierView, false>,
+    public CSplitterImpl <CModelRawHierView>,
     public CCustomDraw <CModelRawHierView>
 {
 
@@ -125,7 +125,7 @@ class CModelRawHierView :
         // @access ATL window support
     public:
 
-        typedef CSplitterImpl <CModelRawHierView, false> _SplitterClass;
+        typedef CSplitterImpl <CModelRawHierView> _SplitterClass;
 
         BEGIN_MSG_MAP (CModelRawHierView)
             MESSAGE_HANDLER (WM_CREATE, OnCreate)

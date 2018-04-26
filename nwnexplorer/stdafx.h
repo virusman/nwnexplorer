@@ -48,10 +48,10 @@
 // Version selections
 //
 
-#define _WIN32_IE               0x0501
-#define WINVER                  0x0501
-#define _WIN32_WINNT    0x0501
-#define VC_EXTRALEAN
+//#define _WIN32_IE               0x0501
+//#define WINVER                  0x0501
+//#define _WIN32_WINNT    0x0501
+//#define VC_EXTRALEAN
 
 //
 // Windows includes
@@ -81,6 +81,7 @@
 
 #define USE_WTL70
 #define _WTL_NO_CSTRING
+#define _WTL_CMDBAR_VISTA_MENUS 0
 #include <atlstr.h>                     // ATL string defintion
 #include <atlbase.h>            // ATL base definitions
 #include <atlapp.h>                     // ATL main application

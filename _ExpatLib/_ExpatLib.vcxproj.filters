@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1d148914-bca8-4a4f-9eed-cb2a31c50780}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{d8aa17b3-378a-4394-83d6-616afd46f7cf}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{f6461cf5-5722-4bcc-9493-09ad7b1b1cd7}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="GNU Files">
+      <UniqueIdentifier>{a7bb0c05-ffc7-4fa8-8f10-3aa4075acb5c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="xmlparse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xmlrole.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xmltok.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xmltok_impl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xmltok_ns.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ascii.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asciitab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="expat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iasciitab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="latin1tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nametab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utf8tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="winconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xmlrole.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xmltok.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xmltok_impl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile.am">
+      <Filter>GNU Files</Filter>
+    </None>
+    <None Include="COPYING.txt" />
+  </ItemGroup>
+</Project>

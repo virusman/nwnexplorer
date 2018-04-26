@@ -82,6 +82,7 @@ static char THIS_FILE[] = __FILE__;
     m_fFormatted = fFormatted;
     m_fCompiled = fCompiled;
     m_sRes .Set (pFile);
+	m_bVertical = false;
 }
 
 //-----------------------------------------------------------------------------

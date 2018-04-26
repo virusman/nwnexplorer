@@ -50,7 +50,7 @@
 #include "resource.h"
 #include "DataRef.h"
 #include "CommonView.h"
-#include <fmod/fmod.h>
+#include <fmod.h>
 
 //-----------------------------------------------------------------------------
 //
