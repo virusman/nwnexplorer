@@ -984,7 +984,7 @@ void CModelRawFormatter::WriteMeshHeader (CNwnMdlMeshHeader *pMesh,
 
     Format ("Transparency Hint     = %d\r\n", pMesh ->m_ulTransparencyHint);
 
-    Format ("Unknown 5             = %d\r\n", pMesh ->m_ulUnknown5);
+    Format ("Render Hint           = %d\r\n", pMesh ->m_ulRenderHint);
 
     Format ("Texture 0/Bitmap      = %s\r\n", pMesh ->m_szTextures [0]);
 
@@ -992,7 +992,7 @@ void CModelRawFormatter::WriteMeshHeader (CNwnMdlMeshHeader *pMesh,
 
     Format ("Texture 2             = %s\r\n", pMesh ->m_szTextures [2]);
 
-    Format ("Texture 3             = %s\r\n", pMesh ->m_szTextures [3]);
+    Format ("Material Name         = %s\r\n", pMesh ->m_szMaterialName);
 
     Format ("Tile Fade             = %d\r\n", pMesh ->m_ulTileFade);
 

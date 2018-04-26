@@ -653,8 +653,9 @@ class CNwnMdlMeshHeader : public CNwnMdlNodeHeader
         UINT32                                  m_ulBeaming;                                    // 0x00D8
         UINT32                                  m_ulRender;                                             // 0x00DC
         UINT32                                  m_ulTransparencyHint;                   // 0x00E0
-        UINT32                                  m_ulUnknown5;                                   // 0x00E4
-        char                                    m_szTextures [4] [64];                  // 0x00E8 
+        UINT32                                  m_ulRenderHint;                                   // 0x00E4
+        char                                    m_szTextures [3] [64];                  // 0x00E8 
+        char                                    m_szMaterialName [64];                  // 0x01A8
         UINT32                                  m_ulTileFade;                                   // 0x01E8
         CNwnArray <CNwnPointer <UINT32> >   
             m_sVertexIndices;                           // 0x01EC

@@ -1051,6 +1051,21 @@ void CNwnMdlNodeHeader::Decompile (CNwnStream *pStream, CNwnMdlModel *pModel,
             pStream ->WriteLine (szText);
         }
 
+        if (pMesh ->m_ulRenderHint != 0)
+        {
+            if (pMesh ->m_ulRenderHint == 2)
+            {
+                snprintf (szText, _countof (szText),
+                          "  renderhint NormalAndSpecMapped");
+            }
+            else
+            {
+                snprintf (szText, _countof (szText),
+                          "  renderhint None");
+            }
+            pStream ->WriteLine (szText);
+        }
+
         if (pMesh ->m_ulBeaming != 0)
         {
             snprintf (szText, _countof (szText),
@@ -1093,7 +1108,7 @@ void CNwnMdlNodeHeader::Decompile (CNwnStream *pStream, CNwnMdlModel *pModel,
         // Write the textures
         //
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (pMesh ->m_szTextures [i] [0] != 0)
             {
@@ -1109,6 +1124,16 @@ void CNwnMdlNodeHeader::Decompile (CNwnStream *pStream, CNwnMdlModel *pModel,
                 }
                 pStream ->WriteLine (szText);
             }
+        }
+
+        //
+        // Write the material name
+        //
+        if (pMesh ->m_szMaterialName [0] != 0)
+        {
+            snprintf (szText, _countof (szText),
+                      "  materialname %s", pMesh ->m_szMaterialName);
+            pStream ->WriteLine (szText);
         }
 
         //

@@ -411,10 +411,9 @@ CNwnMdlReferenceNode::~CNwnMdlReferenceNode ()
     m_ulBeaming = 0;
     m_ulRender = 1;
     m_ulTransparencyHint = 0;
-    m_ulUnknown5 = 0;
+    m_ulRenderHint = 0;
     memset (m_szTextures, 0, sizeof (m_szTextures));
     m_ulTileFade = 0;
-    m_ulUnknown5 = 0;
     m_ulSomething3Offset = 0xFFFFFFFF;
     m_ulSomething3Count = 0;
     m_usVertexCount = 0;

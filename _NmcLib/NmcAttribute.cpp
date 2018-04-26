@@ -612,9 +612,9 @@ NmcAttribute g_sAttributes [] =
     },
 
     { 
-        "texture3",
+        "materialname",
         NwnMdlNF_HasMesh,
-        offsetof (CNwnMdlMeshHeader, m_szTextures [3]),
+        offsetof (CNwnMdlMeshHeader, m_szMaterialName),
         64,
         NmcAttrString
     },
