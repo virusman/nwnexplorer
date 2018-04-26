@@ -109,6 +109,15 @@ bool CNwnBifFile::Open (const char *pszBifFile)
     //
 
     FILE *fp = fopen (pszBifFile, "rb");
+	if (fp == NULL)
+	{
+		char *pszParentPath = new char[strlen(pszBifFile) + 4];
+		sprintf(pszParentPath, "..\\%s", pszBifFile);
+		pszParentPath[strlen(pszBifFile) + 3] = '\0';
+		fp = fopen(pszParentPath, "rb");
+		delete pszParentPath;
+	}
+
     if (fp == NULL)
         return false;
 

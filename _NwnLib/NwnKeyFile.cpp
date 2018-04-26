@@ -305,6 +305,7 @@ CNwnBifFile *CNwnKeyFile::OpenBif (int nBifIndex)
     //
 
     char szFileName [512];
+	char szAltFileName [512];
     strncpy (szFileName, m_strFileName .c_str (), _countof (szFileName));
     char *pszTemp = szFileName;
     for (char *psz = szFileName; *psz; ++psz) 
@@ -312,14 +313,19 @@ CNwnBifFile *CNwnKeyFile::OpenBif (int nBifIndex)
         if (*psz == '\\' || *psz == '/' || *psz == ':')
             pszTemp = psz + 1;
     }
+	int nDirLength = pszTemp - szFileName;
+	strncpy(szAltFileName, szFileName, nDirLength);
+	strncpy(szAltFileName + nDirLength, "..\\", 3);
     GetBifName (psBif, pszTemp, 
                 (int) (&szFileName [_countof (szFileName)] - pszTemp));
-
+	strncpy(szAltFileName + nDirLength + 3, pszTemp, strlen(pszTemp));
+	szAltFileName[nDirLength + 3 + strlen(pszTemp)] = '\0';
     //
     // Open the file
     //
 
-    if (m_pasBifFiles [nBifIndex] .Open (szFileName))
+    if (m_pasBifFiles [nBifIndex] .Open (szFileName) ||
+		m_pasBifFiles [nBifIndex] .Open (szAltFileName))
         return &m_pasBifFiles [nBifIndex];
     else
         return false;

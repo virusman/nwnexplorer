@@ -3311,6 +3311,22 @@ void CMainWnd::OpenNWN ()
             }
         }
 
+        // Try loading EE files
+        if (!g_sKeyFiles[IDS_TOTAL_KEY_FILES - 1] .IsOpen ())
+        {
+            g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("dialog.tlk"));
+            g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("nwn_base.key"));
+            g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("nwn_base_loc.key"));
+        }
+
+        // If the root folder was specified instead of 'data'
+        if (!g_sKeyFiles[IDS_TOTAL_KEY_FILES - 1] .IsOpen ())
+        {
+            g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("data\\dialog.tlk"));
+            g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("data\\nwn_base.key"));
+            g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("data\\nwn_base_loc.key"));
+        }
+
         //
         // If we failed
         //
@@ -3377,6 +3393,22 @@ void CMainWnd::OpenNWN ()
                     }
 #endif
                 }
+            }
+
+            // Try loading EE files
+            if (!g_sKeyFiles[IDS_TOTAL_KEY_FILES - 1] .IsOpen ())
+            {
+                g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("dialog.tlk"));
+                g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("nwn_base.key"));
+                g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("nwn_base_loc.key"));
+            }
+
+            // If the root folder was specified instead of 'data'
+            if (!g_sKeyFiles[IDS_TOTAL_KEY_FILES - 1] .IsOpen ())
+            {
+                g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("data\\dialog.tlk"));
+                g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("data\\nwn_base.key"));
+                g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("data\\nwn_base_loc.key"));
             }
         }
     }

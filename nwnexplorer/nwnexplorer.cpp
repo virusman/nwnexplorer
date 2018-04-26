@@ -999,6 +999,7 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
         case NwnResType_SET: return ResClass_Ini;
         case NwnResType_SSF: return ResClass_Sound_Set;
         case NwnResType_TXI: return ResClass_TextureInfo;
+        case NwnResType_SHD: return ResClass_Shader;
         case NwnResType_UTC: return ResClass_BP_Creatures;
         case NwnResType_UTD: return ResClass_BP_Door;
         case NwnResType_UTE: return ResClass_BP_Encounter;

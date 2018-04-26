@@ -337,8 +337,10 @@ BOOL CNwnOptionsPage::OnKillActive ()
     // Try to open the dialog file
     //
 
-    str += "dialog.tlk";
-    FILE *fp = _tfopen (str, "rb");
+    //str += "dialog.tlk";
+    FILE *fp = _tfopen (str + "dialog.tlk", "rb");
+    if (fp == NULL)
+        fp = _tfopen (str + "data\\dialog.tlk", "rb");
     if (fp == NULL)
     {
         str .Format (IDS_ERR_INV_DIRECTORY);

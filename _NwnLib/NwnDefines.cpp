@@ -127,6 +127,12 @@ const char *NwnGetResTypeExtension (NwnResType nType)
         case NwnResType_NDB: return ".ndb";
         case NwnResType_PTM: return ".ptm";
         case NwnResType_PTT: return ".ptt";
+        case NwnResType_BAK: return ".bak";
+        case NwnResType_DAT: return ".dat";
+        case NwnResType_SHD: return ".shd";
+        case NwnResType_XBC: return ".xbc";
+        case NwnResType_WBM: return ".wbm";
+        case NwnResType_MTR: return ".mtr";
         default: return NULL;
     }
 }
@@ -289,6 +295,18 @@ NwnResType NwnGetResTypeFromExtension (const char *pszExtension)
         return NwnResType_PTM;
     if (stricmp (pszExtension, "ptt") == 0)
         return NwnResType_PTT;
+    if (stricmp (pszExtension, "bak") == 0)
+        return NwnResType_BAK;
+    if (stricmp (pszExtension, "dat") == 0)
+        return NwnResType_DAT;
+    if (stricmp (pszExtension, "shd") == 0)
+        return NwnResType_SHD;
+    if (stricmp (pszExtension, "xbc") == 0)
+        return NwnResType_XBC;
+    if (stricmp (pszExtension, "wbm") == 0)
+        return NwnResType_WBM;
+    if (stricmp (pszExtension, "mtr") == 0)
+        return NwnResType_MTR;
     return NwnResType_Unknown;
 }
 

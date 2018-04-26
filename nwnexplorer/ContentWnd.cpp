@@ -364,6 +364,7 @@ void CContentWnd::OpenResource (LPCSTR pszResName, NwnResType nResType,
     {
         case ResClass_GameData:
         case ResClass_TextureInfo:
+        case ResClass_Shader:
         case ResClass_Ini:
         case ResClass_Script:
         case ResClass_Debug_Script:

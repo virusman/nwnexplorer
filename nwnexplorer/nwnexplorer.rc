@@ -709,6 +709,7 @@ STRINGTABLE
 BEGIN
     IDS_RESCLASS_TEXTURE_ICONOTHER "Images, Icon, Other"
     IDS_RESCLASS_TEXTURE_ICONSCROLL "Images, Icon, Scroll"
+    IDS_RESCLASS_SHADER     "Shader"
 END
 
 #endif    // English (United States) resources
