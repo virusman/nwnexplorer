@@ -68,6 +68,12 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 //
+// Constants
+//
+
+static const char DEFAULT_STEAM_FOLDER[] = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Neverwinter Nights\\";
+
+//
 // Global variables
 //
 
@@ -2356,7 +2362,7 @@ LRESULT CMainWnd::OnFileOpenNwn (WORD wNotifyCode,
         pSource->AddRoot(m_tv, TVI_ROOT);
         m_apSources.Add(pSource);
 
-        pSource = new CDataSourceDir(IDS_SERVER_VAULT, "servervault\\", "*.*", false);
+        pSource = new CDataSourceDir(IDS_SERVER_VAULT, "servervault\\", "*.*", false, true);
         pSource->AddRoot(m_tv, TVI_ROOT);
         m_apSources.Add(pSource);
 
@@ -3440,6 +3446,30 @@ void CMainWnd::OpenNWN ()
             //
 
             g_strNwnDirectory = GetNwnDirectory ();
+
+            //
+            // Try known paths to EE installs
+            //
+
+            if (g_strNwnDirectory.IsEmpty())
+            {
+                if (PathFileExists(DEFAULT_STEAM_FOLDER))
+                {
+                    g_strNwnDirectory = DEFAULT_STEAM_FOLDER;
+                }
+                else
+                {
+                    CHAR szUserFolderPath[MAX_PATH];
+                    SHGetFolderPath(NULL, CSIDL_PROFILE, NULL, NULL, szUserFolderPath);
+                    CString strBDCInstallPath = szUserFolderPath;
+                    strBDCInstallPath = strBDCInstallPath + "Beamdog Library\\00785\\";
+                    if (PathFileExists(strBDCInstallPath))
+                    {
+                        g_strNwnDirectory = strBDCInstallPath;
+                    }
+                }
+            }
+
             if (!g_strNwnDirectory .IsEmpty ())
             {
                 g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("dialog.tlk"));

@@ -432,7 +432,7 @@ void CDataSourceDir::GetResourceName (DataElement *pElement,
 CData *CDataSourceDir::LoadRes (DataElement *pElement)
 {
     const char *pszFileName = m_astrFileNames [pElement ->ulIndex1];
-    CString str (g_strNwnDirectory + m_strDir + pszFileName);
+    CString str(m_fUserDir ? g_strNwnDirectory + m_strDir + pszFileName : g_strUserDirectory + m_strDir + pszFileName);
     return g_sResourceCache .LoadRes (str);
 }
 
@@ -560,7 +560,7 @@ void CDataSourceDir::Initialize ()
     // Initiate the find
     //
 
-    CString strDir (g_strNwnDirectory + m_strDir);
+    CString strDir(m_fUserDir ? g_strUserDirectory + m_strDir : g_strNwnDirectory + m_strDir);
     CString strSearch (strDir + m_strMask);
     struct _finddata_t sFind;
     intptr_t id = _findfirst (strSearch, &sFind);
