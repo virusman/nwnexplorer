@@ -225,7 +225,9 @@ class CAboutDlg : public CDialogImpl<CAboutDlg>
 //
 
 CString g_strNwnDirectory;
+CString g_strUserDirectory;
 CString g_strTexSearchPath;
+bool g_bIsNWNEE = false;
 CNwnDialogTlkFile g_sDialogTlkFile;
 CNwnKeyFile *g_sKeyFiles = new CNwnKeyFile[IDS_TOTAL_KEY_FILES];
 CNwnModuleFile *g_sHakFiles = new CNwnModuleFile[IDS_TOTAL_USER_HAKS];
@@ -2275,68 +2277,155 @@ LRESULT CMainWnd::OnFileOpenNwn (WORD wNotifyCode,
 
     DeleteDocument ();
 
-    //
-    // Add in the key files
-    //
     CDataSource *pSource;
 
-    for (int i = IDS_TOTAL_KEY_FILES - 1; i >= 0; i--) {
-        if (!g_sKeyFiles[i] .IsOpen ())
-            continue;
+    if (g_bIsNWNEE)
+    {
+        pSource = new CDataSourceKey(&(g_sKeyFiles[7]), IDS_MAIN_KEY);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-        pSource = new CDataSourceKey (&(g_sKeyFiles[i]), IDS_MAIN_KEY + (IDS_TOTAL_KEY_FILES - (i + 1)));
-        HTREEITEM hRoot = pSource ->AddRoot (m_tv, TVI_ROOT);
-        //m_tv .Expand (hRoot, TVE_EXPAND);
-        m_apSources .Add (pSource);
+        pSource = new CDataSourceKey(&(g_sKeyFiles[6]), IDS_LANG_KEY);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        //
+        // Add the other directories
+        //
+        pSource = new CDataSourceDir(IDS_GAME_MODULES, "data\\nwm\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_TEXTURE_PACKS, "data\\txpk\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_INSTALL_OVERRIDE, "ovr\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_INSTALL_HAK, "data\\hk\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_INSTALL_AMBIENT, "data\\amb\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_INSTALL_MUSIC, "data\\mus\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_INSTALL_DM_VAULT, "data\\dmv\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_INSTALL_LOCAL_VAULT, "data\\lcv\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_INSTALL_MODULES, "data\\mod\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_OVERRIDE, "override\\", "*.*", false, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_ERF, "erf\\", "*.*", true, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_HAK, "hak\\", "*.*", true, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_AMBIENT, "ambient\\", "*.*", false, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_MUSIC, "music\\", "*.*", false, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_DM_VAULT, "dmvault\\", "*.*", false, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_LOCAL_VAULT, "localvault\\", "*.*", false, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_SERVER_VAULT, "servervault\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
+        pSource = new CDataSourceDir(IDS_USER_MODULES, "modules\\", "*.*", true, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
     }
+    else
+    {
+        //
+        // Add in the key files
+        //
+        for (int i = IDS_TOTAL_KEY_FILES - 1; i >= 0; i--) {
+            if (!g_sKeyFiles[i] .IsOpen ())
+                continue;
 
-    //
-    // Add the other directories
-    //
+            pSource = new CDataSourceKey (&(g_sKeyFiles[i]), IDS_MAIN_KEY + (IDS_TOTAL_KEY_FILES - (i + 1)));
+            HTREEITEM hRoot = pSource ->AddRoot (m_tv, TVI_ROOT);
+            //m_tv .Expand (hRoot, TVE_EXPAND);
+            m_apSources .Add (pSource);
+        }
 
-    pSource = new CDataSourceDir (IDS_OVERRIDE, "override\\", "*.*", false);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        //
+        // Add the other directories
+        //
+        pSource = new CDataSourceDir(IDS_OVERRIDE, "override\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_GAME_MODULES, "nwm\\", "*.*", true);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_GAME_MODULES, "nwm\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_ERF, "erf\\", "*.*", true);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_ERF, "erf\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_HAK, "hak\\", "*.*", true);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_HAK, "hak\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_TEXTURE_PACKS, "texturepacks\\", "*.*", true);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_TEXTURE_PACKS, "texturepacks\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_AMBIENT, "ambient\\", "*.*", false);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_AMBIENT, "ambient\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_MUSIC, "music\\", "*.*", false);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_MUSIC, "music\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_DM_VAULT, "dmvault\\", "*.*", false);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_DM_VAULT, "dmvault\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_LOCAL_VAULT, "localvault\\", "*.*", false);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_LOCAL_VAULT, "localvault\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_SERVER_VAULT, "servervault\\", "*.*", false);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_SERVER_VAULT, "servervault\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
 
-    pSource = new CDataSourceDir (IDS_USER_MODULES, "modules\\", "*.*", true);
-    pSource ->AddRoot (m_tv, TVI_ROOT);
-    m_apSources .Add (pSource);
+        pSource = new CDataSourceDir(IDS_USER_MODULES, "modules\\", "*.*", true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+    }
 
 #if 0
     if (!g_strUserHakMask .IsEmpty()) {
@@ -3268,11 +3357,6 @@ void CMainWnd::OpenNWN ()
                     szNwnDirectory, _countof (szNwnDirectory));
         g_strNwnDirectory = szNwnDirectory;
 
-        GetSetting (PROFILE_TEX_SEARCH_PATH,
-                    _T ("texturepacks\\xp2_tex_tpa.erf texturepacks\\xp1_tex_tpa.erf texturepacks\\textures_tpa.erf texturepacks\\tiles_tpa.erf"),
-                    szTexSearchPath, _countof (szTexSearchPath));
-        g_strTexSearchPath = szTexSearchPath;
-
         //
         // If we have something to try
         //
@@ -3283,16 +3367,48 @@ void CMainWnd::OpenNWN ()
                 g_strNwnDirectory [g_strNwnDirectory .GetLength () - 1] != '/' &&
                 g_strNwnDirectory [g_strNwnDirectory .GetLength () - 1] != ':')
                 g_strNwnDirectory += _T ("\\");
-            g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("dialog.tlk"));
 
-            g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("chitin.key"));
-            g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("patch.key"));
-            g_sKeyFiles[5] .Open (g_strNwnDirectory  + _T ("xp1.key"));
-            g_sKeyFiles[4] .Open (g_strNwnDirectory  + _T ("xp1patch.key"));
-            g_sKeyFiles[3] .Open (g_strNwnDirectory  + _T ("xp2.key"));
-            g_sKeyFiles[2] .Open (g_strNwnDirectory  + _T ("xp2patch.key"));
-            g_sKeyFiles[1] .Open (g_strNwnDirectory  + _T ("xp3.key"));
-            g_sKeyFiles[0] .Open (g_strNwnDirectory  + _T ("xp3patch.key"));
+            g_bIsNWNEE = false;
+            if (PathFileExists(g_strNwnDirectory + _T("data\\nwn_base.key")))
+            {
+                g_bIsNWNEE = true;
+            }
+
+            if (g_bIsNWNEE)
+            {
+                g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("data\\dialog.tlk"));
+                g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("data\\nwn_base.key"));
+                g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("data\\nwn_base_loc.key"));
+
+                GetSetting (PROFILE_TEX_SEARCH_PATH,
+                            _T ("data\\txpk\\xp2_tex_tpa.erf data\\txpk\\xp1_tex_tpa.erf data\\txpk\\textures_tpa.erf data\\txpk\\tiles_tpa.erf"),
+                            szTexSearchPath, _countof (szTexSearchPath));
+                g_strTexSearchPath = szTexSearchPath;
+
+                CHAR szMyDocumentsPath[MAX_PATH];
+                SHGetFolderPath(NULL, CSIDL_MYDOCUMENTS, NULL, NULL, szMyDocumentsPath);
+                g_strUserDirectory = szMyDocumentsPath;
+                g_strUserDirectory = g_strUserDirectory + "\\Neverwinter Nights\\";
+            }
+            else
+            {
+                g_sDialogTlkFile.Open(g_strNwnDirectory + _T("dialog.tlk"));
+
+                g_sKeyFiles[7].Open(g_strNwnDirectory + _T("chitin.key"));
+                g_sKeyFiles[6].Open(g_strNwnDirectory + _T("patch.key"));
+                g_sKeyFiles[5].Open(g_strNwnDirectory + _T("xp1.key"));
+                g_sKeyFiles[4].Open(g_strNwnDirectory + _T("xp1patch.key"));
+                g_sKeyFiles[3].Open(g_strNwnDirectory + _T("xp2.key"));
+                g_sKeyFiles[2].Open(g_strNwnDirectory + _T("xp2patch.key"));
+                g_sKeyFiles[1].Open(g_strNwnDirectory + _T("xp3.key"));
+                g_sKeyFiles[0].Open(g_strNwnDirectory + _T("xp3patch.key"));
+
+                GetSetting (PROFILE_TEX_SEARCH_PATH,
+                            _T ("texturepacks\\xp2_tex_tpa.erf texturepacks\\xp1_tex_tpa.erf texturepacks\\textures_tpa.erf texturepacks\\tiles_tpa.erf"),
+                            szTexSearchPath, _countof (szTexSearchPath));
+                g_strTexSearchPath = szTexSearchPath;
+                g_strUserDirectory = g_strNwnDirectory;
+            }
 
             if (!g_strTexSearchPath .IsEmpty ())
             {
@@ -3309,22 +3425,6 @@ void CMainWnd::OpenNWN ()
                         i++;
                 }
             }
-        }
-
-        // Try loading EE files
-        if (!g_sKeyFiles[IDS_TOTAL_KEY_FILES - 1] .IsOpen ())
-        {
-            g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("dialog.tlk"));
-            g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("nwn_base.key"));
-            g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("nwn_base_loc.key"));
-        }
-
-        // If the root folder was specified instead of 'data'
-        if (!g_sKeyFiles[IDS_TOTAL_KEY_FILES - 1] .IsOpen ())
-        {
-            g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("data\\dialog.tlk"));
-            g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("data\\nwn_base.key"));
-            g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("data\\nwn_base_loc.key"));
         }
 
         //
@@ -3393,22 +3493,6 @@ void CMainWnd::OpenNWN ()
                     }
 #endif
                 }
-            }
-
-            // Try loading EE files
-            if (!g_sKeyFiles[IDS_TOTAL_KEY_FILES - 1] .IsOpen ())
-            {
-                g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("dialog.tlk"));
-                g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("nwn_base.key"));
-                g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("nwn_base_loc.key"));
-            }
-
-            // If the root folder was specified instead of 'data'
-            if (!g_sKeyFiles[IDS_TOTAL_KEY_FILES - 1] .IsOpen ())
-            {
-                g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("data\\dialog.tlk"));
-                g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("data\\nwn_base.key"));
-                g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("data\\nwn_base_loc.key"));
             }
         }
     }

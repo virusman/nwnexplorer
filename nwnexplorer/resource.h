@@ -175,6 +175,15 @@
 #define IDS_XP3_KEY                     11107
 #define IDS_XP3_PATCH_KEY               11108
 #define IDS_LAST_KEY_FILE               11108
+#define IDS_LANG_KEY                    11109
+#define IDS_INSTALL_KEY                 11110
+#define IDS_INSTALL_HAK                 11111
+#define IDS_INSTALL_OVERRIDE            11112
+#define IDS_INSTALL_AMBIENT             11113
+#define IDS_INSTALL_DM_VAULT            11114
+#define IDS_INSTALL_LOCAL_VAULT         11115
+#define IDS_INSTALL_MUSIC               11116
+#define IDS_INSTALL_MODULES             11117
 #define IDS_FIRST_USER_HAK              11151
 #define IDS_USER_HAK_01                 11151
 #define IDS_USER_HAK_02                 11152

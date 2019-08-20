@@ -64,6 +64,7 @@ static char THIS_FILE[] = __FILE__;
 
 extern CDataCache g_sResourceCache;
 extern CString g_strNwnDirectory;
+extern CString g_strUserDirectory;
 extern CMainWnd *g_pMainWnd;
 
 //-----------------------------------------------------------------------------
@@ -78,7 +79,7 @@ extern CMainWnd *g_pMainWnd;
 //
 //-----------------------------------------------------------------------------
 
-CDataSourceDir::CDataSourceDir (UINT nID, LPCTSTR pszDir, LPCTSTR pszMask, bool fModules) 
+CDataSourceDir::CDataSourceDir (UINT nID, LPCTSTR pszDir, LPCTSTR pszMask, bool fModules, bool fUserDir)
 {
 
     //
@@ -89,6 +90,7 @@ CDataSourceDir::CDataSourceDir (UINT nID, LPCTSTR pszDir, LPCTSTR pszMask, bool 
     m_strDir   = pszDir;
     m_strMask  = pszMask;
     m_fModules = fModules;
+    m_fUserDir = fUserDir;
 
     //
     // Initialize other flags

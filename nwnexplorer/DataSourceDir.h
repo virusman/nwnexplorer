@@ -83,7 +83,7 @@ class CDataSourceDir : public CDataSource
 
         // @cmember General constructor
 
-        CDataSourceDir (UINT nID, LPCTSTR pszDir, LPCTSTR pszMask, bool fModules);
+        CDataSourceDir (UINT nID, LPCTSTR pszDir, LPCTSTR pszMask, bool fModules, bool fUserDir = false);
 
         // @cmember General destructor
 
@@ -166,6 +166,10 @@ class CDataSourceDir : public CDataSource
         // @cmember If true, module only
 
         bool                            m_fModules;
+
+        // @cmember If true, use the user documents dir instead of NWN install dir
+
+        bool                            m_fUserDir;
 
         // @cmember Root element 
 

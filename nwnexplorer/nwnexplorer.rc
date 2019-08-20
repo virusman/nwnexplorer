@@ -460,6 +460,10 @@ BEGIN
         BOTTOMMARGIN, 139
     END
 
+    IDD_TBCUSTOMIZE, DIALOG
+    BEGIN
+    END
+
     IDD_SOUND, DIALOG
     BEGIN
         LEFTMARGIN, 7
@@ -650,6 +654,15 @@ BEGIN
     IDS_XP2_PATCH_KEY       "NWN:HotU Patch Data"
     IDS_XP3_KEY             "NWN:1.69 Patch Data"
     IDS_XP3_PATCH_KEY       "NWN:1.69 Patch Data (UNUSED)"
+    IDS_LANG_KEY            "NWN Language Data"
+    IDS_INSTALL_KEY         "NWN Install Data"
+    IDS_INSTALL_HAK         "NWN Install Hak Files"
+    IDS_INSTALL_OVERRIDE    "NWN Install Overrides"
+    IDS_INSTALL_AMBIENT     "NWN Install Ambient Sounds"
+    IDS_INSTALL_DM_VAULT    "NWN Install DM Vault"
+    IDS_INSTALL_LOCAL_VAULT "NWN Install Local Vault"
+    IDS_INSTALL_MUSIC       "NWN Install Music"
+    IDS_INSTALL_MODULES     "NWN Install Modules"
 END
 
 STRINGTABLE
