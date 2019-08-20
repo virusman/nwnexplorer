@@ -345,11 +345,11 @@ BOOL CNwnOptionsPage::OnKillActive ()
     {
         str .Format (IDS_ERR_INV_DIRECTORY);
         ::MessageBox (m_hWnd, str, g_szAppName, MB_OK);
-        return FALSE;
+        return TRUE;
     }
     else
         fclose (fp);
-    return TRUE;
+    return FALSE;
 }
 
 
