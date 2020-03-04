@@ -2291,9 +2291,11 @@ LRESULT CMainWnd::OnFileOpenNwn (WORD wNotifyCode,
         pSource->AddRoot(m_tv, TVI_ROOT);
         m_apSources.Add(pSource);
 
-        pSource = new CDataSourceKey(&(g_sKeyFiles[6]), IDS_LANG_KEY);
-        pSource->AddRoot(m_tv, TVI_ROOT);
-        m_apSources.Add(pSource);
+        if (g_sKeyFiles[6].IsOpen()) {
+            pSource = new CDataSourceKey(&(g_sKeyFiles[6]), IDS_LANG_KEY);
+            pSource->AddRoot(m_tv, TVI_ROOT);
+            m_apSources.Add(pSource);
+        }
 
         //
         // Add the other directories
@@ -3383,6 +3385,9 @@ void CMainWnd::OpenNWN ()
             if (g_bIsNWNEE)
             {
                 g_sDialogTlkFile .Open (g_strNwnDirectory + _T ("data\\dialog.tlk"));
+                if (!g_sDialogTlkFile.IsOpen()) {
+                    g_sDialogTlkFile.Open(g_strNwnDirectory + _T ("lang\\en\\data\\dialog.tlk"));
+                }
                 g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("data\\nwn_base.key"));
                 g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("data\\nwn_base_loc.key"));
 
