@@ -432,7 +432,7 @@ void CDataSourceDir::GetResourceName (DataElement *pElement,
 CData *CDataSourceDir::LoadRes (DataElement *pElement)
 {
     const char *pszFileName = m_astrFileNames [pElement ->ulIndex1];
-    CString str(m_fUserDir ? g_strNwnDirectory + m_strDir + pszFileName : g_strUserDirectory + m_strDir + pszFileName);
+    CString str(m_fUserDir ? g_strUserDirectory + m_strDir + pszFileName : g_strNwnDirectory + m_strDir + pszFileName);
     return g_sResourceCache .LoadRes (str);
 }
 
