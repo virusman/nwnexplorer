@@ -254,7 +254,7 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "NWN Explorer Version 1.8.2",IDC_STATIC,7,6,216,8,SS_NOPREFIX
+    LTEXT           "NWN Explorer Version 1.8.3",IDC_STATIC,7,6,216,8,SS_NOPREFIX
     LTEXT           "Copyright (C) 2002-2009, Edward T. Smith and Doug Swarin",IDC_STATIC,7,17,216,8
     DEFPUSHBUTTON   "OK",IDOK,86,125,50,14
     LTEXT           "Some images Copyright (C) 2002, Bioware",IDC_STATIC,7,40,216,8
@@ -263,6 +263,7 @@ BEGIN
     LTEXT           "1.5 support for DDS textures and NWN 1.69 sponsored by:",IDC_STATIC,7,75,191,8
     LTEXT           "  - Higher Ground (http://highergroundpoa.proboards3.com)",IDC_STATIC,7,85,194,8
     LTEXT           "  - Community Expansion Pack (http://cepteam.dyndns.org)",IDC_STATIC,7,95,192,8
+    LTEXT           "NWN:EE support && updates (C) 2018-2020, virusman",IDC_STATIC,7,26,216,8
 END
 
 IDD_TBCUSTOMIZE DIALOGEX 0, 0, 357, 33
