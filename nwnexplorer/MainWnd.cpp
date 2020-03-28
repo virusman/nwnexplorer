@@ -2340,6 +2340,10 @@ LRESULT CMainWnd::OnFileOpenNwn (WORD wNotifyCode,
         pSource->AddRoot(m_tv, TVI_ROOT);
         m_apSources.Add(pSource);
 
+        pSource = new CDataSourceDir(IDS_DEVELOPMENT, "development\\", "*.*", false, true);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
         pSource = new CDataSourceDir(IDS_ERF, "erf\\", "*.*", true, true);
         pSource->AddRoot(m_tv, TVI_ROOT);
         m_apSources.Add(pSource);

@@ -184,6 +184,7 @@
 #define IDS_INSTALL_LOCAL_VAULT         11115
 #define IDS_INSTALL_MUSIC               11116
 #define IDS_INSTALL_MODULES             11117
+#define IDS_DEVELOPMENT                 11118
 #define IDS_FIRST_USER_HAK              11151
 #define IDS_USER_HAK_01                 11151
 #define IDS_USER_HAK_02                 11152
