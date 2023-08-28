@@ -126,7 +126,8 @@ enum ResClass
     ResClass_Texture_Icon_Other                 = 39,
     ResClass_Texture_Icon_Scroll                = 40,
     ResClass_Shader                             = 41,
-    ResClass__Last                              = 42,
+    ResClass_Material                           = 42,
+    ResClass__Last                              = 43,
 };
 
 //-----------------------------------------------------------------------------
