@@ -133,6 +133,18 @@ const char *NwnGetResTypeExtension (NwnResType nType)
         case NwnResType_XBC: return ".xbc";
         case NwnResType_WBM: return ".wbm";
         case NwnResType_MTR: return ".mtr";
+        case NwnResType_KTX: return ".ktx";
+        case NwnResType_TTF: return ".ttf";
+        case NwnResType_SQL: return ".sql";
+        case NwnResType_TML: return ".tml";
+        case NwnResType_SQ3: return ".sq3";
+        case NwnResType_LOD: return ".lod";
+        case NwnResType_GIF: return ".gif";
+        case NwnResType_PNG: return ".png";
+        case NwnResType_JPG: return ".jpg";
+        case NwnResType_CAF: return ".caf";
+        case NwnResType_JUI: return ".jui";
+        case NwnResType_CDB: return ".cdb";
         default: return NULL;
     }
 }
@@ -307,6 +319,30 @@ NwnResType NwnGetResTypeFromExtension (const char *pszExtension)
         return NwnResType_WBM;
     if (stricmp (pszExtension, "mtr") == 0)
         return NwnResType_MTR;
+    if (stricmp (pszExtension, "ktx") == 0)
+        return NwnResType_KTX;
+    if (stricmp (pszExtension, "ttf") == 0)
+        return NwnResType_TTF;
+    if (stricmp (pszExtension, "sql") == 0)
+        return NwnResType_SQL;
+    if (stricmp (pszExtension, "tml") == 0)
+        return NwnResType_TML;
+    if (stricmp (pszExtension, "sq3") == 0)
+        return NwnResType_SQ3;
+    if (stricmp (pszExtension, "lod") == 0)
+        return NwnResType_LOD;
+    if (stricmp (pszExtension, "gif") == 0)
+        return NwnResType_GIF;
+    if (stricmp (pszExtension, "png") == 0)
+        return NwnResType_PNG;
+    if (stricmp (pszExtension, "jpg") == 0)
+        return NwnResType_JPG;
+    if (stricmp (pszExtension, "caf") == 0)
+        return NwnResType_CAF;
+    if (stricmp (pszExtension, "jui") == 0)
+        return NwnResType_JUI;
+    if (stricmp (pszExtension, "cdb") == 0)
+        return NwnResType_CDB;
     return NwnResType_Unknown;
 }
 
