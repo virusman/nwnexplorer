@@ -1074,7 +1074,7 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
                     if (nLen > 4 && pszName[3] == '_') {
                         if ((pszName[1] == 'E' || pszName[1] == 'e') &&
                             (pszName[2] == 'F' || pszName[2] == 'f'))
-                            return ResClass_Texture_Icon_Effect;
+                            return ResClass_Texture_Icon_Other;
 
                         if ((pszName[1] == 'F' || pszName[1] == 'f') &&
                             (pszName[2] == 'E' || pszName[2] == 'e'))
@@ -1091,7 +1091,7 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
 
                     if (nLen > 3 && pszName[2] == '_') {
                         if (pszName[1] == 'D' || pszName[1] == 'd')
-                            return ResClass_Texture_Icon_Domain;
+                            return ResClass_Texture_Icon_Other;
 
                         if (pszName[1] == 'R' || pszName[1] == 'r')
                             return ResClass_Texture_Icon_Other;
