@@ -986,6 +986,7 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
         case NwnResType_ITP: return ResClass_Blueprint_Palette;
         case NwnResType_JRL: return ResClass_Module;
         case NwnResType_LTR: return ResClass_Misc;
+        case NwnResType_MTR: return ResClass_Material;        
         case NwnResType_MVE: return ResClass_Misc;
         case NwnResType_NCS: return ResClass_Compiled_Script;
         case NwnResType_NDB: return ResClass_Debug_Script;

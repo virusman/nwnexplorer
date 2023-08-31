@@ -254,7 +254,7 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "NWN Explorer Version 1.8.3",IDC_STATIC,7,6,216,8,SS_NOPREFIX
+    LTEXT           "NWN Explorer Version 1.8.4",IDC_STATIC,7,6,216,8,SS_NOPREFIX
     LTEXT           "Copyright (C) 2002-2009, Edward T. Smith and Doug Swarin",IDC_STATIC,7,17,216,8
     DEFPUSHBUTTON   "OK",IDOK,86,125,50,14
     LTEXT           "Some images Copyright (C) 2002, Bioware",IDC_STATIC,7,40,216,8
@@ -723,6 +723,7 @@ BEGIN
     IDS_RESCLASS_TEXTURE_ICONOTHER "Images, Icon, Other"
     IDS_RESCLASS_TEXTURE_ICONSCROLL "Images, Icon, Scroll"
     IDS_RESCLASS_SHADER     "Shader"
+    IDS_RESCLASS_MATERIAL   "Materials"
 END
 
 #endif    // English (United States) resources
