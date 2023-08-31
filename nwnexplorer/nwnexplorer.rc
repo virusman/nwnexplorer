@@ -263,7 +263,7 @@ BEGIN
     LTEXT           "1.5 support for DDS textures and NWN 1.69 sponsored by:",IDC_STATIC,7,75,191,8
     LTEXT           "  - Higher Ground (http://highergroundpoa.proboards3.com)",IDC_STATIC,7,85,194,8
     LTEXT           "  - Community Expansion Pack (http://cepteam.dyndns.org)",IDC_STATIC,7,95,192,8
-    LTEXT           "NWN:EE support && updates (C) 2018-2020, virusman",IDC_STATIC,7,26,216,8
+    LTEXT           "NWN:EE support && updates (C) 2018-2023, virusman",IDC_STATIC,7,26,216,8
 END
 
 IDD_TBCUSTOMIZE DIALOGEX 0, 0, 357, 33
