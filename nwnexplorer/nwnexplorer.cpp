@@ -1047,6 +1047,17 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
                     return ResClass_Texture_Minimap;
                 }
 
+                if (nLen > 7                                 &&
+                    pszName[6] == '_'                        &&
+                    (pszName[0] == 'G' || pszName[0] == 'g') &&
+                    (pszName[1] == 'U' || pszName[1] == 'u') &&
+                    (pszName[2] == 'I' || pszName[2] == 'i') &&
+                    (pszName[3] == '_' )                     &&
+                    (pszName[4] == 'M' || pszName[4] == 'm') &&
+                    (pszName[5] == 'P' || pszName[5] == 'p')) {
+                    return ResClass_Texture_Gui_MousePointer;
+                }
+
                 if (nLen > 4 &&
                     pszName[2] == '_'                        &&
                     pszName[nLen - 2] == '_'                 &&
@@ -1074,7 +1085,7 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
                     if (nLen > 4 && pszName[3] == '_') {
                         if ((pszName[1] == 'E' || pszName[1] == 'e') &&
                             (pszName[2] == 'F' || pszName[2] == 'f'))
-                            return ResClass_Texture_Icon_Other;
+                            return ResClass_Texture_Icon_Effect;
 
                         if ((pszName[1] == 'F' || pszName[1] == 'f') &&
                             (pszName[2] == 'E' || pszName[2] == 'e'))
@@ -1091,7 +1102,7 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
 
                     if (nLen > 3 && pszName[2] == '_') {
                         if (pszName[1] == 'D' || pszName[1] == 'd')
-                            return ResClass_Texture_Icon_Other;
+                            return ResClass_Texture_Icon_Domain;
 
                         if (pszName[1] == 'R' || pszName[1] == 'r')
                             return ResClass_Texture_Icon_Other;

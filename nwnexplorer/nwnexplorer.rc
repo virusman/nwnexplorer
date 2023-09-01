@@ -724,6 +724,9 @@ BEGIN
     IDS_RESCLASS_TEXTURE_ICONSCROLL "Images, Icon, Scroll"
     IDS_RESCLASS_SHADER     "Shader"
     IDS_RESCLASS_MATERIAL   "Materials"
+    IDS_RESCLASS_TEXTURE_ICONDOMAIN "Images, Icon, Domain"
+    IDS_RESCLASS_TEXTURE_ICONEFFECT "Images, Icon, Effect"
+    IDS_RESCLASS_TEXTURE_GUI_MOUSEPOINTER "Images, GUI, Mouse Pointer"
 END
 
 #endif    // English (United States) resources
