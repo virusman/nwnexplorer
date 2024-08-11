@@ -664,7 +664,7 @@ BEGIN
     IDS_INSTALL_LOCAL_VAULT "NWN Install Local Vault"
     IDS_INSTALL_MUSIC       "NWN Install Music"
     IDS_INSTALL_MODULES     "NWN Install Modules"
-    IDS_DEVELOPMENT         "NWN Development"
+    IDS_DEVELOPMENT         "NWNEE Development"
 END
 
 STRINGTABLE

@@ -2394,6 +2394,10 @@ LRESULT CMainWnd::OnFileOpenNwn (WORD wNotifyCode,
         //
         // Add the other directories
         //
+        pSource = new CDataSourceDir(IDS_DEVELOPMENT, "development\\", "*.*", false);
+        pSource->AddRoot(m_tv, TVI_ROOT);
+        m_apSources.Add(pSource);
+
         pSource = new CDataSourceDir(IDS_OVERRIDE, "override\\", "*.*", false);
         pSource->AddRoot(m_tv, TVI_ROOT);
         m_apSources.Add(pSource);
