@@ -127,7 +127,10 @@ enum ResClass
     ResClass_Texture_Icon_Scroll                = 40,
     ResClass_Shader                             = 41,
     ResClass_Material                           = 42,
-    ResClass__Last                              = 43,
+    ResClass_Texture_Icon_Domain                = 43,
+    ResClass_Texture_Icon_Effect                = 44,
+    ResClass_Texture_Gui_MousePointer           = 45,
+    ResClass__Last                              = 46,
 };
 
 //-----------------------------------------------------------------------------
