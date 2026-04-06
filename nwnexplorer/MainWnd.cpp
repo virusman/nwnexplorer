@@ -2297,6 +2297,12 @@ LRESULT CMainWnd::OnFileOpenNwn (WORD wNotifyCode,
             m_apSources.Add(pSource);
         }
 
+        if (g_sKeyFiles[5].IsOpen()) {
+            pSource = new CDataSourceKey(&(g_sKeyFiles[5]), IDS_PATCH_KEY);
+            pSource->AddRoot(m_tv, TVI_ROOT);
+            m_apSources.Add(pSource);
+        }
+
         //
         // Add the other directories
         //
@@ -3394,6 +3400,7 @@ void CMainWnd::OpenNWN ()
                 }
                 g_sKeyFiles[7] .Open (g_strNwnDirectory  + _T ("data\\nwn_base.key"));
                 g_sKeyFiles[6] .Open (g_strNwnDirectory  + _T ("data\\nwn_base_loc.key"));
+                g_sKeyFiles[5] .Open (g_strNwnDirectory  + _T ("data\\nwn_retail.key"));
 
                 GetSetting (PROFILE_TEX_SEARCH_PATH,
                             _T ("data\\txpk\\xp2_tex_tpa.erf data\\txpk\\xp1_tex_tpa.erf data\\txpk\\textures_tpa.erf data\\txpk\\tiles_tpa.erf"),
