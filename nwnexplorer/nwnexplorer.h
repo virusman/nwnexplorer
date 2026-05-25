@@ -174,6 +174,7 @@ struct ModelContext
 #define PROFILE_NWN_DIRECTORY           _T ("NwnDirectory")
 #define PROFILE_USER_HAK_MASK           _T ("UserHakMask")
 #define PROFILE_TEX_SEARCH_PATH         _T ("ViewModelsTexSearchPath")
+#define PROFILE_EXPORT_DIRECTORY        _T ("ExportDirectory")
 
 #define PROFILE_RESOURCEOPENNEWTAB      _T ("ResourceOpenNewTab")
 #define PROFILE_RESOURCEOPENSELECTED    _T ("ResourceOpenSelected")

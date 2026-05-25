@@ -73,6 +73,76 @@ static char THIS_FILE[] = __FILE__;
 
 static const char DEFAULT_STEAM_FOLDER[] = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Neverwinter Nights\\";
 
+static bool IsDirectoryPath (LPCTSTR pszPath)
+{
+    DWORD dwAttributes = ::GetFileAttributes (pszPath);
+    return dwAttributes != INVALID_FILE_ATTRIBUTES &&
+        (dwAttributes & FILE_ATTRIBUTE_DIRECTORY) != 0;
+}
+
+static void AppendBackslash (CString &str)
+{
+    int nLength = str .GetLength ();
+    if (nLength > 0 && str [nLength - 1] != _T ('\\') &&
+        str [nLength - 1] != _T ('/'))
+        str += _T ("\\");
+}
+
+static bool BrowseForExportFolder (HWND hWndParent, CString &strFolder)
+{
+    TCHAR szLastFolder [_MAX_PATH];
+    GetSetting (PROFILE_EXPORT_DIRECTORY, _T (""), 
+                szLastFolder, _countof (szLastFolder));
+
+#if (_WIN32_WINNT >= 0x0600)
+    HRESULT hrCoInit = ::CoInitialize (NULL);
+    bool fUninitialize = SUCCEEDED (hrCoInit);
+
+    CShellFileOpenDialog dlg (
+        NULL, FOS_PICKFOLDERS | FOS_FORCEFILESYSTEM | FOS_PATHMUSTEXIST |
+        FOS_NOCHANGEDIR);
+    if (!dlg .IsNull ())
+    {
+        dlg .GetPtr () ->SetTitle (L"Select Export Folder");
+        dlg .GetPtr () ->SetOkButtonLabel (L"Export");
+
+        if (szLastFolder [0] != 0 && IsDirectoryPath (szLastFolder))
+        {
+            USES_CONVERSION;
+            ATL::CComPtr <IShellItem> spInitialFolder;
+            if (SUCCEEDED (::SHCreateItemFromParsingName (
+                    T2CW (szLastFolder), NULL, IID_PPV_ARGS (&spInitialFolder))))
+                dlg .GetPtr () ->SetFolder (spInitialFolder);
+        }
+
+        if (dlg .DoModal (hWndParent) == IDOK &&
+            SUCCEEDED (dlg .GetFilePath (strFolder)))
+        {
+            SetSetting (PROFILE_EXPORT_DIRECTORY, strFolder);
+            if (fUninitialize)
+                ::CoUninitialize ();
+            return true;
+        }
+    }
+
+    if (fUninitialize)
+        ::CoUninitialize ();
+    return false;
+#else
+    CFolderDialog dlg (hWndParent, _T ("Select Export Folder"));
+    if (szLastFolder [0] != 0 && IsDirectoryPath (szLastFolder))
+        dlg .SetInitialFolder (szLastFolder);
+
+    if (dlg .DoModal () == IDOK)
+    {
+        strFolder = dlg .m_szFolderPath;
+        SetSetting (PROFILE_EXPORT_DIRECTORY, strFolder);
+        return true;
+    }
+    return false;
+#endif
+}
+
 //
 // Global variables
 //
@@ -2648,12 +2718,11 @@ LRESULT CMainWnd::OnResourceExport (WORD wNotifyCode,
         // Invoke the dialog
         //
 
-        CFolderDialog dlg;
-        if (dlg .DoModal () == IDOK)
+        CString str;
+        if (BrowseForExportFolder (m_hWnd, str))
         {
             CWaitCursor sWait;
-            CString str (dlg .m_szFolderPath);
-            str += "\\";
+            AppendBackslash (str);
             if (pElement ->pDataSource ->Export (pElement, str) == 0)
             {
                 CString str (MAKEINTRESOURCE (IDS_ERR_EXPORT));
@@ -2741,12 +2810,11 @@ LRESULT CMainWnd::OnResourceExportTga (WORD wNotifyCode,
         // Invoke the dialog
         //
 
-        CFolderDialog dlg;
-        if (dlg .DoModal () == IDOK)
+        CString str;
+        if (BrowseForExportFolder (m_hWnd, str))
         {
             CWaitCursor sWait;
-            CString str (dlg .m_szFolderPath);
-            str += "\\";
+            AppendBackslash (str);
             if (pElement ->pDataSource ->ExportTga (pElement, str) == 0)
             {
                 CString str (MAKEINTRESOURCE (IDS_ERR_EXPORT));
