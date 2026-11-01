@@ -1,0 +1,40 @@
+name: Windows build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.configuration }} Win32
+    runs-on: windows-2022
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration: [Debug, Release]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Build nwnexplorer and its libraries
+        env:
+          CONFIGURATION: ${{ matrix.configuration }}
+        run: |
+          $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+          $msbuild = & $vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.ATL -find 'MSBuild\**\Bin\MSBuild.exe' | Select-Object -First 1
+          if (!$msbuild) { throw 'MSBuild with C++ ATL support was not found' }
+          & $msbuild nwnexplorer/nwnexplorer.vcxproj /m /t:Rebuild /p:Configuration=$env:CONFIGURATION /p:Platform=Win32 /verbosity:minimal
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Upload nwnexplorer
+        uses: actions/upload-artifact@v7
+        with:
+          name: nwnexplorer-${{ matrix.configuration }}-Win32
+          path: |
+            nwnexplorer/${{ matrix.configuration }}/nwnexplorer.exe
+            nwnexplorer/${{ matrix.configuration }}/nwnexplorer.pdb
+          if-no-files-found: error
