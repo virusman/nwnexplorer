@@ -96,7 +96,14 @@ static bool BrowseForExportFolder (HWND hWndParent, CString &strFolder)
 
 #if (_WIN32_WINNT >= 0x0600)
     HRESULT hrCoInit = ::CoInitialize (NULL);
-    bool fUninitialize = SUCCEEDED (hrCoInit);
+    if (FAILED (hrCoInit))
+        return false;
+
+    // Declared before the dialog so its COM interfaces are released first.
+    struct CCoUninitialize
+    {
+        ~CCoUninitialize () { ::CoUninitialize (); }
+    } coUninitialize;
 
     CShellFileOpenDialog dlg (
         NULL, FOS_PICKFOLDERS | FOS_FORCEFILESYSTEM | FOS_PATHMUSTEXIST |
@@ -119,14 +126,10 @@ static bool BrowseForExportFolder (HWND hWndParent, CString &strFolder)
             SUCCEEDED (dlg .GetFilePath (strFolder)))
         {
             SetSetting (PROFILE_EXPORT_DIRECTORY, strFolder);
-            if (fUninitialize)
-                ::CoUninitialize ();
             return true;
         }
     }
 
-    if (fUninitialize)
-        ::CoUninitialize ();
     return false;
 #else
     CFolderDialog dlg (hWndParent, _T ("Select Export Folder"));
