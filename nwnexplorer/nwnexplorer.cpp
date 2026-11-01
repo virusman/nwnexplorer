@@ -1013,6 +1013,10 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
         case NwnResType_UTW: return ResClass_BP_Waypoint;
         case NwnResType_WAV: return ResClass_Sound;
         case NwnResType_WOK: return ResClass_Model_Walk_Tile;
+        case NwnResType_TXT: return ResClass_Ini;
+        case NwnResType_TML: return ResClass_Ini;
+        case NwnResType_JUI: return ResClass_Ini;
+        case NwnResType_LOD: return ResClass_Ini;
 
         case NwnResType_DDS:
         case NwnResType_TGA: {
@@ -1129,7 +1133,6 @@ ResClass GetResourceClass (NwnResType nType, const char *pszName)
         }
 
         case 0x270C: return ResClass_Ini;
-        case 0x000A: return ResClass_Ini;
         default: return ResClass_Misc;
     }
 }
